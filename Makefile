@@ -9,7 +9,7 @@ update:
 	# Replace the configuration files
 	cp quartz.config.ts quartz/quartz.config.ts
 
-build:
+build: update
 	cd quartz && npx quartz build
 
 serve: setup update
@@ -19,11 +19,10 @@ serve: setup update
 clean:
 	rm -rf quartz
 
-publish: update
+publish:
 	pwd
 	CLOUDFLARE_API_TOKEN=$(CLOUDFLARE_API_TOKEN)
-	cd quartz && pnpm add @cloudflare/wrangler # Ensure wrangler is installed globally
-	npx wrangler pages deploy quartz/public \
+	cd quartz && pnpm dlx wrangler pages deploy public \
 			--project-name $(CLOUDFLARE_PROJECT_NAME)
 
 deploy: build publish
