@@ -3,6 +3,7 @@ setup:
 	mkdir -p quartz/content
 	cp -r content/* quartz/content/
 	cd quartz && pnpm install
+	pnpm add -g @cloudflare/wrangler # Ensure wrangler is installed globally
 
 build:
 	cd quartz && npx quartz build
@@ -13,7 +14,8 @@ serve: setup
 clean:
 	rm -rf quartz
 
-deploy:
+deploy: build
+	pnpm add -g @cloudflare/wrangler # Ensure wrangler is installed globally
 	cd quartz/public && wrangler pages publish . \
 		--project-name $(CLOUDFLARE_PROJECT_NAME) \
 		--api-token $(CLOUDFLARE_API_TOKEN)
