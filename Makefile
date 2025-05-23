@@ -1,6 +1,5 @@
 setup:
 	[ -d quartz ] || git clone --depth=1 https://github.com/jackyzha0/quartz quartz
-	mkdir -p quartz/content
 	ln -sfn $(PWD)/content quartz/content # Create a soft link to the content directory
 	cd quartz && pnpm install
 

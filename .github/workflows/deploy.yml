@@ -21,7 +21,7 @@ jobs:
       - name: Fetch and Build Quartz
         run: |
           make setup
-          make build
+          make deploy
 
       - name: Deploy to Cloudflare Pages
         env:
