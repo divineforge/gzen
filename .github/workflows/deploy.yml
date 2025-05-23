@@ -17,7 +17,7 @@ jobs:
       - name: Copy Notes
         run: |
           mkdir -p quartz/content
-          cp -r notes/* quartz/content/
+          cp -r content/* quartz/content/
 
       - name: Build and Deploy (static site)
         working-directory: quartz
