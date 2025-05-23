@@ -10,6 +10,11 @@ build:
 serve: setup
 	cd quartz && npx quartz build --serve
 
-
 clean:
 	rm -rf quartz
+
+deploy:
+	cd quartz/public && wrangler pages publish . \
+		--project-name $(CLOUDFLARE_PROJECT_NAME) \
+		--api-token $(CLOUDFLARE_API_TOKEN)
+
