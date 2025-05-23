@@ -11,17 +11,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Fetch Quartz
-        run: git clone --depth=1 https://github.com/jackyzha0/quartz quartz
+      - name: Install Dependencies
+        run: sudo apt-get update && sudo apt-get install -y make
 
-      - name: Copy Notes
+      - name: Fetch and Build Quartz
         run: |
-          mkdir -p quartz/content
-          cp -r content/* quartz/content/
+          make setup
+          make build
 
-      - name: Build and Deploy (static site)
-        working-directory: quartz
-        run: |
-          npm install
-          npm run build
-          # then deploy logic here (Netlify CLI, GitHub Pages, etc.)
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: your-cloudflare-pages-project-name
+          directory: quartz/public # Replace with your static output directory
