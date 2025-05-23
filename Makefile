@@ -1,9 +1,10 @@
 setup:
-	git clone --depth=1 https://github.com/jackyzha0/quartz quartz
+	[ -d quartz ] || git clone --depth=1 https://github.com/jackyzha0/quartz quartz
 	mkdir -p quartz/content
-	cp -r content/* quartz/content/
+	ln -sfn $(PWD)/content quartz/content # Create a soft link to the content directory
 	cd quartz && pnpm install
-	pnpm add -g @cloudflare/wrangler # Ensure wrangler is installed globally
+
+
 
 build:
 	cd quartz && npx quartz build
@@ -14,9 +15,15 @@ serve: setup
 clean:
 	rm -rf quartz
 
-deploy: build
-	pnpm add -g @cloudflare/wrangler # Ensure wrangler is installed globally
-	cd quartz/public && wrangler pages publish . \
-		--project-name $(CLOUDFLARE_PROJECT_NAME) \
-		--api-token $(CLOUDFLARE_API_TOKEN)
+publish:
+	pwd
+	CLOUDFLARE_API_TOKEN=$(CLOUDFLARE_API_TOKEN)
+	cd quartz && pnpm add @cloudflare/wrangler # Ensure wrangler is installed globally
+	npx wrangler pages deploy quartz/public \
+			--project-name $(CLOUDFLARE_PROJECT_NAME)
 
+deploy: build publish
+	@echo "Deploying to Cloudflare Pages..."
+	@echo "Project Name: $(CLOUDFLARE_PROJECT_NAME)"
+	@echo "API Token: $(CLOUDFLARE_API_TOKEN)"
+	@echo "Deployment complete!"
