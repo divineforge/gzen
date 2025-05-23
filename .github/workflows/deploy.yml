@@ -1,0 +1,27 @@
+# .github/workflows/deploy.yml
+name: Deploy Quartz
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Fetch Quartz
+        run: git clone --depth=1 https://github.com/jackyzha0/quartz quartz
+
+      - name: Copy Notes
+        run: |
+          mkdir -p quartz/content
+          cp -r notes/* quartz/content/
+
+      - name: Build and Deploy (static site)
+        working-directory: quartz
+        run: |
+          npm install
+          npm run build
+          # then deploy logic here (Netlify CLI, GitHub Pages, etc.)
