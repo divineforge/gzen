@@ -23,6 +23,7 @@ publish:
 	pwd
 	CLOUDFLARE_API_TOKEN=$(CLOUDFLARE_API_TOKEN)
 	cd quartz && pnpm dlx wrangler pages deploy public \
+			--branch=main \
 			--project-name $(CLOUDFLARE_PROJECT_NAME)
 
 deploy: build publish
