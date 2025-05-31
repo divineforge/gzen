@@ -20,7 +20,7 @@ Welcome to the Gozen! - Meditating with Golang and blogging the journey
 > [!info] How we make this?
 > We use AI arts powered by Copilot for this Digital Garden, and assembling various learning resources across the internet. Occasionally we throwing in our works to help other see what we can do with Golang. Thanks for the Quartz framework, platform availability and various contributors to make this site presentation possible.
 
-![Gozen-dev](./images/gozen-expd.jpg)
+![Gozen-dev](/content/images/gozen-expd.jpg)
 
 This part turns into iterative increment of collected knowledge and concept
 in the golang world. Everything gathered up to date thus far:
