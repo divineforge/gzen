@@ -8,8 +8,8 @@ cover:
   caption: "Golang world and discovery"
 ShowToc: true
 TocOpen: true
-created: 2025-03-26 Wed 23:28:21+0800
-modified: 2025-03-26 Wed 23:29:49+0800
+created: 2025-05-31T10:05:00+08:00
+modified: 2025-05-31T10:05:26+08:00
 ---
 Welcome to the Gozen! - Meditating with Golang and blogging the journey
 
@@ -35,10 +35,6 @@ in the golang world. Everything gathered up to date thus far:
 ## Packages, Libraries
 - Live reload for Go <https://github.com/air-verse/air>
 - Build Terminal forms and prompts <https://github.com/charmbracelet/huh>
-
-## YouTube Video
-- Complete backend Engine Build in Go <https://www.youtube.com/watch?v=h3fqD6IprIA&ab_channel=Tiago>
-- Five of My favourite Project ideas to learn Go <https://www.youtube.com/watch?v=gXmznGEW9vo&ab_channel=DreamsofCode>
 
 # Concept & Thinking Paradigm
 - 12factor <https://12factor.net>
