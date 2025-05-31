@@ -1,5 +1,5 @@
 ---
-title: 'Adventure'
+title: 'Code'
 date: 2024-10-13T18:33:13+08:00
 draft: false
 tags: ["golang"]
@@ -8,7 +8,7 @@ created: 2025-05-23T16:05:00+08:00
 modified: 2025-05-31T10:05:39+08:00
 ---
 
-#Golang 
+#Golang
 ## Introduction
 
 this is the gozen wbsite,

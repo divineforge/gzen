@@ -1,6 +1,9 @@
 ---
 created: 2025-05-31T10:05:00+08:00
 modified: 2025-05-31T10:05:37+08:00
+title: Video
+tags:
+  - golang
 ---
 # YouTube Video
 
