@@ -28,6 +28,10 @@ in the golang world. Everything gathered up to date thus far:
 - Go Designs: <https://github.com/golang-design>
 - Awesome Go: <https://awesome-go.com/>
 
+# Test and Sandbox
+- Go Dev - Playground <https://go.dev/play/>
+- Go Sandbox: <https://www.go-sandbox.org/>
+
 ## Packages, Libraries
 - Live reload for Go <https://github.com/air-verse/air>
 - Build Terminal forms and prompts <https://github.com/charmbracelet/huh>
