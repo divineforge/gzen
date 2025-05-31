@@ -55,6 +55,6 @@ in the golang world. Everything gathered up to date thus far:
   4. URL Shortener
 
 
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="divineforge" data-color="#FFDD00" data-emoji="☕"  data-font="Comic" data-text="Buy me coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
 
-<img src="images/bmc_qr.png" alt="Buy me coffee" width="250">
+
+[![Buy Me a Coffee](/content/images/bmc_qr.png)](https://www.buymeacoffee.com/divineforge)
