@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/code.md",
+                "file": "content/adventure.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "code"
+              "title": "adventure"
             }
           }
         ]
@@ -170,12 +170,13 @@
   },
   "active": "b44f1e944e76a82e",
   "lastOpenFiles": [
+    "CONTRIBUTING.md",
+    "README.md",
+    "content/code.md",
     "content/adventure.md",
     "content/video.md",
     "content/creative-use.md",
     "quartz/public/tags/gamedev.html",
-    "content/code.md",
-    "README.md",
     "quartz/public/video-og-image.webp",
     "quartz/public/creative-use-og-image.webp",
     "content/index.md"

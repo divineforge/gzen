@@ -1,22 +1,26 @@
 ---
-title: 'Go Zen with Golang'
+title: Go Zen with Golang
 date: 2024-10-08T20:42:08+08:00
 draft: false
-tags: ["markdown", "golang", "directory"]
+tags:
+  - markdown
+  - golang
+  - directory
 cover:
   image: /images/golang-cover.jpg
-  caption: "Golang world and discovery"
+  caption: Golang world and discovery
 ShowToc: true
 TocOpen: true
 created: 2025-05-31T10:05:00+08:00
 modified: 2025-05-31T10:05:26+08:00
+description: this also serve as the index.md file for the Quartz rendering
 ---
 Welcome to the Gozen! - Meditating with Golang and blogging the journey
 
 > [!info] How we make this?
 > We use AI arts powered by Copilot for this Digital Garden, and assembling various learning resources across the internet. Occasionally we throwing in our works to help other see what we can do with Golang. Thanks for the Quartz framework, platform availability and various contributors to make this site presentation possible.
 
-![Gozen-dev](images/gozen-expd.jpg)
+![Gozen-dev](./images/gozen-expd.jpg)
 
 This part turns into iterative increment of collected knowledge and concept
 in the golang world. Everything gathered up to date thus far:

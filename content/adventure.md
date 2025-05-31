@@ -1,11 +1,14 @@
 ---
-title: 'Adventure'
-date: 2024-10-13T18:33:13+08:00
+title: Adventure
 draft: false
-tags: ["golang"]
-categories: ["programming", "engineering", "golang"]
-created: 2025-03-26 Wed 23:28:21+0800
-modified: 2025-03-26 Wed 23:30:15+0800
+tags:
+  - golang
+categories:
+  - programming
+  - engineering
+  - golang
+created: 2025-05-23T16:05:00+08:00
+modified: 2025-05-31T10:05:70+08:00
 ---
 ![Gopher-adventure](images/goadventure-1536x1024.jpg)
 
