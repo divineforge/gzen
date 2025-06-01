@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins";
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Gozen.DEV",
+    pageTitle: "Go Zen .DEV",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
