@@ -12,7 +12,7 @@ cover:
 ShowToc: true
 TocOpen: true
 created: 2025-05-31T10:05:00+08:00
-modified: 2025-05-31T10:05:26+08:00
+modified: 2025-06-02T15:06:88+08:00
 description: this also serve as the index.md file for the Quartz rendering
 ---
 
@@ -33,6 +33,7 @@ in the golang world. Everything gathered up to date thus far:
 - Go-Architect: <https://github.com/go-architect/go-architect>
 - Go Designs: <https://github.com/golang-design>
 - Awesome Go: <https://awesome-go.com/>
+- Learn Go: Golang tutorials and updates from Red Hat experts https://developers.redhat.com/topics/go
 
 ## Packages, Libraries
 - Live reload for Go <https://github.com/air-verse/air>
@@ -45,12 +46,7 @@ in the golang world. Everything gathered up to date thus far:
 ## News Archives
 - Golang Weekly <https://golangweekly.com/> (check for its issues)
 
-## Project Ideas for Learning
-- Go projects <https://github.com/dreamsofcode-io/goprojects>
-  1. todo App
-  2. Calculator API
-  3. Web Scraper
-  4. URL Shortener
+
 
 
 
