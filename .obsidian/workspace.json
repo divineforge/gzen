@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/about.md",
+                "file": "content/video.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "about"
+              "title": "video"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#golang",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -168,18 +168,19 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b44f1e944e76a82e",
+  "active": "4f9ad77561c29f92",
   "lastOpenFiles": [
-    "content/adventure.md",
-    "content/Code.md",
     "content/index.md",
+    "content/images/goadventure.jpg",
+    "content/about.md",
+    "content/adventure.md",
     "content/video.md",
     "content/creative-use.md",
-    "content/about.md",
     "README.md",
     "LICENSE",
     "quartz/public/about-og-image.webp",
     "quartz/public/about.html",
+    "content/code.md",
     "CONTRIBUTING.md",
     "quartz/public/tags/gamedev.html",
     "quartz/public/video-og-image.webp",
