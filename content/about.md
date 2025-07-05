@@ -19,3 +19,4 @@ this is powered by [Divineforge Technology Enterprise](https://divineforge.com)
 > [!info] These are some opinions from the Internet, that may convince you/me, to give Golang a try in your next project. Do make your own assessment
 
 - LogRocket - why use Go backend in Flutter? - https://blog.logrocket.com/why-use-go-backend-flutter/?ref=dailydev
+- More Tech Company moving to Golang? - https://www.netguru.com/blog/what-is-golang?ref=dailydev
