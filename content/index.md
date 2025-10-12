@@ -1,5 +1,5 @@
 ---
-title: Go Zen with Golang
+title: GZen App Collections
 date: 2024-10-08T20:42:08+08:00
 draft: false
 tags:
@@ -16,13 +16,13 @@ modified: 2025-05-31T10:05:26+08:00
 description: this also serve as the index.md file for the Quartz rendering
 ---
 
-# Gozen
-Welcome to the Gozen! - Meditating with Golang and blogging the journey
+# GZen.app
+Welcome to GZen.app — Go Zen collections of apps and technology. We're pivoting the site to showcase powerful creations built with Golang and the surrounding ecosystem. Expect curated collections, tools, and projects that explore practical and creative uses of Go.
 
 > [!info] How we make this?
 > We use AI arts powered by Copilot for this Digital Garden, and assembling various learning resources across the internet. Occasionally we throwing in our works to help other see what we can do with Golang. Thanks for the Quartz framework, platform availability and various contributors to make this site presentation possible.
 
-![Gozen-dev](./images/gozen-expd.jpg)
+![gzen](./images/gozen-expd.jpg)
 
 This part turns into iterative increment of collected knowledge and concept
 in the golang world. Everything gathered up to date thus far:

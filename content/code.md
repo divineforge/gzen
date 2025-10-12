@@ -12,10 +12,10 @@ created: 2025-05-23T16:05:00+08:00
 modified: 2025-05-31T16:05:55+08:00
 ---
 
-#Golang
-# Introduction
+# Golang
+## Introduction
 
-this is the gozen wbsite,
+This is the gzen.app site — a collection of Go projects, sandboxes, and experiments showcasing what you can build with Golang.
 ```go
 package main
 
@@ -27,8 +27,7 @@ func main() {
 
 ```
 
-Visit us later,
-meanwhile please check [GoZen: Main Page](index.md)
+Visit us later — meanwhile please check [gzen.app: Main Page](index.md)
 
 # Test and Sandbox
 try out more codes via the sandbox
