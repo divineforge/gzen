@@ -13,3 +13,8 @@ thus our mini adventure.
 
 ## Credit to:
 - [Obsidian Note! The second brain](https://obsidian.md/)
+
+## Build Deploy Approach
+- uses a custom GitHub actions that sending the build to CloudFlare page.
+- Hence there isn't any 'Build' options in the CloudFlare
+- see `.github` folder for the workflow details
