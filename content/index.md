@@ -16,8 +16,8 @@ modified: 2025-06-02T15:06:88+08:00
 description: this also serve as the index.md file for the Quartz rendering
 ---
 
-# GZen.app
-Welcome to GZen.app — Go Zen collections of apps and technology. We're pivoting the site to showcase powerful creations built with Golang and the surrounding ecosystem. Expect curated collections, tools, and projects that explore practical and creative uses of Go.
+# GZen (俱ZEN) 
+site under transformation to realise a new Zen digital garden. 
 
 > [!info] How we make this?
 > We use AI arts powered by Copilot for this Digital Garden, and assembling various learning resources across the internet. Occasionally we throwing in our works to help other see what we can do with Golang. Thanks for the Quartz framework, platform availability and various contributors to make this site presentation possible.
