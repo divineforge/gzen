@@ -21,4 +21,8 @@ If you're coming here from the previous gozen.dev url. Kindly read here [[GoZen]
 
 > [!info] This Site is undergoing Renovation
 
-![[Pasted image 20251016223712.png]]
+
+
+## Quotes
+
+- Your future is shaped by the habits you repeat, not the goals you set. - added 2025.1021
