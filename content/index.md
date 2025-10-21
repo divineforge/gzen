@@ -25,4 +25,6 @@ If you're coming here from the previous gozen.dev url. Kindly read here [[GoZen]
 
 ## Quotes
 
+### Addition 2025.1021 - Your?
 - Your future is shaped by the habits you repeat, not the goals you set. - added 2025.1021
+- Your competition isn't other people. Your competition is: Your bad habits, your distractions, your insecurities, your procrastination, your lack of discipline, your fear, and your ego.
