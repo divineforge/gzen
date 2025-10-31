@@ -1,25 +1,62 @@
 ---
-title: GZen App Collections
+title: 观禅 GZen - Observing Zen
 date: 2024-10-08T20:42:08+08:00
 draft: false
 tags:
-  - markdown
-  - golang
-  - directory
+  - home
+  - wisdom
+  - zen
+  - buddhism
+  - mindfulness
 cover:
   image: /images/golang-cover.jpg
-  caption: Golang world and discovery
+  caption: A digital sanctuary for Buddhist wisdom and mindful living
 ShowToc: true
 TocOpen: true
 created: 2025-05-31T10:05:00+08:00
-modified: 2025-06-02T15:06:88+08:00
-description: this also serve as the index.md file for the Quartz rendering
+modified: 2025-10-30T15:00:00+08:00
+description: 观禅 (Guān Chán) - A digital sanctuary for Buddhist wisdom, mindfulness practices, and positive inspiration for modern life
 ---
 
-# GZen (俱ZEN) 
-If you're coming here from the previous gozen.dev url. Kindly read here [[GoZen]]
+# 观禅 GZen - Observing Zen
 
-> [!info] This Site is undergoing Renovation
+**观禅** (Guān Chán) - A digital sanctuary for Buddhist wisdom and mindful living.
+
+- **观** (Guān) = To observe, contemplate, be aware
+- **禅** (Chán) = Zen/Chan Buddhism, meditation
+
+> [!info] Welcome to Your Mindful Space
+> This is a curated collection of Buddhist teachings, practical wisdom, and positive inspiration for modern life. Whether you're seeking peace, clarity, or simply good vibes, you're in the right place. 🙏
+
+---
+
+## 🌸 What You'll Find Here
+
+### [Wisdom Pages](/wisdom)
+In-depth guides on living mindfully in the modern world:
+- [Living with Wisdom and Joy in the Modern Era](/wisdom/mindful-daily-living-modern-era) - Complete guide to daily routines with Buddhist teachings
+- [Overcoming Challenges and Hardships](/wisdom/overcoming-challenges-and-hardships) - Buddhist wisdom for navigating difficulties
+
+### [Zen Moments](/zen-moments) 禅心时刻 ✨
+**Complete 10-part bilingual series** for daily reflection (5-7 min reads each):
+
+**Core Buddhist Virtues:**
+1. [知足常乐 - The Joy of Contentment](/zen-moments/01-contentment)
+2. [当下即是 - This Moment is All There Is](/zen-moments/02-present-moment)
+3. [放下执着 - Letting Go of Attachments](/zen-moments/03-letting-go)
+4. [慈悲为怀 - Compassion as Your Foundation](/zen-moments/04-compassion)
+5. [以和为贵 - Harmony Above All](/zen-moments/05-harmony)
+6. [修身养性 - Cultivate Character, Nurture Nature](/zen-moments/06-character)
+
+**Mindful Living Practices:**
+7. [静心安神 - Calm Mind, Peaceful Spirit](/zen-moments/07-calm-mind)
+8. [简单生活 - The Art of Simple Living](/zen-moments/08-simple-living)
+9. [感恩惜福 - Gratitude and Cherishing Blessings](/zen-moments/09-gratitude)
+10. [缘起缘灭 - Understanding Impermanence](/zen-moments/10-impermanence)
+
+---
+
+> **Note**: If you're coming from the previous gozen.dev site (Go programming resources), that project has evolved into this mindfulness sanctuary. Read about the transition here: [[GoZen]]
 
 
 

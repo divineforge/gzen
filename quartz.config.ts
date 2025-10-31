@@ -8,8 +8,8 @@ import * as Plugin from "./quartz/plugins";
  */
 const config: QuartzConfig = {
   configuration: {
-  pageTitle: "GZen.app",
-    pageTitleSuffix: "",
+    pageTitle: "观禅 GZen",
+    pageTitleSuffix: " · 观禅 Observing Zen",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
