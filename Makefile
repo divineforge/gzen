@@ -20,11 +20,18 @@ clean:
 	rm -rf quartz
 
 publish:
-	pwd
-	CLOUDFLARE_API_TOKEN=$(CLOUDFLARE_API_TOKEN)
-	cd quartz && pnpm dlx wrangler pages deploy public \
+	@echo "Publishing to Cloudflare Pages..."
+	@if [ -z "$(CLOUDFLARE_API_TOKEN)" ]; then \
+		echo "Error: CLOUDFLARE_API_TOKEN is not set"; \
+		exit 1; \
+	fi
+	@if [ -z "$(CLOUDFLARE_PROJECT_NAME)" ]; then \
+		echo "Error: CLOUDFLARE_PROJECT_NAME is not set"; \
+		exit 1; \
+	fi
+	cd quartz && CLOUDFLARE_API_TOKEN=$(CLOUDFLARE_API_TOKEN) pnpm dlx wrangler pages deploy public \
 			--branch=main \
-			--project-name $(CLOUDFLARE_PROJECT_NAME)
+			--project-name=$(CLOUDFLARE_PROJECT_NAME)
 
 deploy: build publish
 	@echo "Deploying to Cloudflare Pages..."
