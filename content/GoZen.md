@@ -1,6 +1,6 @@
 ---
 created: 2025-04-25T16:04:00+08:00
-modified: 2025-05-31T16:05:90+08:00
+modified: 2025-05-31T16:05:00+08:00
 title: the previous GoZen environment
 ---
 

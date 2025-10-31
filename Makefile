@@ -2,8 +2,14 @@ setup:
 	cd $(PWD)
 	[ -d quartz ] || git clone --depth=1 https://github.com/jackyzha0/quartz quartz
 	rm -rf quartz/content # Remove the existing content directory
-	ln -sfn $(PWD)/content quartz/content # Create a soft link to the content directory
+	ln -sfn $(shell pwd)/content quartz/content # Create a soft link to the content directory
 	cd quartz && pnpm install && cd ..
+
+fix-symlink:
+	@echo "Fixing content symlink..."
+	rm -f quartz/content
+	ln -sfn $(shell pwd)/content quartz/content
+	@echo "Symlink fixed: quartz/content -> $(shell pwd)/content"
 
 update:
 	# Replace the configuration files

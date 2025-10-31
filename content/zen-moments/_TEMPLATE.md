@@ -11,7 +11,7 @@ number: XX
 reading_time: 5-7 min
 created: 2025-10-30T00:00:00+08:00
 modified: 2025-10-30T00:00:00+08:00
-description: [Brief SEO-friendly description combining Chinese and English concepts]
+description: Brief SEO-friendly description combining Chinese and English concepts
 ---
 
 # [中文标题] - [English Title]

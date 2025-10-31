@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "a9d137de00e046e9",
+        "id": "e49e81eb2430bf1e",
         "type": "tabs",
         "children": [
           {
-            "id": "8030c9ae721fedf3",
+            "id": "104ccc427e008826",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -168,26 +168,26 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8030c9ae721fedf3",
+  "active": "104ccc427e008826",
   "lastOpenFiles": [
+    "PLANS.md",
+    "README.md",
+    "content/index.md",
     "Pasted image 20251016223712.png",
     "content/GoZen.md",
     "content/about.md",
     "content/adventure.md",
     "content/code.md",
     "content/video.md",
-    "content/index.md",
     "content/images/gozen-1024x.jpg",
     "content/images/goadventure.jpg",
     "content/images/gozen-expd.jpg",
     "content/images/gozen-dev.png",
     "content/images/gozen-1536x1024.jpg",
-    "README.md",
     "static/divineforge/index.html",
     "static/divineforge",
     "static/_redirects",
     "static",
-    "PLANS.md",
     "LICENSE",
     "quartz/public/about-og-image.webp",
     "quartz/public/about.html",
