@@ -37,14 +37,22 @@ In-depth guides on living mindfully in the modern world:
 - [Living with Wisdom and Joy in the Modern Era](/wisdom/mindful-daily-living-modern-era) - Complete guide to daily routines with Buddhist teachings
 - [Overcoming Challenges and Hardships](/wisdom/overcoming-challenges-and-hardships) - Buddhist wisdom for navigating difficulties
 
-### [Zen Moments](/zen-moments) 禅心时刻
-Bite-sized bilingual wisdom for daily reflection (5-7 min reads):
+### [Zen Moments](/zen-moments) 禅心时刻 ✨
+**Complete 10-part bilingual series** for daily reflection (5-7 min reads each):
+
+**Core Buddhist Virtues:**
 1. [知足常乐 - The Joy of Contentment](/zen-moments/01-contentment)
 2. [当下即是 - This Moment is All There Is](/zen-moments/02-present-moment)
 3. [放下执着 - Letting Go of Attachments](/zen-moments/03-letting-go)
 4. [慈悲为怀 - Compassion as Your Foundation](/zen-moments/04-compassion)
 5. [以和为贵 - Harmony Above All](/zen-moments/05-harmony)
 6. [修身养性 - Cultivate Character, Nurture Nature](/zen-moments/06-character)
+
+**Mindful Living Practices:**
+7. [静心安神 - Calm Mind, Peaceful Spirit](/zen-moments/07-calm-mind)
+8. [简单生活 - The Art of Simple Living](/zen-moments/08-simple-living)
+9. [感恩惜福 - Gratitude and Cherishing Blessings](/zen-moments/09-gratitude)
+10. [缘起缘灭 - Understanding Impermanence](/zen-moments/10-impermanence)
 
 ---
 
