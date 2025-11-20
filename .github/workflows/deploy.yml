@@ -1,65 +1,37 @@
 # .github/workflows/deploy.yml
-name: Deploy Quartz
+name: Deploy to Cloudflare Pages
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to build and deploy'
-        required: false
-        default: 'main'
-      project_name:
-        description: 'Override CLOUDFLARE_PROJECT_NAME secret (optional)'
-        required: false
-        default: ''
-      dry_run:
-        description: 'If true, run a build only (no publish)'
-        required: false
-        default: 'false'
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Node.js (LTS)
+
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          # Use an LTS Node version for build stability; change if Quartz documents a specific requirement
-          node-version: '22'
+          node-version: '20'
+          cache: 'npm'
 
-      - name: Enable corepack & prepare pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Cache pnpm store
-        uses: actions/cache@v4
+      - name: Build Astro site
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
         with:
-          path: |
-            ~/.pnpm-store
-            ~/.cache/pnpm
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Deploy to Cloudflare Pages (via Makefile)
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          # allow overriding project name via workflow input when manually triggered
-          CLOUDFLARE_PROJECT_NAME: ${{ inputs.project_name != '' && inputs.project_name || secrets.CLOUDFLARE_PROJECT_NAME }}
-          DEPLOY_BRANCH: ${{ inputs.branch }}
-          DRY_RUN: ${{ inputs.dry_run }}
-        run: |
-          echo "Deploy inputs: branch=$DEPLOY_BRANCH project=$CLOUDFLARE_PROJECT_NAME dry_run=$DRY_RUN"
-          # make setup clones quartz, links content, and installs dependencies
-          make setup
-          # if dry run requested, only build
-          if [ "$DRY_RUN" = "true" ] ; then
-            make build
-          else
-            # build and publish (Makefile's 'deploy' runs build + publish)
-            make deploy
-          fi
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

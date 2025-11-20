@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// In the future, this can be dynamic from a JSON file or CMS
+const games = [
+  {
+    id: 'example-game',
+    title: 'Example Game',
+    description: 'A placeholder for your first Flutter or Godot game',
+    thumbnail: '/games/example-game/thumbnail.png',
+    platform: 'Flutter Web',
+    status: 'Coming Soon'
+  }
+];
+---
+
+<BaseLayout title="Games - GZen Gaming">
+  <div class="container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold mb-8">Game Library</h1>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {games.map((game) => (
+        <div class="bg-gray-900/50 rounded-lg border border-gray-800 hover:border-game-accent transition overflow-hidden">
+          <div class="aspect-video bg-gray-800 flex items-center justify-center">
+            <span class="text-6xl">🎮</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">{game.title}</h3>
+            <p class="text-gray-400 mb-4">{game.description}</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-game-accent">{game.platform}</span>
+              <span class="text-sm px-3 py-1 bg-gray-800 rounded">{game.status}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16 text-center">
+      <h2 class="text-2xl font-bold mb-4">Add Your Game</h2>
+      <p class="text-gray-400 mb-6">
+        Built something with Flutter or Godot? Submit it to be featured!
+      </p>
+      <a href="https://github.com/divineforge/gzen/issues" target="_blank" class="px-6 py-3 bg-game-secondary text-white font-bold rounded-lg hover:bg-game-secondary/90 transition inline-block">
+        Submit Game
+      </a>
+    </div>
+  </div>
+</BaseLayout>
