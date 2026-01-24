@@ -1,0 +1,75 @@
+{
+  "site": {
+    "title": "GrowZen",
+    "name": "禅生定，定生慧",
+    "tagline": "Where Meditation Blooms into Wisdom",
+    "description": "Buddhist wisdom following lunar cycles. New posts on even lunar days, blooming like the lotus."
+  },
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "calendar": "Calendar",
+    "about": "About"
+  },
+  "lotus": {
+    "stage": "Lotus Stage",
+    "lunarDay": "Lunar Day {day}",
+    "cycle": "Growth Cycle {current}/{total}",
+    "newMoon": "New Moon - Cycle Begins",
+    "fullMoon": "Full Moon - Full Bloom",
+    "stages": {
+      "1": "Seed Planted",
+      "2": "Sprout Emerges",
+      "3": "Young Stem",
+      "4": "Leaves Form",
+      "5": "Growth Continues",
+      "6": "Stem Strengthens",
+      "7": "Bud Forms",
+      "8": "Bud Develops",
+      "9": "Petals Visible",
+      "10": "Opening Begins",
+      "11": "Petals Unfold",
+      "12": "Nearly Open",
+      "13": "Almost Full",
+      "14": "Final Opening",
+      "15": "Full Bloom"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "禅生定，定生慧",
+      "subtitle": "Where Meditation Blooms into Wisdom"
+    },
+    "latestPosts": "Latest Wisdom Posts",
+    "viewAll": "View All"
+  },
+  "blog": {
+    "title": "Wisdom Blog",
+    "readMore": "Read More",
+    "publishedOn": "Published on",
+    "tags": "Tags",
+    "relatedPosts": "Related Posts",
+    "noPosts": "No posts yet"
+  },
+  "calendar": {
+    "title": "Lunar Calendar",
+    "currentCycle": "Current Cycle",
+    "upcomingDays": "Upcoming Days",
+    "buddhistHolidays": "Buddhist Holidays"
+  },
+  "about": {
+    "title": "About GrowZen",
+    "mission": "Mission",
+    "philosophy": "Philosophy"
+  },
+  "telegram": {
+    "subscribe": "Subscribe via Telegram",
+    "subscribed": "✅ Subscribed! You'll receive wisdom on even lunar days.",
+    "dailyWisdom": "🪷 Daily Zen Wisdom"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry"
+  }
+}

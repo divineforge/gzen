@@ -1,6 +1,8 @@
 # Build outputs
 dist/
 .astro/
+.next/
+out/
 
 # Dependencies
 node_modules/
@@ -10,21 +12,47 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
 
 # Environment
 .env
 .env.local
 .env.production
+.env*.local
+ANTHROPIC_API_KEY
+TELEGRAM_BOT_TOKEN
+MONGODB_URI
+VERCEL_*
+
+# Testing
+coverage/
+.nyc_output/
 
 # macOS
 .DS_Store
+*.local
 
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
 # Archive
+_archive/
 .archive/
 
 # Cloudflare
 .wrangler
+
+# Next.js
+.next/
+next-env.d.ts
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+.turbo/
