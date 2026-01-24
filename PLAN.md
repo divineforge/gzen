@@ -51,39 +51,60 @@ Day 15 → 🪷✨ FULL BLOOM (Full Moon) + Special Buddha Quote
 
 ---
 
-## 📛 Name Ideas
+## 📛 Brand Name & Identity
 
-### Top Recommendations (Keeping "Zen" and "G")
+### **Final Decision: GrowZen**
 
-1. **GZen Bloom** 🌸 *(Primary Recommendation)*
-   - Keeps G + Zen from original
-   - Bloom = Growth/Lotus cycles
-   - Domain: gzenbloom.com or gzen.bloom
-   - Tagline: "Bodhi Dharma • Growing wisdom with every lunar cycle"
+**Brand Name:** GrowZen
+**Domain:** gzen.io *(keeping existing domain)*
+**Chinese Name:** 禅生定，定生慧
+**Pronunciation:** Chán shēng dìng, dìng shēng huì
+**Meaning:** "Zen gives rise to concentration, concentration gives rise to wisdom"
 
-2. **ZenGrow** 🌱 *(Alternative)*
-   - Zen + Growth combined
-   - Domain: zengrow.io
-   - Tagline: "Lotus wisdom blooming with the moon"
+### Buddhist Philosophy
 
-3. **Zen Garden** 🪨 *(Classic)*
-   - Traditional Zen concept
-   - Domain: zengarden.io
-   - Tagline: "Bodhi blooming in digital soil"
+Adapted from the traditional teaching 戒生定，定生慧 (Precepts → Samadhi → Prajna):
 
-4. **GrowZen** 🌿
-   - Growth-focused
-   - Domain: growzen.com
-   - Tagline: "Dharma cycles with the lotus"
+```
+禅 (Zen/Meditation)
+    ↓ 生 (gives rise to)
+定 (Samadhi/Concentration)
+    ↓ 生 (gives rise to)
+慧 (Prajna/Wisdom)
+```
 
-5. **GZen Dharma** 📿
-   - Keeps G + Zen, adds teaching
-   - Domain: gzendharma.com
-   - Tagline: "Blooming Buddhist wisdom"
+This represents the Buddhist path from practice to enlightenment, mirrored in the lotus growth cycles.
 
-**Strategy**: Use "Bloom", "Dharma", "Bodhi" as taglines/subtitles rather than main URL.
+### Multilingual Branding
 
-**Domain Availability**: Check gzenbloom.com, zengrow.io, growzen.com
+**Chinese (Primary):**
+```
+GrowZen
+禅生定，定生慧
+伴随月圆月缺，智慧如莲绽放
+```
+*"With the moon's cycles, wisdom blooms like the lotus"*
+
+**English:**
+```
+GrowZen
+禅生定，定生慧
+Where Meditation Blooms into Wisdom
+```
+
+**Japanese (Phase 2):**
+```
+GrowZen（グロウゼン）
+禅定慧の道
+月の満ち欠けとともに、智慧は蓮のように開く
+```
+*"With the waxing and waning moon, wisdom opens like the lotus"*
+
+### Target Audience
+
+**Primary:** Mandarin Chinese speakers (Mainland China, Taiwan, Singapore)
+**Secondary:** English speakers interested in Buddhism
+**Tertiary:** Japanese speakers (Phase 2 expansion)
 
 ---
 
@@ -509,6 +530,178 @@ body {
 
 ---
 
+## 🌏 Internationalization (i18n)
+
+### Language Strategy
+
+**Primary Language:** 中文 (Mandarin Chinese)
+**Secondary Language:** English
+**Phase 2 Language:** 日本語 (Japanese)
+
+### Next.js i18n Configuration
+
+```typescript
+// next.config.js
+module.exports = {
+  i18n: {
+    locales: ['zh', 'en', 'ja'],
+    defaultLocale: 'zh', // Chinese as primary
+    localeDetection: true,
+  },
+}
+```
+
+### Translation File Structure
+
+```
+apps/web/
+├── messages/
+│   ├── zh.json          # Chinese (Simplified) - PRIMARY
+│   ├── en.json          # English
+│   └── ja.json          # Japanese (Phase 2)
+```
+
+### Key Translations
+
+**Chinese (zh.json):**
+```json
+{
+  "site": {
+    "title": "GrowZen",
+    "name": "禅生定，定生慧",
+    "tagline": "伴随月圆月缺，智慧如莲绽放",
+    "description": "跟随农历月相，每逢偶数日更新佛法智慧。如莲花绽放，觉悟于日常。"
+  },
+  "nav": {
+    "home": "首页",
+    "blog": "博客",
+    "calendar": "历法",
+    "about": "关于"
+  },
+  "lotus": {
+    "lunarDay": "农历第 {day} 天",
+    "cycle": "生长周期 {current}/{total}",
+    "newMoon": "朔月 - 新周期开始",
+    "fullMoon": "望月 - 圆满绽放"
+  },
+  "telegram": {
+    "subscribe": "订阅 Telegram 推送",
+    "subscribed": "✅ 已订阅！每逢偶数农历日将收到智慧推送。"
+  }
+}
+```
+
+**English (en.json):**
+```json
+{
+  "site": {
+    "title": "GrowZen",
+    "name": "禅生定，定生慧",
+    "tagline": "Where Meditation Blooms into Wisdom",
+    "description": "Buddhist wisdom following lunar cycles. New posts on even lunar days."
+  },
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "calendar": "Calendar",
+    "about": "About"
+  },
+  "lotus": {
+    "lunarDay": "Lunar Day {day}",
+    "cycle": "Growth Cycle {current}/{total}",
+    "newMoon": "New Moon - Cycle Begins",
+    "fullMoon": "Full Moon - Full Bloom"
+  },
+  "telegram": {
+    "subscribe": "Subscribe via Telegram",
+    "subscribed": "✅ Subscribed! You'll receive wisdom on even lunar days."
+  }
+}
+```
+
+**Japanese (ja.json - Phase 2):**
+```json
+{
+  "site": {
+    "title": "GrowZen",
+    "name": "禅定慧の道",
+    "tagline": "月の満ち欠けとともに、智慧は蓮のように開く",
+    "description": "太陰暦に従い、偶数日に仏教の智慧を更新。蓮の花のように目覚める。"
+  },
+  "nav": {
+    "home": "ホーム",
+    "blog": "ブログ",
+    "calendar": "カレンダー",
+    "about": "について"
+  },
+  "lotus": {
+    "lunarDay": "太陰暦 {day} 日目",
+    "cycle": "成長サイクル {current}/{total}",
+    "newMoon": "新月 - サイクル開始",
+    "fullMoon": "満月 - 完全開花"
+  },
+  "telegram": {
+    "subscribe": "Telegram で購読",
+    "subscribed": "✅ 購読しました！偶数の太陰暦日に智慧をお届けします。"
+  }
+}
+```
+
+### URL Structure
+
+```
+gzen.io/                     → Chinese (default)
+gzen.io/en/                  → English
+gzen.io/ja/                  → Japanese (Phase 2)
+
+gzen.io/blog/post-slug       → Chinese post
+gzen.io/en/blog/post-slug    → English post
+gzen.io/ja/blog/post-slug    → Japanese post (Phase 2)
+```
+
+### Content Translation Strategy
+
+**Phase 1: Chinese + English**
+1. Generate blog post in Chinese (primary) via Claude API
+2. Auto-translate to English via Claude API
+3. Store both versions in content folder
+
+**Phase 2: Japanese**
+1. Add Japanese translation of existing posts
+2. Translate new posts to Japanese automatically
+
+### Multilingual Blog Post Structure
+
+```
+apps/web/content/posts/
+├── zh/
+│   ├── lunar-day-2-mindfulness.mdx
+│   ├── lunar-day-4-compassion.mdx
+│   └── ...
+├── en/
+│   ├── lunar-day-2-mindfulness.mdx
+│   ├── lunar-day-4-compassion.mdx
+│   └── ...
+└── ja/                      # Phase 2
+    ├── lunar-day-2-mindfulness.mdx
+    └── ...
+```
+
+### Telegram Bot Multilingual Support
+
+**User can select language:**
+```
+/start - Welcome message (auto-detect or ask)
+/language - Change language (中文/English/日本語)
+```
+
+**Messages adapt to user's language:**
+- Chinese: 🪷 农历第 8 天 - 生长周期 8/15
+- English: 🪷 Lunar Day 8 - Cycle 8/15
+- Japanese: 🪷 太陰暦 8 日目 - 成長サイクル 8/15
+
+---
+
 ## 🤖 Automation System
 
 ### GitHub Actions Workflow
@@ -525,32 +718,71 @@ body {
 
 ### Content Generation with Claude API
 
-**Prompt Template**:
+**Step 1: Generate Chinese Post (Primary)**
+
+```typescript
+const chinesePrompt = `生成一篇佛法智慧博客文章
+
+农历第 {lunarDay} 天，莲花阶段：{lotusStage}
+主题：{topic}
+
+主题选项：
+- 正念生活（Mindfulness in daily life）
+- 慈悲与慈爱（Metta and compassion）
+- 理解无常（Understanding impermanence）
+- 正语与沟通（Right speech）
+- 禅修实践（Meditation practices）
+- 五戒与道德生活（Five Precepts）
+- 克服苦难（Overcoming dukkha）
+- 中道（The Middle Way）
+- 不执着（Non-attachment）
+- 活在当下（Present moment awareness）
+
+格式要求：
+- 标题简洁有力（20-30 字）
+- 正文：800-1200 字
+- 包含 1-2 句佛陀名言（标注出处）
+- 提供现代生活中的实践应用
+- 结尾包含 3 个反思问题
+- 使用 Markdown 格式
+
+语气：温和、易懂、不说教、实用
+受众：现代人，对佛法智慧感兴趣
+`;
 ```
-Generate a Buddhist wisdom blog post for Lunar Day {N}.
 
-Topic: {randomly selected from topics database}
-- Mindfulness in daily life
-- Compassion and loving-kindness
-- Understanding impermanence
-- Right speech and communication
-- Meditation practices
-- Ethical living (Five Precepts)
-- Overcoming suffering
-- The Middle Way
-- Non-attachment
-- Present moment awareness
+**Step 2: Translate to English**
 
-Format:
-- Engaging title (50-70 characters)
-- Word count: 600-900 words
-- Include 1-2 relevant Buddha quotes
-- Practical modern application
-- 3 reflection questions at end
-- Markdown formatting
+```typescript
+const englishPrompt = `Translate the following Chinese Buddhist wisdom blog post to English.
 
-Tone: Warm, accessible, non-dogmatic, practical
-Audience: Modern seekers interested in Buddhist wisdom
+Requirements:
+- Maintain the warmth, accessibility, and practical wisdom
+- Keep Buddha quotes in original language with English translation
+- Preserve the structure and reflection questions
+- Use 600-900 words
+- Target audience: Modern English speakers interested in Buddhism
+
+Chinese post:
+{chineseContent}
+`;
+```
+
+**Step 3: Translate to Japanese (Phase 2)**
+
+```typescript
+const japanesePrompt = `以下の仏教智慧のブログ記事を日本語に翻訳してください。
+
+要件：
+- 適切な仏教用語を使用（禅、定、慧、etc.）
+- 温かみとアクセシビリティを保つ
+- 構造と反省の質問を保持
+- 700-1000文字
+- ターゲット読者：仏教に興味のある現代の日本人
+
+English post:
+{englishContent}
+`;
 ```
 
 **Quality Controls**:
