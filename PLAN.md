@@ -1,8 +1,18 @@
 # 🪷 Buddhist Wisdom Blog - Lotus Growth Cycles
 
+> **⚠️ UPDATED (2026-01-24)**: Platform decision changed to **Vercel + Next.js** (from Astro + Cloudflare) to support database, Telegram bot, and backend API requirements. Name updated to keep "Zen" and "G" from original branding.
+
 ## Project Vision
 
 Transform GZen from a gaming playground into a beautiful Buddhist wisdom blog that follows the natural cycles of the lotus flower, aligned with the Chinese lunar calendar. The site will automatically generate and publish Buddhist wisdom content on even lunar days, with special celebrations on the 1st and 15th of each lunar month.
+
+### Key Requirements (Updated)
+- ✅ Database support (Vercel KV + MongoDB)
+- ✅ Telegram bot integration
+- ✅ Backend API capabilities
+- ✅ Monorepo architecture
+- ✅ Keep "Zen" and "G" in naming
+- ✅ All-in-one platform (Vercel)
 
 ---
 
@@ -43,30 +53,37 @@ Day 15 → 🪷✨ FULL BLOOM (Full Moon) + Special Buddha Quote
 
 ## 📛 Name Ideas
 
-### Top Recommendations
+### Top Recommendations (Keeping "Zen" and "G")
 
-1. **Bodhi Bloom** 🎋 *(Favorite)*
-   - Bodhi = Enlightenment
-   - Bloom = Growth/Flowering
-   - Memorable and peaceful
+1. **GZen Bloom** 🌸 *(Primary Recommendation)*
+   - Keeps G + Zen from original
+   - Bloom = Growth/Lotus cycles
+   - Domain: gzenbloom.com or gzen.bloom
+   - Tagline: "Bodhi Dharma • Growing wisdom with every lunar cycle"
 
-2. **Lotus Dharma** 🪷
-   - Direct reference to lotus
-   - Dharma = Buddhist teachings
+2. **ZenGrow** 🌱 *(Alternative)*
+   - Zen + Growth combined
+   - Domain: zengrow.io
+   - Tagline: "Lotus wisdom blooming with the moon"
 
-3. **Padma Path** 🌸
-   - Padma = Sanskrit for lotus
-   - Path = Spiritual journey
+3. **Zen Garden** 🪨 *(Classic)*
+   - Traditional Zen concept
+   - Domain: zengarden.io
+   - Tagline: "Bodhi blooming in digital soil"
 
-4. **Lunar Lotus** 🌙
-   - Emphasizes lunar calendar
-   - Clear concept
+4. **GrowZen** 🌿
+   - Growth-focused
+   - Domain: growzen.com
+   - Tagline: "Dharma cycles with the lotus"
 
-5. **Zen Bloom** 🌺
-   - Keeps "Zen" from GZen
-   - Simple and clean
+5. **GZen Dharma** 📿
+   - Keeps G + Zen, adds teaching
+   - Domain: gzendharma.com
+   - Tagline: "Blooming Buddhist wisdom"
 
-**Domain Availability**: Check bodhibloom.com, bodhibloom.io, lotusdharma.io, padmapath.com
+**Strategy**: Use "Bloom", "Dharma", "Bodhi" as taglines/subtitles rather than main URL.
+
+**Domain Availability**: Check gzenbloom.com, zengrow.io, growzen.com
 
 ---
 
@@ -74,99 +91,369 @@ Day 15 → 🪷✨ FULL BLOOM (Full Moon) + Special Buddha Quote
 
 ### Technology Stack
 
-**Keep Current Foundation:**
-- ✅ **Astro 4.16+** - Perfect for content-focused blogs
+**✅ UPDATED DECISION: Switch to Vercel + Next.js**
+
+**Core Stack:**
+- ✅ **Next.js 15** (App Router) - Full-stack framework with backend support
+- ✅ **Vercel** - Hosting + serverless functions + cron + databases
 - ✅ **Tailwind CSS** - Flexible styling
 - ✅ **TypeScript** - Type safety
-- ✅ **Cloudflare Pages** - Fast global deployment
+- ✅ **Vercel KV** (Redis) - Fast key-value storage
+- ✅ **MongoDB Atlas** - Document database (Phase 2+)
 
-**New Dependencies:**
+**Dependencies:**
 ```json
 {
   "dependencies": {
-    "@astrojs/mdx": "^3.0.0",
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "@vercel/kv": "^3.0.0",
+    "mongodb": "^6.0.0",
     "lunar-javascript": "^1.6.12",
-    "date-fns": "^3.0.0"
-  },
-  "devDependencies": {
+    "date-fns": "^3.0.0",
+    "next-mdx-remote": "^5.0.0",
+    "grammy": "^1.0.0",
     "@anthropic-ai/sdk": "^0.30.0"
   }
 }
 ```
 
-### Why Astro (Not Next.js)?
+### Platform Comparison: Vercel vs Cloudflare
 
-| Feature | Astro | Next.js | Winner |
-|---------|-------|---------|--------|
-| Content Collections | Built-in | Requires setup | ✅ Astro |
-| Static Blog Performance | Excellent | Good | ✅ Astro |
-| MDX Support | Native | Via plugin | ✅ Astro |
-| Build Speed | Very Fast | Slower | ✅ Astro |
-| Learning Curve | Simple | Steeper | ✅ Astro |
-| Server Functions | Limited | Full | Next.js |
-| Already Set Up | Yes | No | ✅ Astro |
+| Feature | **Vercel** ✅ | **Cloudflare Pages** |
+|---------|---------------|---------------------|
+| **Backend APIs** | ✅ Full Node.js serverless | ⚠️ Workers (limited) |
+| **Database** | ✅ Vercel KV (Redis)<br>✅ Postgres<br>✅ MongoDB support | ⚠️ D1 (SQLite only)<br>⚠️ Basic KV<br>❌ No MongoDB |
+| **Cron Jobs** | ✅ Built-in Vercel Cron | ⚠️ Via external triggers |
+| **Telegram Bot** | ✅ Easy API routes | ⚠️ Complex via Workers |
+| **Monorepo** | ✅ Excellent (Turborepo) | ⚠️ Limited |
+| **Future Scalability** | ✅ Database, auth, etc. | ❌ Static-first only |
 
-**Conclusion**: Astro is ideal for this content-focused, statically-generated blog.
+### Why Vercel + Next.js (Not Astro + Cloudflare)?
+
+| Need | Vercel + Next.js | Astro + Cloudflare |
+|------|------------------|-------------------|
+| **Blog Content** | ✅ MDX + ISR | ✅ Content Collections |
+| **Database (KV)** | ✅ Vercel KV (Redis) | ⚠️ Basic KV only |
+| **Database (MongoDB)** | ✅ Easy integration | ❌ Not supported |
+| **Telegram Bot** | ✅ API routes + webhooks | ⚠️ Difficult |
+| **Backend APIs** | ✅ Full Node.js | ❌ Very limited |
+| **Cron Jobs** | ✅ Native support | ⚠️ Need GitHub Actions |
+| **Monorepo** | ✅ Built for it | ⚠️ Limited support |
+
+**Conclusion**: Vercel + Next.js is essential for database, Telegram bot, and future backend features. The monorepo approach supports all requirements in one platform.
 
 ---
 
-## 🗂️ New Project Structure
+## 🗂️ New Project Structure (Vercel + Next.js Monorepo)
 
 ```
-bodhi-bloom/
-├── .github/
-│   └── workflows/
-│       ├── daily-wisdom.yml          # Automated content generation
-│       └── deploy.yml                # Cloudflare deployment
-├── public/
-│   ├── lotus/
-│   │   ├── stage-01-seed.svg        # 15 lotus growth stages
-│   │   ├── stage-02-sprout.svg
-│   │   └── ...stage-15-bloom.svg
-│   ├── buddha-quotes.json           # Quote database
-│   └── favicon.svg
+gzen-monorepo/
+├── apps/
+│   └── web/                         # Next.js 15 App
+│       ├── app/
+│       │   ├── (blog)/              # Blog route group
+│       │   │   ├── page.tsx         # Homepage with lotus
+│       │   │   ├── blog/
+│       │   │   │   ├── page.tsx     # Blog archive
+│       │   │   │   ├── [slug]/
+│       │   │   │   │   └── page.tsx # Individual post
+│       │   │   │   └── tag/
+│       │   │   │       └── [tag]/page.tsx
+│       │   │   ├── calendar/
+│       │   │   │   └── page.tsx     # Lunar calendar
+│       │   │   └── about/
+│       │   │       └── page.tsx     # About page
+│       │   ├── api/                 # API Routes
+│       │   │   ├── cron/
+│       │   │   │   ├── daily-wisdom/route.ts  # Vercel Cron
+│       │   │   │   └── telegram-broadcast/route.ts
+│       │   │   ├── telegram/
+│       │   │   │   └── webhook/route.ts
+│       │   │   ├── lotus/
+│       │   │   │   └── current-stage/route.ts
+│       │   │   └── generate/
+│       │   │       └── post/route.ts
+│       │   ├── layout.tsx           # Root layout
+│       │   └── globals.css          # Global styles
+│       ├── components/
+│       │   ├── LotusVisualizer.tsx  # Lotus display
+│       │   ├── BuddhaQuote.tsx      # Quote component
+│       │   ├── BlogCard.tsx         # Post preview
+│       │   ├── LunarCalendar.tsx    # Calendar widget
+│       │   └── BuddhistHolidays.tsx # Special dates
+│       ├── lib/
+│       │   ├── db/
+│       │   │   ├── mongodb.ts       # MongoDB client
+│       │   │   └── vercel-kv.ts    # Vercel KV client
+│       │   ├── lunar-calendar.ts    # Lunar utilities
+│       │   ├── lotus-phases.ts      # Growth stages
+│       │   ├── telegram.ts          # Telegram bot
+│       │   └── content.ts           # Blog post management
+│       ├── content/
+│       │   └── posts/               # MDX blog posts
+│       │       └── *.mdx
+│       ├── public/
+│       │   ├── lotus/               # Lotus images
+│       │   │   ├── stage-01.svg
+│       │   │   └── ...stage-15.svg
+│       │   └── favicon.svg
+│       └── package.json
+├── packages/
+│   ├── shared-types/                # Shared TypeScript types
+│   │   ├── src/
+│   │   │   ├── blog.ts
+│   │   │   ├── lotus.ts
+│   │   │   └── index.ts
+│   │   └── package.json
+│   └── buddhist-content/            # Content utilities
+│       ├── src/
+│       │   ├── quotes.ts
+│       │   ├── topics.ts
+│       │   └── index.ts
+│       └── package.json
 ├── scripts/
-│   ├── checkLunarDay.js             # Daily lunar calendar check
-│   ├── generateWisdomPost.js        # Claude API content generation
-│   ├── updateLotusQuote.js          # Update homepage quote
-│   └── utils/
-│       ├── lunar.js                 # Lunar calendar utilities
-│       └── anthropic.js             # API helpers
-├── src/
-│   ├── components/
-│   │   ├── LotusVisualizer.astro    # Animated lotus display
-│   │   ├── LunarCalendar.astro      # Calendar widget
-│   │   ├── BuddhaQuote.astro        # Quote component
-│   │   ├── BlogCard.astro           # Blog post preview card
-│   │   ├── LotusProgress.astro      # Cycle progress bar
-│   │   └── BuddhistHolidays.astro   # Special dates highlighter
-│   ├── content/
-│   │   ├── config.ts                # Content collection schema
-│   │   └── blog/
-│   │       └── *.mdx                # Auto-generated blog posts
-│   ├── layouts/
-│   │   ├── BaseLayout.astro         # Main site layout
-│   │   └── BlogPost.astro           # Blog post template
-│   ├── pages/
-│   │   ├── index.astro              # Homepage with lotus
-│   │   ├── blog/
-│   │   │   ├── index.astro          # Blog archive
-│   │   │   ├── [slug].astro         # Individual posts
-│   │   │   └── [tag].astro          # Posts by tag
-│   │   ├── calendar.astro           # Lunar calendar explorer
-│   │   ├── about.astro              # About the project
-│   │   └── rss.xml.js               # RSS feed
-│   ├── styles/
-│   │   ├── global.css               # Global styles
-│   │   └── buddhist-theme.css       # Buddhist color scheme
-│   └── utils/
-│       ├── lotusCalendar.ts         # Main calendar logic
-│       ├── lotusPhases.ts           # Growth stage calculator
-│       └── quotes.ts                # Quote management
+│   └── seed-database.ts             # Initial DB seeding
+├── vercel.json                      # Vercel config + cron
+├── turbo.json                       # Turborepo config (optional)
 ├── PLAN.md                          # This file
 ├── TODO.md                          # Implementation checklist
-├── README.md                        # Updated project readme
-└── package.json
+├── README.md                        # Project readme
+└── package.json                     # Monorepo root
+```
+
+---
+
+## 💾 Database Strategy
+
+### Phase 1-2: Vercel KV (Redis)
+
+Perfect for fast, ephemeral data:
+
+```typescript
+// lib/db/vercel-kv.ts
+import { kv } from '@vercel/kv';
+
+// Current lotus state
+export async function getCurrentLotusStage() {
+  return await kv.get<number>('lotus:current-stage') || 1;
+}
+
+export async function setLotusStage(stage: number) {
+  await kv.set('lotus:current-stage', stage);
+}
+
+// Current Buddha quote
+export async function getCurrentQuote() {
+  return await kv.get<string>('quote:current');
+}
+
+export async function setCurrentQuote(quote: string) {
+  // TTL of 15 days (full lunar cycle)
+  await kv.set('quote:current', quote, { ex: 86400 * 15 });
+}
+
+// Lunar day cache
+export async function getLunarDayCache() {
+  return await kv.get<number>('lunar:current-day');
+}
+
+export async function setLunarDayCache(day: number) {
+  // TTL of 1 day
+  await kv.set('lunar:current-day', day, { ex: 86400 });
+}
+```
+
+**Use Cases:**
+- ✅ Current lotus growth stage
+- ✅ Active Buddha quote
+- ✅ Lunar day cache
+- ✅ Rate limiting
+- ✅ Session storage
+- ✅ User subscriptions (temporary)
+
+### Phase 3+: MongoDB Atlas
+
+For persistent, queryable data:
+
+```typescript
+// lib/db/mongodb.ts
+import { MongoClient, Db } from 'mongodb';
+
+const client = new MongoClient(process.env.MONGODB_URI!);
+let db: Db;
+
+export async function getDatabase() {
+  if (!db) {
+    await client.connect();
+    db = client.db('gzen');
+  }
+  return db;
+}
+
+// Blog posts
+export async function saveBlogPost(post: BlogPost) {
+  const db = await getDatabase();
+  return await db.collection('posts').insertOne({
+    ...post,
+    createdAt: new Date(),
+    lunarDay: getLunarDay(),
+  });
+}
+
+export async function getPostsByTag(tag: string) {
+  const db = await getDatabase();
+  return await db.collection('posts')
+    .find({ tags: tag })
+    .sort({ createdAt: -1 })
+    .toArray();
+}
+
+// Telegram subscribers
+export async function saveSubscriber(chatId: number, username: string) {
+  const db = await getDatabase();
+  return await db.collection('subscribers').updateOne(
+    { chatId },
+    { $set: { chatId, username, subscribedAt: new Date() } },
+    { upsert: true }
+  );
+}
+
+export async function getActiveSubscribers() {
+  const db = await getDatabase();
+  return await db.collection('subscribers')
+    .find({ active: true })
+    .toArray();
+}
+```
+
+**Use Cases:**
+- ✅ Blog posts (with full-text search)
+- ✅ User subscriptions
+- ✅ Comment system (future)
+- ✅ Analytics and metrics
+- ✅ Telegram bot state
+
+---
+
+## 🤖 Telegram Bot Integration
+
+### Setup with Grammy
+
+```typescript
+// lib/telegram.ts
+import { Bot } from 'grammy';
+
+const bot = new Bot(process.env.TELEGRAM_BOT_TOKEN!);
+
+// Send daily wisdom to user
+export async function sendDailyWisdom(chatId: number) {
+  const post = await getLatestWisdomPost();
+  const lotus = await getCurrentLotusStage();
+  const lunarDay = getLunarDay();
+
+  const message = `🪷 *Lunar Day ${lunarDay}* - Cycle Day ${lotus}/15
+
+${getLotusEmoji(lotus)} ${getLotusDescription(lotus)}
+
+📖 *${post.title}*
+
+${post.excerpt}
+
+[Read Full Post](${process.env.NEXT_PUBLIC_SITE_URL}/blog/${post.slug})
+
+🙏 _Buddhist wisdom with every moon_`;
+
+  await bot.api.sendMessage(chatId, message, {
+    parse_mode: 'Markdown',
+  });
+}
+
+// Handle bot commands
+export async function setupBot() {
+  bot.command('start', async (ctx) => {
+    await ctx.reply(
+      '🪷 Welcome to GZen Bloom!\n\n' +
+      'Get Buddhist wisdom following the lotus growth cycles.\n\n' +
+      'Commands:\n' +
+      '/subscribe - Get daily wisdom on even lunar days\n' +
+      '/unsubscribe - Stop notifications\n' +
+      '/today - Current lotus stage & quote\n' +
+      '/calendar - View lunar calendar'
+    );
+  });
+
+  bot.command('subscribe', async (ctx) => {
+    await saveSubscriber(ctx.chat.id, ctx.from?.username || '');
+    await ctx.reply('✅ Subscribed! You\'ll receive wisdom posts on even lunar days (2, 4, 6, 8, 10, 12, 14).');
+  });
+
+  bot.command('today', async (ctx) => {
+    await sendDailyWisdom(ctx.chat.id);
+  });
+}
+```
+
+### Webhook Endpoint
+
+```typescript
+// app/api/telegram/webhook/route.ts
+import { webhookCallback } from 'grammy';
+import { bot } from '@/lib/telegram';
+
+export const POST = webhookCallback(bot, 'std/http');
+```
+
+### Vercel Cron for Broadcasting
+
+```typescript
+// app/api/cron/telegram-broadcast/route.ts
+export async function GET(req: Request) {
+  // Verify cron secret
+  const authHeader = req.headers.get('authorization');
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return Response.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const lunarDay = getLunarDay();
+
+  // Only send on even lunar days (when new posts are published)
+  if (lunarDay % 2 !== 0) {
+    return Response.json({ skipped: true, lunarDay });
+  }
+
+  const subscribers = await getActiveSubscribers();
+  let sent = 0;
+
+  for (const subscriber of subscribers) {
+    try {
+      await sendDailyWisdom(subscriber.chatId);
+      sent++;
+    } catch (error) {
+      console.error(`Failed to send to ${subscriber.chatId}:`, error);
+    }
+  }
+
+  return Response.json({ sent, total: subscribers.length, lunarDay });
+}
+```
+
+### Vercel Cron Configuration
+
+```json
+// vercel.json
+{
+  "crons": [
+    {
+      "path": "/api/cron/daily-wisdom",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/telegram-broadcast",
+      "schedule": "0 1 * * *"
+    }
+  ]
+}
 ```
 
 ---
