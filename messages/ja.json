@@ -1,0 +1,75 @@
+{
+  "site": {
+    "title": "GrowZen",
+    "name": "禅定慧の道",
+    "tagline": "月の満ち欠けとともに、智慧は蓮のように開く",
+    "description": "太陰暦に従い、偶数日に仏教の智慧を更新。蓮の花のように目覚める。"
+  },
+  "nav": {
+    "home": "ホーム",
+    "blog": "ブログ",
+    "calendar": "カレンダー",
+    "about": "について"
+  },
+  "lotus": {
+    "stage": "蓮の段階",
+    "lunarDay": "太陰暦 {day} 日目",
+    "cycle": "成長サイクル {current}/{total}",
+    "newMoon": "新月 - サイクル開始",
+    "fullMoon": "満月 - 完全開花",
+    "stages": {
+      "1": "種が植えられる",
+      "2": "芽が出る",
+      "3": "若い茎",
+      "4": "葉が形成される",
+      "5": "成長が続く",
+      "6": "茎が強くなる",
+      "7": "蕾ができる",
+      "8": "蕾が発達する",
+      "9": "花びらが見える",
+      "10": "開花が始まる",
+      "11": "花びらが開く",
+      "12": "ほぼ開く",
+      "13": "ほぼ満開",
+      "14": "最終開花",
+      "15": "満開"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "禅定慧の道",
+      "subtitle": "月の満ち欠けとともに、智慧は蓮のように開く"
+    },
+    "latestPosts": "最新の智慧記事",
+    "viewAll": "すべて見る"
+  },
+  "blog": {
+    "title": "智慧ブログ",
+    "readMore": "続きを読む",
+    "publishedOn": "投稿日",
+    "tags": "タグ",
+    "relatedPosts": "関連記事",
+    "noPosts": "記事はまだありません"
+  },
+  "calendar": {
+    "title": "太陰暦カレンダー",
+    "currentCycle": "現在のサイクル",
+    "upcomingDays": "今後の日程",
+    "buddhistHolidays": "仏教の祝日"
+  },
+  "about": {
+    "title": "GrowZenについて",
+    "mission": "ミッション",
+    "philosophy": "哲学"
+  },
+  "telegram": {
+    "subscribe": "Telegram で購読",
+    "subscribed": "✅ 購読しました！偶数の太陰暦日に智慧をお届けします。",
+    "dailyWisdom": "🪷 日々の禅智"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました",
+    "retry": "再試行"
+  }
+}
