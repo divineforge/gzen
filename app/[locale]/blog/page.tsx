@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { getLunarDay, getLotusStage, isEvenLunarDay, getNextBlogPostDate } from '@/lib/utils/lunar-calendar';
 import { format } from 'date-fns';
 
@@ -59,7 +59,7 @@ const samplePosts = [
 
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const t = useTranslations();
+  const t = await getTranslations();
 
   // Get current lunar information
   const lunarDay = getLunarDay();
