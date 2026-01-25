@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getLotusEmoji, getLotusStageDescription } from '@/lib/utils/lunar-calendar';
@@ -386,7 +386,7 @@ export default async function BlogPostPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const t = useTranslations();
+  const t = await getTranslations();
 
   const post = blogPosts[slug];
 

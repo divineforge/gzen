@@ -17,6 +17,10 @@
     "cycle": "成長サイクル {current}/{total}",
     "newMoon": "新月 - サイクル開始",
     "fullMoon": "満月 - 完全開花",
+    "preview": "ビジョン",
+    "previewNext": "次の段階をプレビュー",
+    "backToToday": "今日に戻る",
+    "visionNotCurrent": "ビジョン、現在ではない",
     "stages": {
       "1": "種が植えられる",
       "2": "芽が出る",

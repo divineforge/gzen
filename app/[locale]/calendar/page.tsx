@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import {
   getLunarDate,
   getLunarDay,
@@ -16,7 +16,7 @@ import { format, differenceInDays } from 'date-fns';
 
 export default async function CalendarPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const t = useTranslations();
+  const t = await getTranslations();
 
   // Get current lunar information
   const lunarDate = getLunarDate();

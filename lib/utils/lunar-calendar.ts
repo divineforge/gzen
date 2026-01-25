@@ -1,4 +1,7 @@
-import Lunar from 'lunar-javascript';
+import * as LunarLib from 'lunar-javascript';
+
+// Handle both ESM and CommonJS exports
+const Lunar = (LunarLib as any).Lunar || (LunarLib as any).default?.Lunar || LunarLib;
 
 /**
  * Get the current lunar date information
