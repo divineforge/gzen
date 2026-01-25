@@ -55,6 +55,23 @@ const samplePosts = [
     date: '2026-01-24',
     tags: ['impermanence', 'anicca', 'wisdom'],
   },
+  {
+    id: 4,
+    slug: 'four-noble-truths',
+    title: {
+      zh: '四圣谛：苦集灭道',
+      en: 'The Four Noble Truths',
+      ja: '四聖諦：苦集滅道',
+    },
+    excerpt: {
+      zh: '四圣谛是佛陀在菩提树下证悟后的首次说法，是整个佛教教义的核心与基础。',
+      en: 'The Four Noble Truths were the Buddha\'s first teaching after enlightenment, forming the core foundation of all Buddhist teachings.',
+      ja: '四聖諦は、仏陀が菩提樹の下で悟りを開いた後の最初の説法であり、仏教教義全体の核心と基礎です。',
+    },
+    lunarDay: 8,
+    date: '2026-01-26',
+    tags: ['four-noble-truths', 'dharma', 'suffering', 'path'],
+  },
 ];
 
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
