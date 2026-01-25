@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
+import Link from 'next/link';
 import '../globals.css';
 
 export default async function LocaleLayout({
@@ -11,6 +12,20 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
   const messages = await getMessages();
+  const t = await getTranslations('nav');
+
+  const navLinks = [
+    { href: `/${locale}`, label: t('home') },
+    { href: `/${locale}/blog`, label: t('blog') },
+    { href: `/${locale}/calendar`, label: t('calendar') },
+    { href: `/${locale}/about`, label: t('about') },
+  ];
+
+  const locales = [
+    { code: 'zh', label: '中文' },
+    { code: 'en', label: 'EN' },
+    { code: 'ja', label: '日本語' },
+  ];
 
   return (
     <html lang={locale}>
@@ -28,14 +43,55 @@ export default async function LocaleLayout({
             <header className="border-b border-lotus-pink/20 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
               <nav className="container mx-auto px-4 py-4">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
+                  <Link href={`/${locale}`} className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
                     <span className="text-3xl">🪷</span>
                     <div>
                       <h1 className="text-xl font-bold text-saffron">GrowZen</h1>
                       <p className="text-sm text-zen-stone font-serif">禅生定，定生慧</p>
                     </div>
+                  </Link>
+
+                  <div className="flex items-center space-x-6">
+                    {/* Main Navigation */}
+                    <ul className="hidden md:flex items-center space-x-6">
+                      {navLinks.map((link) => (
+                        <li key={link.href}>
+                          <Link
+                            href={link.href}
+                            className="text-wisdom-text hover:text-saffron transition-colors font-medium"
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Language Switcher */}
+                    <div className="flex items-center space-x-2 text-sm border-l border-lotus-pink/20 pl-4">
+                      {locales.map((loc, index) => (
+                        <span key={loc.code} className="flex items-center">
+                          <Link
+                            href={`/${loc.code}`}
+                            className={`hover:text-saffron transition-colors ${
+                              locale === loc.code ? 'text-saffron font-semibold' : 'text-zen-stone'
+                            }`}
+                          >
+                            {loc.label}
+                          </Link>
+                          {index < locales.length - 1 && (
+                            <span className="mx-2 text-lotus-pink/40">|</span>
+                          )}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <button className="md:hidden text-wisdom-text hover:text-saffron">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                      </svg>
+                    </button>
                   </div>
-                  {/* Navigation will be added in next step */}
                 </div>
               </nav>
             </header>
