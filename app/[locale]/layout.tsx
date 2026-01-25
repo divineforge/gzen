@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import '../globals.css';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export default async function LocaleLayout({
   children,
@@ -19,12 +20,6 @@ export default async function LocaleLayout({
     { href: `/${locale}/blog`, label: t('blog') },
     { href: `/${locale}/calendar`, label: t('calendar') },
     { href: `/${locale}/about`, label: t('about') },
-  ];
-
-  const locales = [
-    { code: 'zh', label: '中文' },
-    { code: 'en', label: 'EN' },
-    { code: 'ja', label: '日本語' },
   ];
 
   return (
@@ -67,23 +62,7 @@ export default async function LocaleLayout({
                     </ul>
 
                     {/* Language Switcher */}
-                    <div className="flex items-center space-x-2 text-sm border-l border-lotus-pink/20 pl-4">
-                      {locales.map((loc, index) => (
-                        <span key={loc.code} className="flex items-center">
-                          <Link
-                            href={`/${loc.code}`}
-                            className={`hover:text-saffron transition-colors ${
-                              locale === loc.code ? 'text-saffron font-semibold' : 'text-zen-stone'
-                            }`}
-                          >
-                            {loc.label}
-                          </Link>
-                          {index < locales.length - 1 && (
-                            <span className="mx-2 text-lotus-pink/40">|</span>
-                          )}
-                        </span>
-                      ))}
-                    </div>
+                    <LanguageSwitcher currentLocale={locale} />
 
                     {/* Mobile Menu Button */}
                     <button className="md:hidden text-wisdom-text hover:text-saffron">

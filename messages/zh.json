@@ -17,6 +17,10 @@
     "cycle": "生长周期 {current}/{total}",
     "newMoon": "朔月 - 新周期开始",
     "fullMoon": "望月 - 圆满绽放",
+    "preview": "预览",
+    "previewNext": "预览下一阶段",
+    "backToToday": "返回今天",
+    "visionNotCurrent": "预览，非当前",
     "stages": {
       "1": "种子种下",
       "2": "嫩芽破土",

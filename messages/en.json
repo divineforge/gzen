@@ -17,6 +17,10 @@
     "cycle": "Growth Cycle {current}/{total}",
     "newMoon": "New Moon - Cycle Begins",
     "fullMoon": "Full Moon - Full Bloom",
+    "preview": "Vision",
+    "previewNext": "Preview Next Stage",
+    "backToToday": "Back to Today",
+    "visionNotCurrent": "vision, not current",
     "stages": {
       "1": "Seed Planted",
       "2": "Sprout Emerges",

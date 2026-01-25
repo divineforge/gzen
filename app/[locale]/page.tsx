@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { getLunarDay, getLotusStage, getLotusEmoji, getLotusStageDescription, isFullMoon, isNewMoon } from '@/lib/utils/lunar-calendar';
+import LotusPreview from '@/components/LotusPreview';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -8,36 +9,34 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   // Get current lunar information
   const lunarDay = getLunarDay();
   const lotusStage = getLotusStage();
-  const lotusEmoji = getLotusEmoji(lotusStage);
-  const lotusDescription = getLotusStageDescription(lotusStage, locale);
   const isFullMoonDay = isFullMoon();
   const isNewMoonDay = isNewMoon();
+
+  // Pre-compute all stages for the client component
+  const allStages = Array.from({ length: 15 }, (_, i) => {
+    const stage = i + 1;
+    return {
+      stage,
+      emoji: getLotusEmoji(stage),
+      description: getLotusStageDescription(stage, locale),
+    };
+  });
+
+  const lotusData = {
+    lunarDay,
+    lotusStage,
+    lotusEmoji: getLotusEmoji(lotusStage),
+    lotusDescription: getLotusStageDescription(lotusStage, locale),
+    isFullMoonDay,
+    isNewMoonDay,
+    allStages,
+  };
 
   return (
     <div className="container mx-auto px-4 py-12">
       {/* Hero Section with Lotus */}
       <section className="max-w-4xl mx-auto text-center mb-16">
-        <div className="lotus-container mb-8">
-          <div className="lotus-visual">
-            <span className="animate-lotus-grow">{lotusEmoji}</span>
-          </div>
-          <div className="mt-4 space-y-2">
-            <p className="text-sm text-zen-stone">
-              {t('lotus.lunarDay', { day: lunarDay })}
-            </p>
-            <p className="text-sm font-medium text-saffron">
-              {t('lotus.cycle', { current: lotusStage, total: 15 })}
-            </p>
-            <p className="text-base font-serif text-wisdom-text">
-              {lotusDescription}
-            </p>
-            {(isFullMoonDay || isNewMoonDay) && (
-              <p className="text-sm font-semibold text-lotus-gold mt-4">
-                {isFullMoonDay ? t('lotus.fullMoon') : t('lotus.newMoon')}
-              </p>
-            )}
-          </div>
-        </div>
+        <LotusPreview data={lotusData} locale={locale} />
 
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-saffron">
           {t('home.hero.title')}
