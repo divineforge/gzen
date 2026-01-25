@@ -378,6 +378,175 @@ Impermanence teaches us: don't wait until you lose something to cherish it, don'
       ],
     },
   },
+  'four-noble-truths': {
+    slug: 'four-noble-truths',
+    title: {
+      zh: '四圣谛：苦集灭道',
+      en: 'The Four Noble Truths',
+      ja: '四聖諦：苦集滅道',
+    },
+    excerpt: {
+      zh: '四圣谛是佛陀在菩提树下证悟后的首次说法，是整个佛教教义的核心与基础。',
+      en: 'The Four Noble Truths were the Buddha\'s first teaching after enlightenment, forming the core foundation of all Buddhist teachings.',
+      ja: '四聖諦は、仏陀が菩提樹の下で悟りを開いた後の最初の説法であり、仏教教義全体の核心と基礎です。',
+    },
+    content: {
+      zh: `四圣谛（Four Noble Truths）是佛陀在鹿野苑初转法轮时所说的核心教义。这四个真理构成了理解佛教的基础框架。
+
+**第一圣谛：苦谛（Dukkha）**
+
+苦谛揭示了生命的本质——存在着不圆满和不满足。这里的"苦"不仅仅指痛苦，而是一种更深层的不安：
+
+- 生老病死之苦
+- 求不得苦——想要的得不到
+- 爱别离苦——与所爱分离
+- 怨憎会苦——与不喜欢的相遇
+
+认识到苦的存在，不是悲观，而是诚实地面对生命的真相。
+
+**第二圣谛：集谛（Samudaya）**
+
+集谛指出苦的根源——贪爱和执着。我们因为渴望事物保持不变、渴望快乐永恒、渴望自我存在，而产生了无尽的苦恼。
+
+三种根本的贪爱：
+1. 欲爱——对感官享受的贪求
+2. 有爱——对存在的贪求
+3. 无有爱——对不存在的贪求
+
+**第三圣谛：灭谛（Nirodha）**
+
+灭谛告诉我们，苦的止息是可能的。当贪爱和执着被放下，苦就会消失。这就是涅槃——不是虚无，而是从苦中解脱的寂静与自在。
+
+**第四圣谛：道谛（Magga）**
+
+道谛是通向解脱的方法——八正道：
+
+1. 正见——正确的见解
+2. 正思维——正确的意志
+3. 正语——正确的言语
+4. 正业——正确的行为
+5. 正命——正确的职业
+6. 正精进——正确的努力
+7. 正念——正确的觉知
+8. 正定——正确的专注
+
+四圣谛就像医生诊断疾病：先诊断病症（苦），找出病因（集），确认可以治愈（灭），然后开出药方（道）。这是佛陀给予众生的究竟良药。`,
+      en: `The Four Noble Truths are the core teaching that the Buddha delivered in his first sermon at Deer Park after attaining enlightenment. These four truths form the foundational framework for understanding Buddhism.
+
+**The First Noble Truth: Dukkha (Suffering)**
+
+The First Truth reveals the nature of existence—there is dissatisfaction and incompleteness. The word "dukkha" encompasses more than just pain; it points to a deeper unease:
+
+- The suffering of birth, aging, illness, and death
+- The suffering of not getting what we want
+- The suffering of separation from what we love
+- The suffering of encountering what we dislike
+
+Recognizing the existence of suffering is not pessimism, but honestly facing the truth of life.
+
+**The Second Noble Truth: Samudaya (Origin)**
+
+The Second Truth identifies the root cause of suffering—craving and attachment. We suffer because we crave for things to stay the same, for pleasure to be permanent, for the self to exist eternally.
+
+Three types of fundamental craving:
+1. Craving for sensual pleasures
+2. Craving for existence
+3. Craving for non-existence
+
+**The Third Noble Truth: Nirodha (Cessation)**
+
+The Third Truth assures us that the cessation of suffering is possible. When craving and attachment are released, suffering ceases. This is Nirvana—not nothingness, but the peace and freedom from suffering.
+
+**The Fourth Noble Truth: Magga (Path)**
+
+The Fourth Truth is the method leading to liberation—the Noble Eightfold Path:
+
+1. Right View—correct understanding
+2. Right Intention—correct aspiration
+3. Right Speech—correct communication
+4. Right Action—correct conduct
+5. Right Livelihood—correct way of earning
+6. Right Effort—correct endeavor
+7. Right Mindfulness—correct awareness
+8. Right Concentration—correct focus
+
+The Four Noble Truths are like a doctor's diagnosis: first diagnose the illness (suffering), identify its cause (origin), confirm it can be cured (cessation), then prescribe the medicine (path). This is the Buddha's ultimate remedy for all beings.`,
+      ja: `四聖諦は、仏陀が悟りを開いた後、鹿野苑で最初の説法として説いた核心的な教えです。これら四つの真理は、仏教を理解するための基礎的な枠組みを形成しています。
+
+**第一聖諦：苦諦（ドゥッカ）**
+
+第一の真理は、存在の本質を明らかにします——不満足と不完全さがあるということ。「苦」という言葉は単なる痛みだけでなく、より深い不安を指しています：
+
+- 生老病死の苦しみ
+- 求めるものが得られない苦しみ
+- 愛するものと別れる苦しみ
+- 嫌いなものと出会う苦しみ
+
+苦の存在を認識することは悲観主義ではなく、人生の真実に誠実に向き合うことです。
+
+**第二聖諦：集諦（サムダヤ）**
+
+第二の真理は、苦の根本原因を特定します——渇愛と執着。私たちは物事が変わらないことを、快楽が永続することを、自己が永遠に存在することを渇望するために苦しみます。
+
+三種類の根本的な渇愛：
+1. 感覚的快楽への渇愛
+2. 存在への渇愛
+3. 非存在への渇愛
+
+**第三聖諦：滅諦（ニローダ）**
+
+第三の真理は、苦の消滅が可能であることを保証します。渇愛と執着が手放されるとき、苦は消滅します。これが涅槃です——無ではなく、苦からの平和と自由です。
+
+**第四聖諦：道諦（マッガ）**
+
+第四の真理は、解放への方法——八正道です：
+
+1. 正見——正しい理解
+2. 正思惟——正しい意志
+3. 正語——正しい言葉
+4. 正業——正しい行い
+5. 正命——正しい生計
+6. 正精進——正しい努力
+7. 正念——正しい気づき
+8. 正定——正しい集中
+
+四聖諦は医師の診断のようなものです：まず病気を診断し（苦）、その原因を特定し（集）、治癒可能であることを確認し（滅）、そして薬を処方します（道）。これが仏陀がすべての存在に与えた究極の良薬です。`,
+    },
+    lunarDay: 8,
+    date: '2026-01-26',
+    tags: ['four-noble-truths', 'dharma', 'suffering', 'eightfold-path'],
+    buddhaQuote: {
+      zh: {
+        text: '诸比丘，此苦圣谛，此苦集圣谛，此苦灭圣谛，此苦灭道圣谛，是我所未闻之法，于此我生眼，生智，生慧，生明，生光。',
+        source: '《转法轮经》',
+      },
+      en: {
+        text: 'Monks, this is the Noble Truth of Suffering. This is the Noble Truth of the Origin of Suffering. This is the Noble Truth of the Cessation of Suffering. This is the Noble Truth of the Path. Vision arose, knowledge arose, wisdom arose, understanding arose, light arose.',
+        source: 'Dhammacakkappavattana Sutta',
+      },
+      ja: {
+        text: '比丘たちよ、これが苦の聖諦である。これが苦の集の聖諦である。これが苦の滅の聖諦である。これが苦の滅への道の聖諦である。私にまだ聞かれていなかったこの法において、眼が生じ、智が生じ、慧が生じ、明が生じ、光が生じた。',
+        source: '転法輪経',
+      },
+    },
+    reflectionQuestions: {
+      zh: [
+        '在你的生活中，你能认识到哪些形式的苦？',
+        '你最深的执着是什么？这些执着如何影响你的幸福？',
+        '八正道中的哪一项对你现在的生活最有帮助？',
+      ],
+      en: [
+        'What forms of suffering can you recognize in your own life?',
+        'What are your deepest attachments? How do they affect your well-being?',
+        'Which aspect of the Eightfold Path would be most helpful in your life right now?',
+      ],
+      ja: [
+        'あなたの人生で、どのような形の苦しみを認識できますか？',
+        'あなたの最も深い執着は何ですか？それらはあなたの幸福にどのように影響していますか？',
+        '八正道のどの側面が、今のあなたの人生に最も役立つでしょうか？',
+      ],
+    },
+  },
 };
 
 export default async function BlogPostPage({
