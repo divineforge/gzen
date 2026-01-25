@@ -1,4 +1,4 @@
-import Lunar from 'lunar-javascript';
+import { Lunar } from 'lunar-javascript';
 
 /**
  * Get the current lunar date information

@@ -10,6 +10,4 @@ declare module 'lunar-javascript' {
     getDaysInMonth(): number;
     getFestivals(): string[];
   }
-
-  export default Lunar;
 }
