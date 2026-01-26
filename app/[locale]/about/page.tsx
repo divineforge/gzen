@@ -28,8 +28,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <h1 className="text-5xl md:text-6xl font-bold text-saffron mb-6">
           {locale === 'ja' ? 'GrowZenについて' : '关于 GrowZen'}
         </h1>
-        <p className="text-3xl font-serif text-wisdom-text mb-4">
-          禅生定，定生慧
+        <p className="text-2xl sm:text-3xl font-serif text-wisdom-text mb-4 leading-tight">
+          禅生定<br />定生慧
         </p>
         <p className="text-xl text-zen-stone">
           {locale === 'ja'

@@ -38,8 +38,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="max-w-4xl mx-auto text-center mb-20">
         <LotusPreview data={lotusData} locale={locale} />
 
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-saffron">
-          {locale === 'ja' ? '禅定慧' : '禅生定，定生慧'}
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-saffron leading-tight">
+          {locale === 'ja' ? '禅定慧' : (
+            <>
+              禅生定<br />定生慧
+            </>
+          )}
         </h1>
         <p className="text-2xl md:text-3xl text-zen-stone">
           {locale === 'ja'

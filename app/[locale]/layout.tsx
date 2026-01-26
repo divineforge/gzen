@@ -40,11 +40,15 @@ export default async function LocaleLayout({
             <header className="border-b border-lotus-pink/20 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
               <nav className="container mx-auto px-4 py-4">
                 <div className="flex items-center justify-between">
-                  <Link href={`/${locale}`} className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-                    <span className="text-3xl">🪷</span>
-                    <div>
+                  <Link href={`/${locale}`} className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                    <span className="text-4xl">🪷</span>
+                    <div className="leading-tight">
                       <h1 className="text-xl font-bold text-saffron">GrowZen</h1>
-                      <p className="text-sm text-zen-stone font-serif">禅生定，定生慧</p>
+                      <p className="text-xs text-zen-stone font-serif">
+                        <span>禅生定</span>
+                        <br />
+                        <span>定生慧</span>
+                      </p>
                     </div>
                   </Link>
 
@@ -77,11 +81,14 @@ export default async function LocaleLayout({
 
             <main className="flex-1">{children}</main>
 
-            <footer className="border-t border-lotus-pink/20 bg-white/50 mt-12">
-              <div className="container mx-auto px-4 py-8 text-center text-sm text-zen-stone">
-                <p className="font-serif">🪷 禅生定，定生慧</p>
-                <p className="mt-2">
-                  © {new Date().getFullYear()} GrowZen (Gzen.io). Built with wisdom and compassion.
+            <footer className="border-t border-lotus-pink/20 bg-white/50 mt-8">
+              <div className="container mx-auto px-4 py-6 text-center text-zen-stone">
+                <div className="text-3xl mb-2">🪷</div>
+                <p className="font-serif text-lg leading-tight">
+                  禅生定<br />定生慧
+                </p>
+                <p className="mt-3 text-sm">
+                  © {new Date().getFullYear()} Gzen.io
                 </p>
               </div>
             </footer>

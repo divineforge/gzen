@@ -144,8 +144,10 @@ export default function MobileNav({ navLinks, locale }: MobileNavProps) {
 
             {/* Footer */}
             <div className="mt-4 pt-4 border-t border-lotus-pink/20 text-center">
-              <span className="text-lg">🪷</span>
-              <p className="text-xs text-zen-stone font-serif mt-1">禅生定，定生慧</p>
+              <span className="text-2xl">🪷</span>
+              <p className="text-sm text-zen-stone font-serif mt-1 leading-tight">
+                禅生定<br />定生慧
+              </p>
             </div>
           </div>
         </div>

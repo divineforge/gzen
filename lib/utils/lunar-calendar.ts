@@ -58,21 +58,22 @@ export function isFullMoon(date: Date = new Date()): boolean {
 
 /**
  * Get lotus growth stage based on lunar day
- * Days 1-15: Growing phase
- * Days 16-30: Could represent descending or restart cycle
+ * Full lunar month has ~29-30 days
+ * We show two 15-day cycles:
+ * - Days 1-15: Growing phase (waxing moon)
+ * - Days 16-30: Second cycle (waning moon, maps to 1-15)
  */
 export function getLotusStage(date: Date = new Date()): number {
   const day = getLunarDay(date);
 
-  // Main growth cycle is days 1-15
+  // Days 1-15: First cycle (waxing)
   if (day >= 1 && day <= 15) {
     return day;
   }
 
-  // After full moon, restart cycle or show descending
-  // For simplicity, we'll map 16-30 back to descending stages
-  // Or we could restart at day 1 for the next cycle
-  return 15; // Keep at full bloom until next new moon
+  // Days 16-30: Map to 1-15 (second cycle, waning)
+  // Day 16 -> 1, Day 17 -> 2, ... Day 30 -> 15
+  return day - 15;
 }
 
 /**
