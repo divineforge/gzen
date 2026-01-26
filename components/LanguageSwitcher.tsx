@@ -1,7 +1,6 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { useRouter, usePathname } from '@/i18n/navigation';
 
 interface LanguageSwitcherProps {
   currentLocale: string;
@@ -9,47 +8,30 @@ interface LanguageSwitcherProps {
 
 // Two modes: bilingual (zh - default) and Japanese only (ja)
 const localeOptions = [
-  { code: 'zh', label: 'EN/CN', isDefault: true },
-  { code: 'ja', label: 'JP', isDefault: false },
+  { code: 'zh' as const, label: 'EN/CN' },
+  { code: 'ja' as const, label: 'JP' },
 ];
 
 export default function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {
+  const router = useRouter();
   const pathname = usePathname();
-
-  // Get the path without the locale prefix
-  const getPathWithoutLocale = () => {
-    const segments = pathname.split('/').filter(Boolean);
-    const localeCodes = ['zh', 'en', 'ja'];
-    if (localeCodes.some(code => code === segments[0])) {
-      segments.shift();
-    }
-    return segments.length > 0 ? '/' + segments.join('/') : '/';
-  };
-
-  const pathWithoutLocale = getPathWithoutLocale();
 
   // Treat 'en' as 'zh' for display purposes (both are bilingual)
   const displayLocale = currentLocale === 'en' ? 'zh' : currentLocale;
 
+  const handleLocaleChange = (newLocale: 'zh' | 'ja') => {
+    router.replace(pathname, { locale: newLocale });
+  };
+
   return (
     <div className="flex items-center space-x-1 text-sm border-l border-lotus-pink/20 pl-4">
       {localeOptions.map((loc, index) => {
-        // Default locale (zh) doesn't need prefix with 'as-needed' setting
-        let newPath: string;
-        if (loc.isDefault) {
-          newPath = pathWithoutLocale;
-        } else {
-          newPath = pathWithoutLocale === '/'
-            ? `/${loc.code}`
-            : `/${loc.code}${pathWithoutLocale}`;
-        }
-
         const isActive = displayLocale === loc.code;
 
         return (
           <span key={loc.code} className="flex items-center">
-            <Link
-              href={newPath}
+            <button
+              onClick={() => handleLocaleChange(loc.code)}
               className={`px-3 py-1.5 rounded-lg transition-colors ${
                 isActive
                   ? 'bg-saffron text-white font-medium'
@@ -57,7 +39,7 @@ export default function LanguageSwitcher({ currentLocale }: LanguageSwitcherProp
               }`}
             >
               {loc.label}
-            </Link>
+            </button>
             {index < localeOptions.length - 1 && (
               <span className="mx-1 text-lotus-pink/40">|</span>
             )}

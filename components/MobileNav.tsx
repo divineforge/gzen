@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, useRouter, usePathname } from '@/i18n/navigation';
 
 interface NavLink {
   href: string;
@@ -16,12 +15,13 @@ interface MobileNavProps {
 
 // Two modes: bilingual (zh - default) and Japanese only (ja)
 const localeOptions = [
-  { code: 'zh', label: 'EN/CN', isDefault: true },
-  { code: 'ja', label: 'JP', isDefault: false },
+  { code: 'zh' as const, label: 'EN/CN' },
+  { code: 'ja' as const, label: 'JP' },
 ];
 
 export default function MobileNav({ navLinks, locale }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
   const pathname = usePathname();
 
   // Close menu when route changes
@@ -41,20 +41,13 @@ export default function MobileNav({ navLinks, locale }: MobileNavProps) {
     };
   }, [isOpen]);
 
-  // Get the path without the locale prefix for language switching
-  const getPathWithoutLocale = () => {
-    const segments = pathname.split('/').filter(Boolean);
-    const localeCodes = ['zh', 'en', 'ja'];
-    if (localeCodes.some(code => code === segments[0])) {
-      segments.shift();
-    }
-    return segments.length > 0 ? '/' + segments.join('/') : '/';
-  };
-
-  const pathWithoutLocale = getPathWithoutLocale();
-
   // Treat 'en' as 'zh' for display purposes (both are bilingual)
   const displayLocale = locale === 'en' ? 'zh' : locale;
+
+  const handleLocaleChange = (newLocale: 'zh' | 'ja') => {
+    router.replace(pathname, { locale: newLocale });
+    setIsOpen(false);
+  };
 
   return (
     <div className="md:hidden">
@@ -118,31 +111,20 @@ export default function MobileNav({ navLinks, locale }: MobileNavProps) {
               <p className="text-xs text-zen-stone mb-2 px-4">Language / 语言</p>
               <div className="flex gap-2 px-4">
                 {localeOptions.map((loc) => {
-                  // Default locale (zh) doesn't need prefix
-                  let newPath: string;
-                  if (loc.isDefault) {
-                    newPath = pathWithoutLocale;
-                  } else {
-                    newPath = pathWithoutLocale === '/'
-                      ? `/${loc.code}`
-                      : `/${loc.code}${pathWithoutLocale}`;
-                  }
-
                   const isActive = displayLocale === loc.code;
 
                   return (
-                    <Link
+                    <button
                       key={loc.code}
-                      href={newPath}
+                      onClick={() => handleLocaleChange(loc.code)}
                       className={`flex-1 py-3 px-4 text-center rounded-lg font-medium transition-colors ${
                         isActive
                           ? 'bg-saffron text-white'
                           : 'bg-white text-zen-stone border border-lotus-pink/20 hover:border-saffron hover:text-saffron'
                       }`}
-                      onClick={() => setIsOpen(false)}
                     >
                       {loc.label}
-                    </Link>
+                    </button>
                   );
                 })}
               </div>
