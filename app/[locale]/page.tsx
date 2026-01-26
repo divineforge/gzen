@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { getLunarDay, getLotusStage, getLotusEmoji, getLotusStageDescription, isFullMoon, isNewMoon } from '@/lib/utils/lunar-calendar';
+import { getLunarDate, getLunarDay, getLotusStage, getLotusEmoji, getLotusStageDescription, isFullMoon, isNewMoon } from '@/lib/utils/lunar-calendar';
 import LotusPreview from '@/components/LotusPreview';
 import Link from 'next/link';
 import { getLatestPosts } from '@/lib/data/posts';
@@ -8,12 +8,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const t = await getTranslations();
 
-  const lunarDay = getLunarDay();
+  const lunarDate = getLunarDate();
+  const lunarDay = lunarDate.day;
+  const daysInMonth = lunarDate.daysInMonth;
   const lotusStage = getLotusStage();
   const isFullMoonDay = isFullMoon();
   const isNewMoonDay = isNewMoon();
 
-  const allStages = Array.from({ length: 15 }, (_, i) => {
+  // Generate all 30 stages for full lunar month cycle
+  const allStages = Array.from({ length: 30 }, (_, i) => {
     const stage = i + 1;
     return {
       stage,
@@ -29,6 +32,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     lotusDescription: getLotusStageDescription(lotusStage, locale),
     isFullMoonDay,
     isNewMoonDay,
+    daysInMonth,
     allStages,
   };
 
@@ -142,13 +146,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </h3>
           <p className="text-xl text-wisdom-text mb-4">
             {locale === 'ja'
-              ? '太陰暦に従い、15日周期で智慧を共有します'
-              : '跟随农历，15天周期，分享佛法智慧'
+              ? '月の満ち欠けに従い、智慧を共有します'
+              : '跟随月亮盈缺，分享佛法智慧'
             }
           </p>
           {locale !== 'ja' && (
             <p className="text-lg text-zen-stone/70 mb-6">
-              Following the lunar cycle, sharing wisdom every 15 days
+              Following the moon phases, sharing Buddhist wisdom
             </p>
           )}
           <Link

@@ -9,6 +9,7 @@ interface LotusData {
   lotusDescription: string;
   isFullMoonDay: boolean;
   isNewMoonDay: boolean;
+  daysInMonth: number;
   allStages: {
     stage: number;
     emoji: string;
@@ -25,12 +26,13 @@ export default function LotusPreview({ data, locale }: LotusPreviewProps) {
   const [previewOffset, setPreviewOffset] = useState(0);
 
   const isPreviewMode = previewOffset !== 0;
+  const totalDays = data.daysInMonth || 30;
 
-  // Calculate preview stage (wraps around 1-15)
+  // Calculate preview stage (wraps around 1-30)
   const getPreviewStage = (offset: number) => {
     let stage = data.lotusStage + offset;
-    while (stage > 15) stage -= 15;
-    while (stage < 1) stage += 15;
+    while (stage > totalDays) stage -= totalDays;
+    while (stage < 1) stage += totalDays;
     return stage;
   };
 
@@ -38,19 +40,29 @@ export default function LotusPreview({ data, locale }: LotusPreviewProps) {
   const currentStageData = data.allStages.find(s => s.stage === currentPreviewStage) || data.allStages[0];
 
   // Calculate preview lunar day
-  const previewLunarDay = data.lunarDay + previewOffset;
+  const previewLunarDay = currentPreviewStage;
 
   const handleNext = () => {
-    setPreviewOffset(prev => (prev + 1) % 15);
+    setPreviewOffset(prev => {
+      const next = prev + 1;
+      return next >= totalDays ? 0 : next;
+    });
   };
 
   const handlePrev = () => {
-    setPreviewOffset(prev => (prev - 1 + 15) % 15);
+    setPreviewOffset(prev => {
+      const next = prev - 1;
+      return next < -(totalDays - 1) ? 0 : next;
+    });
   };
 
   const handleReset = () => {
     setPreviewOffset(0);
   };
+
+  // Check if preview day is special moon phase
+  const isPreviewFullMoon = currentPreviewStage === 15;
+  const isPreviewNewMoon = currentPreviewStage === 1;
 
   return (
     <div className="flex flex-col items-center mb-8">
@@ -99,8 +111,8 @@ export default function LotusPreview({ data, locale }: LotusPreviewProps) {
           isPreviewMode ? 'text-blue-400' : 'text-saffron'
         }`}>
           {locale === 'ja'
-            ? `${isPreviewMode ? previewLunarDay : data.lunarDay}日目`
-            : `第${isPreviewMode ? previewLunarDay : data.lunarDay}天`
+            ? `${previewLunarDay}日目`
+            : `第${previewLunarDay}天`
           }
         </p>
 
@@ -119,17 +131,17 @@ export default function LotusPreview({ data, locale }: LotusPreviewProps) {
           }`}>
             {data.isNewMoonDay
               ? (locale === 'ja' ? '🌑 新月' : '🌑 朔月')
-              : (locale === 'ja' ? '🪷✨ 満月' : '🪷✨ 望月')
+              : (locale === 'ja' ? '🌕 満月' : '🌕 望月')
             }
           </span>
         )}
 
         {/* Preview moon phases */}
-        {isPreviewMode && (currentPreviewStage === 1 || currentPreviewStage === 15) && (
+        {isPreviewMode && (isPreviewNewMoon || isPreviewFullMoon) && (
           <span className="inline-block px-4 py-2 rounded-full text-lg font-medium bg-blue-400/20 text-blue-500">
-            {currentPreviewStage === 1
+            {isPreviewNewMoon
               ? (locale === 'ja' ? '🌑 新月' : '🌑 朔月')
-              : (locale === 'ja' ? '🪷✨ 満月' : '🪷✨ 望月')
+              : (locale === 'ja' ? '🌕 満月' : '🌕 望月')
             }
           </span>
         )}
@@ -145,22 +157,50 @@ export default function LotusPreview({ data, locale }: LotusPreviewProps) {
         </button>
       )}
 
-      {/* Mini Stage Indicators */}
-      <div className="flex items-center gap-1 mt-4">
-        {data.allStages.slice(0, 15).map((stage) => (
-          <button
-            key={stage.stage}
-            onClick={() => setPreviewOffset(stage.stage - data.lotusStage)}
-            className={`w-2 h-2 rounded-full transition-all ${
-              currentPreviewStage === stage.stage
-                ? isPreviewMode
-                  ? 'bg-blue-400 w-3 h-3'
-                  : 'bg-saffron w-3 h-3'
-                : 'bg-lotus-pink/30 hover:bg-lotus-pink/50'
-            }`}
-            aria-label={`Stage ${stage.stage}`}
-          />
-        ))}
+      {/* Mini Stage Indicators - Two rows for 30 days */}
+      <div className="flex flex-col gap-1 mt-4">
+        {/* Days 1-15 (Waxing) */}
+        <div className="flex items-center justify-center gap-1">
+          {data.allStages.slice(0, 15).map((stage) => (
+            <button
+              key={stage.stage}
+              onClick={() => setPreviewOffset(stage.stage - data.lotusStage)}
+              className={`w-2 h-2 rounded-full transition-all ${
+                currentPreviewStage === stage.stage
+                  ? isPreviewMode
+                    ? 'bg-blue-400 w-3 h-3'
+                    : 'bg-saffron w-3 h-3'
+                  : stage.stage === 15
+                    ? 'bg-lotus-gold/60 hover:bg-lotus-gold'
+                    : 'bg-lotus-pink/30 hover:bg-lotus-pink/50'
+              }`}
+              aria-label={`Day ${stage.stage}`}
+            />
+          ))}
+        </div>
+        {/* Days 16-30 (Waning) */}
+        <div className="flex items-center justify-center gap-1">
+          {data.allStages.slice(15, 30).map((stage) => (
+            <button
+              key={stage.stage}
+              onClick={() => setPreviewOffset(stage.stage - data.lotusStage)}
+              className={`w-2 h-2 rounded-full transition-all ${
+                currentPreviewStage === stage.stage
+                  ? isPreviewMode
+                    ? 'bg-blue-400 w-3 h-3'
+                    : 'bg-saffron w-3 h-3'
+                  : 'bg-zen-stone/20 hover:bg-zen-stone/40'
+              }`}
+              aria-label={`Day ${stage.stage}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Phase Labels */}
+      <div className="flex justify-center gap-6 mt-2 text-xs text-zen-stone">
+        <span>🌑→🌕 {locale === 'ja' ? '成長' : '生长'}</span>
+        <span>🌕→🌑 {locale === 'ja' ? '完成' : '圆满'}</span>
       </div>
     </div>
   );
