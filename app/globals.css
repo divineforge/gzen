@@ -3,19 +3,24 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-size: 18px; /* Larger base font for readability */
+  }
+
   body {
     @apply font-sans antialiased;
+    @apply text-lg leading-relaxed;
     font-family: var(--font-geist-sans), 'Noto Sans SC', system-ui, sans-serif;
   }
 
-  /* Chinese text specific styling - use Noto Sans SC for CJK characters */
+  /* Chinese text specific styling */
   :lang(zh) {
     font-family: var(--font-geist-sans), 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   }
 
   :lang(zh) .font-serif {
     font-family: 'Noto Serif SC', 'Songti SC', serif;
-    @apply leading-relaxed;
+    @apply leading-loose;
   }
 
   /* Japanese text specific styling */
@@ -25,7 +30,24 @@
 
   :lang(ja) .font-serif {
     font-family: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
-    @apply leading-relaxed;
+    @apply leading-loose;
+  }
+
+  /* Larger headings */
+  h1 {
+    @apply text-4xl md:text-6xl font-bold leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-bold leading-tight;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold leading-snug;
+  }
+
+  p {
+    @apply text-xl leading-relaxed;
   }
 }
 
@@ -35,30 +57,31 @@
   }
 
   .lotus-visual {
-    @apply w-32 h-32 flex items-center justify-center text-6xl;
+    @apply w-40 h-40 flex items-center justify-center text-7xl;
     animation: lotus-grow 2s ease-in-out;
   }
 
   .buddha-quote {
-    @apply font-serif text-lg md:text-xl text-center italic text-zen-stone;
-    @apply px-6 py-8 bg-lotus-cream/30 rounded-lg border-l-4 border-saffron;
+    @apply font-serif text-xl md:text-2xl text-center text-zen-stone;
+    @apply px-8 py-10 bg-lotus-cream/30 rounded-2xl border-l-4 border-saffron;
+    @apply leading-relaxed;
   }
 
   .blog-card {
-    @apply bg-white rounded-lg shadow-sm border border-lotus-pink/20;
-    @apply hover:shadow-md transition-shadow duration-300;
+    @apply bg-white rounded-2xl shadow-sm border border-lotus-pink/20;
+    @apply hover:shadow-lg transition-shadow duration-300;
   }
 
   .btn-primary {
-    @apply px-6 py-3 bg-saffron text-white rounded-lg;
+    @apply px-8 py-4 bg-saffron text-white rounded-xl;
     @apply hover:bg-saffron-dark transition-colors duration-200;
-    @apply font-medium;
+    @apply font-semibold text-lg;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 bg-white text-saffron border-2 border-saffron rounded-lg;
+    @apply px-8 py-4 bg-white text-saffron border-2 border-saffron rounded-xl;
     @apply hover:bg-saffron hover:text-white transition-colors duration-200;
-    @apply font-medium;
+    @apply font-semibold text-lg;
   }
 }
 
@@ -72,5 +95,12 @@
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/* Even larger fonts on bigger screens */
+@media (min-width: 768px) {
+  html {
+    font-size: 20px;
   }
 }
