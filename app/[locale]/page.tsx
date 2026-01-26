@@ -88,7 +88,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   }
                 </span>
                 <span className="text-lg">
-                  {post.lunarDay <= 7 ? '🌱' : '🪷'}
+                  {getLotusEmoji(post.lunarDay)}
                 </span>
               </div>
 

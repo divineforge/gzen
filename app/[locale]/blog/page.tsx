@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { getLunarDay, getLotusStage, isEvenLunarDay, getNextBlogPostDate } from '@/lib/utils/lunar-calendar';
+import { getLunarDay, getLotusStage, getLotusEmoji, isEvenLunarDay, getNextBlogPostDate } from '@/lib/utils/lunar-calendar';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import { samplePosts } from '@/lib/data/posts';
@@ -73,7 +73,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
                     }
                   </span>
                   <span className="text-lg">
-                    {post.lunarDay <= 7 ? '🌱' : post.lunarDay <= 14 ? '🪷' : '🪷✨'}
+                    {getLotusEmoji(post.lunarDay)}
                   </span>
                 </div>
 
@@ -158,16 +158,16 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
                   {locale === 'zh' ? '第' : locale === 'ja' ? '' : 'Day'}
                 </div>
                 <div className="font-bold text-wisdom-text">{day}</div>
-                <div className="text-xs">
-                  {day === 1 ? '🌑' : day === 15 ? '🪷✨' : day % 2 === 0 ? '📝' : ''}
+                <div className="text-sm">
+                  {getLotusEmoji(day)}
                 </div>
               </div>
             ))}
           </div>
-          <div className="flex justify-center gap-6 mt-4 text-sm text-zen-stone">
-            <span>📝 {locale === 'zh' ? '发布日' : locale === 'ja' ? '投稿日' : 'Post Day'}</span>
-            <span>🌑 {locale === 'zh' ? '朔月' : locale === 'ja' ? '新月' : 'New Moon'}</span>
-            <span>🪷✨ {locale === 'zh' ? '望月' : locale === 'ja' ? '満月' : 'Full Moon'}</span>
+          <div className="flex flex-wrap justify-center gap-4 mt-4 text-sm text-zen-stone">
+            <span>🌑 {locale === 'ja' ? '新月' : '朔月 New Moon'}</span>
+            <span>💧→🌷 {locale === 'ja' ? '成長期' : '成长期 Growth'}</span>
+            <span>🌕 {locale === 'ja' ? '満月' : '望月 Full Moon'}</span>
           </div>
         </div>
       </section>

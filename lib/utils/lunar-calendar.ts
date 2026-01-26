@@ -137,25 +137,26 @@ export function getLotusStageDescription(stage: number, locale: string = 'zh'): 
 }
 
 /**
- * Get lotus emoji for stage
+ * Get lotus emoji for stage - 15 unique emojis for the growth cycle
+ * Represents the journey from seed to full bloom
  */
 export function getLotusEmoji(stage: number): string {
   const emojis: Record<number, string> = {
-    1: '🌑', // Seed/new moon
-    2: '🌱', // Sprout
-    3: '🌿',
-    4: '🪴',
-    5: '🍃',
-    6: '🌿',
-    7: '🪷', // Bud
-    8: '🌸',
-    9: '🌺',
-    10: '🪷',
-    11: '🌸',
-    12: '🌺',
-    13: '🪷',
-    14: '🌸',
-    15: '🪷✨', // Full bloom
+    1: '🌑',  // New moon - seed in darkness
+    2: '💧',  // Water drop - nurturing begins
+    3: '🌱',  // Seedling - first sprout
+    4: '🌿',  // Herb - young growth
+    5: '🍃',  // Leaves - foliage forming
+    6: '☘️',  // Shamrock - leaves multiply
+    7: '🌾',  // Stem - growing tall
+    8: '🌷',  // Tulip - bud forming
+    9: '🪻',  // Hyacinth - bud developing
+    10: '🌸', // Cherry blossom - petals appear
+    11: '🏵️', // Rosette - opening up
+    12: '🌺', // Hibiscus - blooming
+    13: '🌼', // Blossom - nearly full
+    14: '🪷', // Lotus - almost complete
+    15: '🌕', // Full moon - complete bloom
   };
 
   return emojis[stage] || '🪷';
