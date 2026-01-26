@@ -14,10 +14,10 @@ interface MobileNavProps {
   locale: string;
 }
 
-// Two modes: bilingual (zh) and Japanese only (ja)
+// Two modes: bilingual (zh - default) and Japanese only (ja)
 const localeOptions = [
-  { code: 'zh', label: 'EN/CN' },
-  { code: 'ja', label: 'JP' },
+  { code: 'zh', label: 'EN/CN', isDefault: true },
+  { code: 'ja', label: 'JP', isDefault: false },
 ];
 
 export default function MobileNav({ navLinks, locale }: MobileNavProps) {
@@ -48,7 +48,7 @@ export default function MobileNav({ navLinks, locale }: MobileNavProps) {
     if (localeCodes.some(code => code === segments[0])) {
       segments.shift();
     }
-    return '/' + segments.join('/');
+    return segments.length > 0 ? '/' + segments.join('/') : '/';
   };
 
   const pathWithoutLocale = getPathWithoutLocale();
@@ -118,9 +118,15 @@ export default function MobileNav({ navLinks, locale }: MobileNavProps) {
               <p className="text-xs text-zen-stone mb-2 px-4">Language / 语言</p>
               <div className="flex gap-2 px-4">
                 {localeOptions.map((loc) => {
-                  const newPath = pathWithoutLocale === '/'
-                    ? `/${loc.code}`
-                    : `/${loc.code}${pathWithoutLocale}`;
+                  // Default locale (zh) doesn't need prefix
+                  let newPath: string;
+                  if (loc.isDefault) {
+                    newPath = pathWithoutLocale;
+                  } else {
+                    newPath = pathWithoutLocale === '/'
+                      ? `/${loc.code}`
+                      : `/${loc.code}${pathWithoutLocale}`;
+                  }
 
                   const isActive = displayLocale === loc.code;
 
@@ -145,8 +151,8 @@ export default function MobileNav({ navLinks, locale }: MobileNavProps) {
             {/* Footer */}
             <div className="mt-4 pt-4 border-t border-lotus-pink/20 text-center">
               <span className="text-2xl">🪷</span>
-              <p className="text-sm text-zen-stone font-serif mt-1 leading-tight">
-                禅生定<br />定生慧
+              <p className="text-sm text-zen-stone font-serif mt-1">
+                禅生定，定生慧
               </p>
             </div>
           </div>

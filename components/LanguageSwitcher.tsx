@@ -7,10 +7,10 @@ interface LanguageSwitcherProps {
   currentLocale: string;
 }
 
-// Two modes: bilingual (zh) and Japanese only (ja)
+// Two modes: bilingual (zh - default) and Japanese only (ja)
 const localeOptions = [
-  { code: 'zh', label: 'EN/CN' },
-  { code: 'ja', label: 'JP' },
+  { code: 'zh', label: 'EN/CN', isDefault: true },
+  { code: 'ja', label: 'JP', isDefault: false },
 ];
 
 export default function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {
@@ -23,7 +23,7 @@ export default function LanguageSwitcher({ currentLocale }: LanguageSwitcherProp
     if (localeCodes.some(code => code === segments[0])) {
       segments.shift();
     }
-    return '/' + segments.join('/');
+    return segments.length > 0 ? '/' + segments.join('/') : '/';
   };
 
   const pathWithoutLocale = getPathWithoutLocale();
@@ -34,9 +34,15 @@ export default function LanguageSwitcher({ currentLocale }: LanguageSwitcherProp
   return (
     <div className="flex items-center space-x-1 text-sm border-l border-lotus-pink/20 pl-4">
       {localeOptions.map((loc, index) => {
-        const newPath = pathWithoutLocale === '/'
-          ? `/${loc.code}`
-          : `/${loc.code}${pathWithoutLocale}`;
+        // Default locale (zh) doesn't need prefix with 'as-needed' setting
+        let newPath: string;
+        if (loc.isDefault) {
+          newPath = pathWithoutLocale;
+        } else {
+          newPath = pathWithoutLocale === '/'
+            ? `/${loc.code}`
+            : `/${loc.code}${pathWithoutLocale}`;
+        }
 
         const isActive = displayLocale === loc.code;
 
@@ -44,7 +50,7 @@ export default function LanguageSwitcher({ currentLocale }: LanguageSwitcherProp
           <span key={loc.code} className="flex items-center">
             <Link
               href={newPath}
-              className={`px-2 py-1 rounded transition-colors ${
+              className={`px-3 py-1.5 rounded-lg transition-colors ${
                 isActive
                   ? 'bg-saffron text-white font-medium'
                   : 'text-zen-stone hover:text-saffron hover:bg-saffron/10'

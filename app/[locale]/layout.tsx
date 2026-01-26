@@ -40,15 +40,11 @@ export default async function LocaleLayout({
             <header className="border-b border-lotus-pink/20 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
               <nav className="container mx-auto px-4 py-4">
                 <div className="flex items-center justify-between">
-                  <Link href={`/${locale}`} className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                    <span className="text-4xl">🪷</span>
-                    <div className="leading-tight">
-                      <h1 className="text-xl font-bold text-saffron">GrowZen</h1>
-                      <p className="text-xs text-zen-stone font-serif">
-                        <span>禅生定</span>
-                        <br />
-                        <span>定生慧</span>
-                      </p>
+                  <Link href={`/${locale}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                    <span className="text-3xl">🪷</span>
+                    <div>
+                      <h1 className="text-lg font-bold text-saffron">GrowZen</h1>
+                      <p className="text-xs text-zen-stone font-serif">禅生定，定生慧</p>
                     </div>
                   </Link>
 
@@ -84,11 +80,12 @@ export default async function LocaleLayout({
             <footer className="border-t border-lotus-pink/20 bg-white/50 mt-8">
               <div className="container mx-auto px-4 py-6 text-center text-zen-stone">
                 <div className="text-3xl mb-2">🪷</div>
-                <p className="font-serif text-lg leading-tight">
-                  禅生定<br />定生慧
+                <p className="text-sm max-w-md mx-auto leading-relaxed">
+                  Buddhist wisdom for mindful living. <br className="sm:hidden" />
+                  Grow with the lotus, one breath at a time.
                 </p>
-                <p className="mt-3 text-sm">
-                  © {new Date().getFullYear()} Gzen.io
+                <p className="mt-3 text-xs">
+                  © {new Date().getFullYear()} GrowZen (gzen.io)
                 </p>
               </div>
             </footer>
