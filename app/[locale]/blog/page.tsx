@@ -167,7 +167,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
           <div className="flex flex-wrap justify-center gap-4 mt-4 text-sm text-zen-stone">
             <span>🌑 {locale === 'ja' ? '新月' : '朔月 New Moon'}</span>
             <span>💧→🌷 {locale === 'ja' ? '成長期' : '成长期 Growth'}</span>
-            <span>🌕 {locale === 'ja' ? '満月' : '望月 Full Moon'}</span>
+            <span>🪷✨ {locale === 'ja' ? '満月' : '望月 Full Moon'}</span>
           </div>
         </div>
       </section>

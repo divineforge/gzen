@@ -156,7 +156,7 @@ export function getLotusEmoji(stage: number): string {
     12: '🌺', // Hibiscus - blooming
     13: '🌼', // Blossom - nearly full
     14: '🪷', // Lotus - almost complete
-    15: '🌕', // Full moon - complete bloom
+    15: '🪷✨', // Lotus with sparkle - full bloom!
   };
 
   return emojis[stage] || '🪷';
