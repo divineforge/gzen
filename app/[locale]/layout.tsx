@@ -1,20 +1,11 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import Link from 'next/link';
 import '../globals.css';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import MobileNav from '@/components/MobileNav';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 export default async function LocaleLayout({
   children,
@@ -34,7 +25,7 @@ export default async function LocaleLayout({
   ];
 
   return (
-    <html lang={locale} className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang={locale} className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
