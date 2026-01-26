@@ -8,9 +8,9 @@ interface LanguageSwitcherProps {
 }
 
 const locales = [
-  { code: 'zh', label: '中文' },
+  { code: 'zh', label: 'CN' },
   { code: 'en', label: 'EN' },
-  { code: 'ja', label: '日本語' },
+  { code: 'ja', label: 'JP' },
 ];
 
 export default function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {

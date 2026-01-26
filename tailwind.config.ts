@@ -36,16 +36,17 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
-          'var(--font-noto-sans)',
+          'var(--font-geist-sans)',
           'Noto Sans SC',
-          'Noto Sans',
           'system-ui',
           'sans-serif',
         ],
+        mono: [
+          'var(--font-geist-mono)',
+          'monospace',
+        ],
         serif: [
-          'var(--font-noto-serif)',
           'Noto Serif SC',
-          'Noto Serif',
           'Georgia',
           'serif',
         ],

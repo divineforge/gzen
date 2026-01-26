@@ -1,78 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import { getLunarDay, getLotusStage, isEvenLunarDay, getNextBlogPostDate } from '@/lib/utils/lunar-calendar';
 import { format } from 'date-fns';
-
-// Sample blog posts data (will be replaced with real content later)
-const samplePosts = [
-  {
-    id: 1,
-    slug: 'mindfulness-in-daily-life',
-    title: {
-      zh: '日常生活中的正念',
-      en: 'Mindfulness in Daily Life',
-      ja: '日常生活におけるマインドフルネス',
-    },
-    excerpt: {
-      zh: '正念是觉醒的基础。当我们专注于当下，我们便能看清事物的本质。',
-      en: 'Mindfulness is the foundation of awakening. When we focus on the present moment, we can see the true nature of things.',
-      ja: 'マインドフルネスは目覚めの基礎です。今この瞬間に集中するとき、物事の真の姿を見ることができます。',
-    },
-    lunarDay: 2,
-    date: '2026-01-20',
-    tags: ['mindfulness', 'daily-life', 'meditation'],
-  },
-  {
-    id: 2,
-    slug: 'compassion-loving-kindness',
-    title: {
-      zh: '慈悲与慈爱（Metta）',
-      en: 'Compassion and Loving-Kindness (Metta)',
-      ja: '慈悲と慈愛（メッタ）',
-    },
-    excerpt: {
-      zh: '慈悲心是菩萨道的核心。当我们对众生生起慈悲，便能超越自我的局限。',
-      en: 'Compassion is at the heart of the bodhisattva path. When we cultivate compassion for all beings, we transcend the limitations of the self.',
-      ja: '慈悲の心は菩薩道の核心です。すべての存在に慈悲を育むとき、自己の限界を超えることができます。',
-    },
-    lunarDay: 4,
-    date: '2026-01-22',
-    tags: ['compassion', 'metta', 'loving-kindness'],
-  },
-  {
-    id: 3,
-    slug: 'understanding-impermanence',
-    title: {
-      zh: '理解无常（Anicca）',
-      en: 'Understanding Impermanence (Anicca)',
-      ja: '無常を理解する（アニッチャ）',
-    },
-    excerpt: {
-      zh: '无常是佛陀最根本的教导之一。一切有为法如梦幻泡影，如露亦如电。',
-      en: 'Impermanence is one of the Buddha\'s most fundamental teachings. All conditioned phenomena are like dreams, illusions, bubbles, shadows.',
-      ja: '無常は仏陀の最も根本的な教えの一つです。すべての条件付けられた現象は夢、幻、泡、影のようなものです。',
-    },
-    lunarDay: 6,
-    date: '2026-01-24',
-    tags: ['impermanence', 'anicca', 'wisdom'],
-  },
-  {
-    id: 4,
-    slug: 'four-noble-truths',
-    title: {
-      zh: '四圣谛：苦集灭道',
-      en: 'The Four Noble Truths',
-      ja: '四聖諦：苦集滅道',
-    },
-    excerpt: {
-      zh: '四圣谛是佛陀在菩提树下证悟后的首次说法，是整个佛教教义的核心与基础。',
-      en: 'The Four Noble Truths were the Buddha\'s first teaching after enlightenment, forming the core foundation of all Buddhist teachings.',
-      ja: '四聖諦は、仏陀が菩提樹の下で悟りを開いた後の最初の説法であり、仏教教義全体の核心と基礎です。',
-    },
-    lunarDay: 8,
-    date: '2026-01-26',
-    tags: ['four-noble-truths', 'dharma', 'suffering', 'path'],
-  },
-];
+import Link from 'next/link';
+import { samplePosts } from '@/lib/data/posts';
 
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -92,13 +22,16 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
           {t('blog.title')}
         </h1>
         <p className="text-lg text-zen-stone font-serif">
-          {locale === 'zh'
-            ? '每逢农历偶数日（2、4、6、8、10、12、14），我们发布一篇新的佛法智慧文章。'
-            : locale === 'ja'
+          {locale === 'ja'
             ? '偶数の太陰暦日（2、4、6、8、10、12、14日）ごとに、新しい仏教の智慧の記事を公開します。'
-            : 'On even lunar days (2, 4, 6, 8, 10, 12, 14), we publish new Buddhist wisdom teachings.'
+            : '每逢农历偶数日（2、4、6、8、10、12、14），我们发布一篇新的佛法智慧文章。'
           }
         </p>
+        {locale !== 'ja' && (
+          <p className="text-base text-zen-stone/80 mt-2">
+            On even lunar days (2, 4, 6, 8, 10, 12, 14), we publish new Buddhist wisdom teachings.
+          </p>
+        )}
 
         {/* Current Lunar Day Info */}
         <div className="mt-6 inline-flex items-center space-x-4 bg-lotus-cream/50 rounded-full px-6 py-3">
@@ -134,11 +67,9 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
                 {/* Lotus Stage Indicator */}
                 <div className="bg-gradient-to-r from-lotus-cream to-lotus-pink/20 px-4 py-2 flex items-center justify-between">
                   <span className="text-sm text-zen-stone">
-                    {locale === 'zh'
-                      ? `农历第 ${post.lunarDay} 天`
-                      : locale === 'ja'
+                    {locale === 'ja'
                       ? `太陰暦 ${post.lunarDay} 日目`
-                      : `Lunar Day ${post.lunarDay}`
+                      : `农历第 ${post.lunarDay} 天 / Lunar Day ${post.lunarDay}`
                     }
                   </span>
                   <span className="text-lg">
@@ -148,13 +79,19 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
 
                 <div className="p-6">
                   <h2 className="text-xl font-bold text-wisdom-text mb-3 hover:text-saffron transition-colors">
-                    <a href={`/${locale}/blog/${post.slug}`}>
-                      {post.title[locale as keyof typeof post.title] || post.title.en}
-                    </a>
+                    <Link href={`/${locale}/blog/${post.slug}`}>
+                      {locale === 'ja'
+                        ? post.title.ja
+                        : `${post.title.zh} / ${post.title.en}`
+                      }
+                    </Link>
                   </h2>
 
                   <p className="text-zen-stone font-serif mb-4 line-clamp-3">
-                    {post.excerpt[locale as keyof typeof post.excerpt] || post.excerpt.en}
+                    {locale === 'ja'
+                      ? post.excerpt.ja
+                      : post.excerpt.zh
+                    }
                   </p>
 
                   {/* Tags */}
@@ -170,7 +107,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
                   </div>
 
                   {/* Read More Link */}
-                  <a
+                  <Link
                     href={`/${locale}/blog/${post.slug}`}
                     className="inline-flex items-center text-saffron hover:text-saffron-dark transition-colors font-medium"
                   >
@@ -178,7 +115,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
                     <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </article>
             ))}

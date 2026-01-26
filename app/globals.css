@@ -5,35 +5,26 @@
 @layer base {
   body {
     @apply font-sans antialiased;
+    font-family: var(--font-geist-sans), 'Noto Sans SC', system-ui, sans-serif;
   }
 
-  /* Chinese text specific styling */
+  /* Chinese text specific styling - use Noto Sans SC for CJK characters */
   :lang(zh) {
-    font-family: var(--font-noto-sans), 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    font-family: var(--font-geist-sans), 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   }
 
-  :lang(zh) .wisdom-text {
-    font-family: var(--font-noto-serif), 'Noto Serif SC', 'Songti SC', serif;
+  :lang(zh) .font-serif {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
     @apply leading-relaxed;
   }
 
   /* Japanese text specific styling */
   :lang(ja) {
-    font-family: 'Noto Sans JP', 'Yu Gothic', 'Hiragino Sans', sans-serif;
+    font-family: var(--font-geist-sans), 'Noto Sans JP', 'Yu Gothic', 'Hiragino Sans', sans-serif;
   }
 
-  :lang(ja) .wisdom-text {
+  :lang(ja) .font-serif {
     font-family: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
-    @apply leading-relaxed;
-  }
-
-  /* English text */
-  :lang(en) {
-    font-family: var(--font-noto-sans-latin), 'Noto Sans', system-ui, sans-serif;
-  }
-
-  :lang(en) .wisdom-text {
-    font-family: var(--font-noto-serif-latin), 'Noto Serif', Georgia, serif;
     @apply leading-relaxed;
   }
 }

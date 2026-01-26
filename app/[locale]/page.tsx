@@ -1,6 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import { getLunarDay, getLotusStage, getLotusEmoji, getLotusStageDescription, isFullMoon, isNewMoon } from '@/lib/utils/lunar-calendar';
 import LotusPreview from '@/components/LotusPreview';
+import Link from 'next/link';
+import { getLatestPosts } from '@/lib/data/posts';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -58,14 +60,80 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </blockquote>
       </section>
 
-      {/* Latest Posts Section - Placeholder */}
+      {/* Latest Posts Section */}
       <section className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-saffron mb-8">
-          {t('home.latestPosts')}
-        </h2>
-        <div className="text-center py-12 text-zen-stone">
-          <p className="text-lg">{t('blog.noPosts')}</p>
-          <p className="text-sm mt-2">Posts will appear on even lunar days (2, 4, 6, 8, 10, 12, 14)</p>
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-3xl font-bold text-saffron">
+            {t('home.latestPosts')}
+          </h2>
+          <Link
+            href={`/${locale}/blog`}
+            className="text-saffron hover:text-saffron-dark transition-colors font-medium"
+          >
+            {t('home.viewAll')} →
+          </Link>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {getLatestPosts(3).map((post) => (
+            <article
+              key={post.id}
+              className="bg-white rounded-lg shadow-sm border border-lotus-pink/10 overflow-hidden hover:shadow-md transition-shadow"
+            >
+              {/* Lotus Stage Indicator */}
+              <div className="bg-gradient-to-r from-lotus-cream to-lotus-pink/20 px-4 py-2 flex items-center justify-between">
+                <span className="text-sm text-zen-stone">
+                  {locale === 'ja'
+                    ? `太陰暦 ${post.lunarDay} 日目`
+                    : `农历第 ${post.lunarDay} 天 / Lunar Day ${post.lunarDay}`
+                  }
+                </span>
+                <span className="text-lg">
+                  {post.lunarDay <= 7 ? '🌱' : '🪷'}
+                </span>
+              </div>
+
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-wisdom-text mb-3 hover:text-saffron transition-colors">
+                  <Link href={`/${locale}/blog/${post.slug}`}>
+                    {locale === 'ja'
+                      ? post.title.ja
+                      : `${post.title.zh} / ${post.title.en}`
+                    }
+                  </Link>
+                </h3>
+
+                <p className="text-zen-stone font-serif mb-4 line-clamp-3">
+                  {locale === 'ja'
+                    ? post.excerpt.ja
+                    : post.excerpt.zh
+                  }
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {post.tags.slice(0, 3).map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs bg-lotus-cream/50 text-zen-stone px-2 py-1 rounded-full"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Read More Link */}
+                <Link
+                  href={`/${locale}/blog/${post.slug}`}
+                  className="inline-flex items-center text-saffron hover:text-saffron-dark transition-colors font-medium"
+                >
+                  {t('blog.readMore')}
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
