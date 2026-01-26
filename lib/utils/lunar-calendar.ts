@@ -22,13 +22,27 @@ export function getLunarDate(date?: Date) {
   const dateToUse = date || getMalaysiaDate();
   const lunar = Lunar.fromDate(dateToUse);
 
+  // Get days in month - lunar months are either 29 or 30 days
+  // Use LunarMonth to get accurate days count
+  let daysInMonth = 30; // Default to 30
+  try {
+    const lunarMonth = (LunarLib as any).LunarMonth || (LunarLib as any).default?.LunarMonth;
+    if (lunarMonth) {
+      const month = lunarMonth.fromYm(lunar.getYear(), lunar.getMonth());
+      daysInMonth = month?.getDayCount?.() || 30;
+    }
+  } catch {
+    // Fallback to 30 days
+    daysInMonth = 30;
+  }
+
   return {
     day: lunar.getDay(), // 1-30
     month: lunar.getMonth(), // 1-12
     year: lunar.getYear(),
     monthName: lunar.getMonthInChinese(),
     yearName: lunar.getYearInGanZhi(),
-    daysInMonth: lunar.getDaysInMonth(), // 29 or 30
+    daysInMonth,
   };
 }
 
@@ -305,10 +319,9 @@ export function getNextPeakDate(date: Date = new Date()): Date {
   if (currentDay < 15) {
     daysToAdd = 15 - currentDay;
   } else {
-    // Days to next month's 1st
-    const lunar = Lunar.fromDate(date);
-    const daysInMonth = lunar.getDaysInMonth();
-    daysToAdd = daysInMonth - currentDay + 1;
+    // Days to next month's 1st (assume 30 days max)
+    const lunarDate = getLunarDate(date);
+    daysToAdd = lunarDate.daysInMonth - currentDay + 1;
   }
 
   const nextDate = new Date(date);
