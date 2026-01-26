@@ -4,10 +4,23 @@ import * as LunarLib from 'lunar-javascript';
 const Lunar = (LunarLib as any).Lunar || (LunarLib as any).default?.Lunar || LunarLib;
 
 /**
- * Get the current lunar date information
+ * Get current date in Malaysia timezone (UTC+8)
  */
-export function getLunarDate(date: Date = new Date()) {
-  const lunar = Lunar.fromDate(date);
+function getMalaysiaDate(): Date {
+  const now = new Date();
+  // Convert to Malaysia time (UTC+8)
+  const malaysiaOffset = 8 * 60; // minutes
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  return new Date(utc + (malaysiaOffset * 60000));
+}
+
+/**
+ * Get the current lunar date information
+ * Uses Malaysia timezone (UTC+8) for consistency
+ */
+export function getLunarDate(date?: Date) {
+  const dateToUse = date || getMalaysiaDate();
+  const lunar = Lunar.fromDate(dateToUse);
 
   return {
     day: lunar.getDay(), // 1-30
@@ -15,14 +28,17 @@ export function getLunarDate(date: Date = new Date()) {
     year: lunar.getYear(),
     monthName: lunar.getMonthInChinese(),
     yearName: lunar.getYearInGanZhi(),
+    daysInMonth: lunar.getDaysInMonth(), // 29 or 30
   };
 }
 
 /**
  * Get the current lunar day (1-30)
+ * Uses Malaysia timezone (UTC+8)
  */
-export function getLunarDay(date: Date = new Date()): number {
-  const lunar = Lunar.fromDate(date);
+export function getLunarDay(date?: Date): number {
+  const dateToUse = date || getMalaysiaDate();
+  const lunar = Lunar.fromDate(dateToUse);
   return lunar.getDay();
 }
 
