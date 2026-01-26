@@ -14,9 +14,9 @@ interface MobileNavProps {
   locale: string;
 }
 
-const locales = [
-  { code: 'zh', label: 'CN' },
-  { code: 'en', label: 'EN' },
+// Two modes: bilingual (zh) and Japanese only (ja)
+const localeOptions = [
+  { code: 'zh', label: 'EN/CN' },
   { code: 'ja', label: 'JP' },
 ];
 
@@ -44,13 +44,17 @@ export default function MobileNav({ navLinks, locale }: MobileNavProps) {
   // Get the path without the locale prefix for language switching
   const getPathWithoutLocale = () => {
     const segments = pathname.split('/').filter(Boolean);
-    if (locales.some(loc => loc.code === segments[0])) {
+    const localeCodes = ['zh', 'en', 'ja'];
+    if (localeCodes.some(code => code === segments[0])) {
       segments.shift();
     }
     return '/' + segments.join('/');
   };
 
   const pathWithoutLocale = getPathWithoutLocale();
+
+  // Treat 'en' as 'zh' for display purposes (both are bilingual)
+  const displayLocale = locale === 'en' ? 'zh' : locale;
 
   return (
     <div className="md:hidden">
@@ -70,73 +74,79 @@ export default function MobileNav({ navLinks, locale }: MobileNavProps) {
         </svg>
       </button>
 
-      {/* Mobile Menu Overlay */}
+      {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40"
+          className="fixed inset-0 bg-black/30 z-40"
           onClick={() => setIsOpen(false)}
         />
       )}
 
-      {/* Mobile Menu Panel */}
+      {/* Full-width Dropdown Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-72 bg-wisdom-bg shadow-xl z-40 transform transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed left-0 right-0 top-[73px] z-40 transform transition-all duration-300 ease-in-out ${
+          isOpen
+            ? 'translate-y-0 opacity-100'
+            : '-translate-y-full opacity-0 pointer-events-none'
         }`}
       >
-        <div className="flex flex-col h-full pt-20 px-6">
-          {/* Navigation Links */}
-          <nav className="flex-1">
-            <ul className="space-y-4">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className={`block py-3 px-4 text-lg font-medium rounded-lg transition-colors ${
-                      pathname === link.href
-                        ? 'bg-saffron/10 text-saffron'
-                        : 'text-wisdom-text hover:bg-lotus-cream/50 hover:text-saffron'
-                    }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+        <div className="bg-wisdom-bg border-b border-lotus-pink/20 shadow-lg">
+          <div className="container mx-auto px-4 py-4">
+            {/* Navigation Links */}
+            <nav className="mb-4">
+              <ul className="space-y-1">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className={`block py-3 px-4 text-lg font-medium rounded-lg transition-colors ${
+                        pathname === link.href
+                          ? 'bg-saffron/10 text-saffron'
+                          : 'text-wisdom-text hover:bg-lotus-cream/50 hover:text-saffron'
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-          {/* Language Switcher */}
-          <div className="border-t border-lotus-pink/20 py-6">
-            <p className="text-sm text-zen-stone mb-3 px-4">Language</p>
-            <div className="flex space-x-2 px-4">
-              {locales.map((loc) => {
-                const newPath = pathWithoutLocale === '/'
-                  ? `/${loc.code}`
-                  : `/${loc.code}${pathWithoutLocale}`;
+            {/* Language Switcher */}
+            <div className="border-t border-lotus-pink/20 pt-4">
+              <p className="text-xs text-zen-stone mb-2 px-4">Language / 语言</p>
+              <div className="flex gap-2 px-4">
+                {localeOptions.map((loc) => {
+                  const newPath = pathWithoutLocale === '/'
+                    ? `/${loc.code}`
+                    : `/${loc.code}${pathWithoutLocale}`;
 
-                return (
-                  <Link
-                    key={loc.code}
-                    href={newPath}
-                    className={`flex-1 py-2 px-3 text-center rounded-lg font-medium transition-colors ${
-                      locale === loc.code
-                        ? 'bg-saffron text-white'
-                        : 'bg-lotus-cream/50 text-zen-stone hover:bg-saffron/10 hover:text-saffron'
-                    }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {loc.label}
-                  </Link>
-                );
-              })}
+                  const isActive = displayLocale === loc.code;
+
+                  return (
+                    <Link
+                      key={loc.code}
+                      href={newPath}
+                      className={`flex-1 py-3 px-4 text-center rounded-lg font-medium transition-colors ${
+                        isActive
+                          ? 'bg-saffron text-white'
+                          : 'bg-white text-zen-stone border border-lotus-pink/20 hover:border-saffron hover:text-saffron'
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {loc.label}
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
-          </div>
 
-          {/* Footer */}
-          <div className="py-4 text-center text-sm text-zen-stone">
-            <span className="text-xl">🪷</span>
-            <p className="mt-1 font-serif">禅生定，定生慧</p>
+            {/* Footer */}
+            <div className="mt-4 pt-4 border-t border-lotus-pink/20 text-center">
+              <span className="text-lg">🪷</span>
+              <p className="text-xs text-zen-stone font-serif mt-1">禅生定，定生慧</p>
+            </div>
           </div>
         </div>
       </div>
