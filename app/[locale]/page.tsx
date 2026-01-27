@@ -89,7 +89,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {locale === 'ja' ? '最新の智慧' : '最新智慧'}
           </h2>
           <Link
-            href={`/${locale}/blog`}
+            href={`/${locale}/posts`}
             className="text-xl text-saffron hover:text-saffron-dark transition-colors font-medium"
           >
             {locale === 'ja' ? 'すべて見る' : '查看全部'} →
@@ -114,7 +114,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-wisdom-text mb-4 hover:text-saffron transition-colors leading-tight">
-                  <Link href={`/${locale}/blog/${post.slug}`}>
+                  <Link href={`/${locale}/posts/${post.slug}`}>
                     {locale === 'ja' ? post.title.ja : post.title.zh}
                   </Link>
                 </h3>
@@ -126,7 +126,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 )}
 
                 <Link
-                  href={`/${locale}/blog/${post.slug}`}
+                  href={`/${locale}/posts/${post.slug}`}
                   className="inline-flex items-center text-xl text-saffron hover:text-saffron-dark transition-colors font-medium"
                 >
                   {locale === 'ja' ? '読む' : '阅读'} →

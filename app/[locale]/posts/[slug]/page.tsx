@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getLotusEmoji, getLotusStageDescription } from '@/lib/utils/lunar-calendar';
 
-// Sample blog posts data (will be replaced with real content from database/MDX later)
-const blogPosts: Record<string, {
+// Posts data with full localization (CN, EN, JP)
+const posts: Record<string, {
   slug: string;
   title: Record<string, string>;
   content: Record<string, string>;
@@ -549,7 +549,7 @@ The Four Noble Truths are like a doctor's diagnosis: first diagnose the illness 
   },
 };
 
-export default async function BlogPostPage({
+export default async function PostPage({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
@@ -557,7 +557,7 @@ export default async function BlogPostPage({
   const { locale, slug } = await params;
   const t = await getTranslations();
 
-  const post = blogPosts[slug];
+  const post = posts[slug];
 
   if (!post) {
     notFound();
@@ -571,13 +571,13 @@ export default async function BlogPostPage({
       {/* Back Link */}
       <div className="max-w-3xl mx-auto mb-8">
         <Link
-          href={`/${locale}/blog`}
+          href={`/${locale}/posts`}
           className="inline-flex items-center text-zen-stone hover:text-saffron transition-colors"
         >
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-          {locale === 'zh' ? '返回博客' : locale === 'ja' ? 'ブログに戻る' : 'Back to Blog'}
+          {locale === 'zh' ? '返回文章' : locale === 'ja' ? '記事に戻る' : 'Back to Posts'}
         </Link>
       </div>
 
@@ -697,7 +697,7 @@ export default async function BlogPostPage({
       <nav className="max-w-3xl mx-auto pt-8 border-t border-lotus-pink/20">
         <div className="flex justify-center">
           <Link
-            href={`/${locale}/blog`}
+            href={`/${locale}/posts`}
             className="inline-flex items-center gap-2 bg-saffron text-white px-6 py-3 rounded-lg hover:bg-saffron-dark transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -711,9 +711,9 @@ export default async function BlogPostPage({
   );
 }
 
-// Generate static params for all blog posts
+// Generate static params for all posts
 export async function generateStaticParams() {
-  return Object.keys(blogPosts).flatMap((slug) => [
+  return Object.keys(posts).flatMap((slug) => [
     { locale: 'zh', slug },
     { locale: 'en', slug },
     { locale: 'ja', slug },

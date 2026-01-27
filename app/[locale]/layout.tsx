@@ -20,7 +20,7 @@ export default async function LocaleLayout({
 
   const navLinks = [
     { href: `/${locale}`, label: t('home') },
-    { href: `/${locale}/blog`, label: t('blog') },
+    { href: `/${locale}/posts`, label: t('posts') },
     { href: `/${locale}/about`, label: t('about') },
   ];
 

@@ -3,11 +3,11 @@
     "title": "GrowZen",
     "name": "禅定慧の道",
     "tagline": "月の満ち欠けとともに、智慧は蓮のように開く",
-    "description": "太陰暦に従い、偶数日に仏教の智慧を更新。蓮の花のように目覚める。"
+    "description": "日常のためのマインドフルな仏教の智慧。蓮の花のように目覚める。"
   },
   "nav": {
     "home": "ホーム",
-    "blog": "ブログ",
+    "posts": "記事",
     "calendar": "カレンダー",
     "about": "について"
   },
@@ -47,8 +47,8 @@
     "latestPosts": "最新の智慧記事",
     "viewAll": "すべて見る"
   },
-  "blog": {
-    "title": "智慧ブログ",
+  "posts": {
+    "title": "智慧の記事",
     "readMore": "続きを読む",
     "publishedOn": "投稿日",
     "tags": "タグ",
@@ -68,8 +68,8 @@
   },
   "telegram": {
     "subscribe": "Telegram で購読",
-    "subscribed": "✅ 購読しました！偶数の太陰暦日に智慧をお届けします。",
-    "dailyWisdom": "🪷 日々の禅智"
+    "subscribed": "✅ 購読しました！智慧の更新をお届けします。",
+    "dailyWisdom": "🪷 禅智"
   },
   "common": {
     "loading": "読み込み中...",
