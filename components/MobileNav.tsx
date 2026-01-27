@@ -13,10 +13,11 @@ interface MobileNavProps {
   locale: string;
 }
 
-// Two modes: bilingual (zh - default) and Japanese only (ja)
+// Three separate locales: Chinese, English, Japanese
 const localeOptions = [
-  { code: 'zh' as const, label: 'EN/CN' },
-  { code: 'ja' as const, label: 'JP' },
+  { code: 'zh' as const, label: '中文' },
+  { code: 'en' as const, label: 'EN' },
+  { code: 'ja' as const, label: '日本語' },
 ];
 
 export default function MobileNav({ navLinks, locale }: MobileNavProps) {
@@ -41,10 +42,7 @@ export default function MobileNav({ navLinks, locale }: MobileNavProps) {
     };
   }, [isOpen]);
 
-  // Treat 'en' as 'zh' for display purposes (both are bilingual)
-  const displayLocale = locale === 'en' ? 'zh' : locale;
-
-  const handleLocaleChange = (newLocale: 'zh' | 'ja') => {
+  const handleLocaleChange = (newLocale: 'zh' | 'en' | 'ja') => {
     router.replace(pathname, { locale: newLocale });
     setIsOpen(false);
   };
@@ -106,12 +104,12 @@ export default function MobileNav({ navLinks, locale }: MobileNavProps) {
               </ul>
             </nav>
 
-            {/* Language Switcher */}
+            {/* Language Switcher - 3 buttons */}
             <div className="border-t border-lotus-pink/20 pt-4">
-              <p className="text-xs text-zen-stone mb-2 px-4">Language / 语言</p>
+              <p className="text-xs text-zen-stone mb-2 px-4">Language / 语言 / 言語</p>
               <div className="flex gap-2 px-4">
                 {localeOptions.map((loc) => {
-                  const isActive = displayLocale === loc.code;
+                  const isActive = locale === loc.code;
 
                   return (
                     <button
