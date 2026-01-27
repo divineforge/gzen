@@ -1,10 +1,9 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages } from 'next-intl/server';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import Link from 'next/link';
 import '../globals.css';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
 import MobileNav from '@/components/MobileNav';
 
 export default async function LocaleLayout({
@@ -16,16 +15,16 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
   const messages = await getMessages();
-  const t = await getTranslations('nav');
 
+  // English-only navigation
   const navLinks = [
-    { href: `/${locale}`, label: t('home') },
-    { href: `/${locale}/posts`, label: t('posts') },
-    { href: `/${locale}/about`, label: t('about') },
+    { href: `/${locale}`, label: 'Home' },
+    { href: `/${locale}/posts`, label: 'Posts' },
+    { href: `/${locale}/about`, label: 'About' },
   ];
 
   return (
-    <html lang={locale} className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -63,13 +62,8 @@ export default async function LocaleLayout({
                       ))}
                     </ul>
 
-                    {/* Language Switcher - Desktop only */}
-                    <div className="hidden md:block">
-                      <LanguageSwitcher currentLocale={locale} />
-                    </div>
-
                     {/* Mobile Menu */}
-                    <MobileNav navLinks={navLinks} locale={locale} />
+                    <MobileNav navLinks={navLinks} />
                   </div>
                 </div>
               </nav>

@@ -1,26 +1,19 @@
-import { getTranslations } from 'next-intl/server';
 import { getLotusEmoji } from '@/lib/utils/lunar-calendar';
 import Link from 'next/link';
 import { samplePosts } from '@/lib/data/posts';
 
 export default async function PostsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const t = await getTranslations();
 
   return (
     <div className="container mx-auto px-6 py-16">
       {/* Header */}
       <section className="max-w-4xl mx-auto text-center mb-16">
         <h1 className="text-5xl md:text-6xl font-bold text-saffron mb-6">
-          {locale === 'ja' ? '智慧の記事' : locale === 'en' ? 'Wisdom Posts' : '智慧文章'}
+          Wisdom Posts
         </h1>
         <p className="text-2xl text-zen-stone">
-          {locale === 'ja'
-            ? '仏教の智慧を日常に'
-            : locale === 'en'
-            ? 'Buddhist wisdom for daily life'
-            : '佛法智慧，日常修行'
-          }
+          Buddhist wisdom for daily life
         </p>
       </section>
 
@@ -34,7 +27,7 @@ export default async function PostsPage({ params }: { params: Promise<{ locale: 
             >
               <div className="bg-gradient-to-r from-lotus-cream to-lotus-pink/20 px-6 py-4 flex items-center justify-between">
                 <span className="text-lg text-zen-stone font-medium">
-                  {locale === 'ja' ? `${post.lunarDay}日目` : locale === 'en' ? `Day ${post.lunarDay}` : `第${post.lunarDay}天`}
+                  Day {post.lunarDay}
                 </span>
                 <span className="text-3xl">
                   {getLotusEmoji(post.lunarDay)}
@@ -42,21 +35,26 @@ export default async function PostsPage({ params }: { params: Promise<{ locale: 
               </div>
 
               <div className="p-6">
-                <h2 className="text-2xl font-bold text-wisdom-text mb-4 hover:text-saffron transition-colors leading-tight">
+                <h2 className="text-2xl font-bold text-wisdom-text mb-2 hover:text-saffron transition-colors leading-tight">
                   <Link href={`/${locale}/posts/${post.slug}`}>
-                    {post.title[locale as keyof typeof post.title] || post.title.en}
+                    {post.title.en}
                   </Link>
                 </h2>
 
+                {/* Show Chinese & Japanese titles as subtitle */}
+                <p className="text-sm text-zen-stone/60 mb-3">
+                  {post.title.zh} · {post.title.ja}
+                </p>
+
                 <p className="text-lg text-zen-stone/70 mb-4 line-clamp-2">
-                  {post.excerpt[locale as keyof typeof post.excerpt] || post.excerpt.en}
+                  {post.excerpt.en}
                 </p>
 
                 <Link
                   href={`/${locale}/posts/${post.slug}`}
                   className="inline-flex items-center text-xl text-saffron hover:text-saffron-dark transition-colors font-medium"
                 >
-                  {locale === 'ja' ? '読む' : locale === 'en' ? 'Read' : '阅读'} →
+                  Read →
                 </Link>
               </div>
             </article>

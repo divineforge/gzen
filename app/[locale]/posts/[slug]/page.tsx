@@ -1,4 +1,3 @@
-import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getLotusEmoji, getLotusStageDescription } from '@/lib/utils/lunar-calendar';
@@ -202,7 +201,7 @@ Compassion isn't just for meditation sessions. It can be woven into every moment
 When we cultivate compassion, we begin to recognize: everyone suffers in their own way, everyone deserves to be loved and understood. This recognition can dissolve barriers and build genuine connection.`,
       ja: `仏教における慈悲は、密接に関連する二つの概念から成ります：メッタ（慈愛）はすべての存在の幸福を願うこと、カルナ（悲）は苦しみからの解放を願うことです。
 
-慈悲を育むことは他者のためだけでなく、自己解放への道でもあります。心が慈悲で満たされると、怒り、嫉妬、恐れは自然に消えていきます。
+慈悲を育むことは他者のためだけでなく、自己解放への道でもあります。心が慈悲で満たされると、怒り、嫉妒、恐れは自然に消えていきます。
 
 **メッタ瞑想**
 
@@ -549,13 +548,52 @@ The Four Noble Truths are like a doctor's diagnosis: first diagnose the illness 
   },
 };
 
+// Helper to render content with markdown-like formatting
+function renderContent(content: string) {
+  return content.split('\n\n').map((paragraph, index) => {
+    if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
+      return (
+        <h3 key={index} className="text-xl font-bold text-saffron mt-8 mb-4">
+          {paragraph.replace(/\*\*/g, '')}
+        </h3>
+      );
+    }
+    if (paragraph.startsWith('- ')) {
+      return (
+        <ul key={index} className="list-disc list-inside space-y-2 my-4">
+          {paragraph.split('\n').map((item, i) => (
+            <li key={i} className="text-wisdom-text">
+              {item.replace(/^- /, '')}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+    if (paragraph.match(/^\d\. /)) {
+      return (
+        <ol key={index} className="list-decimal list-inside space-y-2 my-4">
+          {paragraph.split('\n').map((item, i) => (
+            <li key={i} className="text-wisdom-text">
+              {item.replace(/^\d\. /, '')}
+            </li>
+          ))}
+        </ol>
+      );
+    }
+    return (
+      <p key={index} className="text-wisdom-text mb-4 leading-relaxed">
+        {paragraph}
+      </p>
+    );
+  });
+}
+
 export default async function PostPage({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const t = await getTranslations();
 
   const post = posts[slug];
 
@@ -564,12 +602,12 @@ export default async function PostPage({
   }
 
   const lotusEmoji = getLotusEmoji(post.lunarDay);
-  const lotusDescription = getLotusStageDescription(post.lunarDay, locale);
+  const lotusDescription = getLotusStageDescription(post.lunarDay, 'en');
 
   return (
     <article className="container mx-auto px-4 py-12">
       {/* Back Link */}
-      <div className="max-w-3xl mx-auto mb-8">
+      <div className="max-w-4xl mx-auto mb-8">
         <Link
           href={`/${locale}/posts`}
           className="inline-flex items-center text-zen-stone hover:text-saffron transition-colors"
@@ -577,18 +615,18 @@ export default async function PostPage({
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-          {locale === 'zh' ? '返回文章' : locale === 'ja' ? '記事に戻る' : 'Back to Posts'}
+          Back to Posts
         </Link>
       </div>
 
       {/* Article Header */}
-      <header className="max-w-3xl mx-auto text-center mb-12">
+      <header className="max-w-4xl mx-auto text-center mb-12">
         {/* Lunar Day Badge */}
         <div className="inline-flex items-center gap-3 bg-lotus-cream/50 rounded-full px-6 py-3 mb-6">
           <span className="text-2xl">{lotusEmoji}</span>
           <div className="text-left">
             <p className="text-sm text-zen-stone">
-              {t('lotus.lunarDay', { day: post.lunarDay })}
+              Lunar Day {post.lunarDay}
             </p>
             <p className="text-sm font-medium text-saffron">
               {lotusDescription}
@@ -596,9 +634,14 @@ export default async function PostPage({
           </div>
         </div>
 
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-wisdom-text mb-4">
-          {post.title[locale] || post.title.en}
+        {/* English Title (Primary) */}
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-wisdom-text mb-2">
+          {post.title.en}
         </h1>
+
+        {/* Chinese & Japanese Titles */}
+        <p className="text-xl text-zen-stone mb-2">{post.title.zh}</p>
+        <p className="text-lg text-zen-stone/80 mb-4">{post.title.ja}</p>
 
         {/* Meta Info */}
         <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-zen-stone">
@@ -617,84 +660,114 @@ export default async function PostPage({
         </div>
       </header>
 
-      {/* Buddha Quote */}
-      <section className="max-w-3xl mx-auto mb-12">
+      {/* Buddha Quote - All Languages */}
+      <section className="max-w-4xl mx-auto mb-12">
         <blockquote className="buddha-quote">
-          <p className="text-wisdom-text mb-4">
-            "{post.buddhaQuote[locale]?.text || post.buddhaQuote.en.text}"
+          <p className="text-wisdom-text mb-2">
+            &ldquo;{post.buddhaQuote.en.text}&rdquo;
+          </p>
+          <p className="text-wisdom-text/80 mb-2 text-lg">
+            &ldquo;{post.buddhaQuote.zh.text}&rdquo;
+          </p>
+          <p className="text-wisdom-text/70 mb-4 text-base">
+            &ldquo;{post.buddhaQuote.ja.text}&rdquo;
           </p>
           <footer className="text-sm text-zen-stone">
-            — {locale === 'zh' ? '佛陀' : locale === 'ja' ? '仏陀' : 'The Buddha'}, {post.buddhaQuote[locale]?.source || post.buddhaQuote.en.source}
+            — The Buddha, {post.buddhaQuote.en.source}
           </footer>
         </blockquote>
       </section>
 
-      {/* Article Content */}
-      <section className="max-w-3xl mx-auto mb-12">
+      {/* English Content */}
+      <section className="max-w-4xl mx-auto mb-16">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="text-sm font-semibold text-white bg-saffron px-3 py-1 rounded">EN</span>
+          <h2 className="text-2xl font-bold text-saffron">English</h2>
+        </div>
         <div className="prose prose-lg prose-wisdom font-serif">
-          {(post.content[locale] || post.content.en).split('\n\n').map((paragraph, index) => {
-            if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
-              return (
-                <h3 key={index} className="text-xl font-bold text-saffron mt-8 mb-4">
-                  {paragraph.replace(/\*\*/g, '')}
-                </h3>
-              );
-            }
-            if (paragraph.startsWith('- ')) {
-              return (
-                <ul key={index} className="list-disc list-inside space-y-2 my-4">
-                  {paragraph.split('\n').map((item, i) => (
-                    <li key={i} className="text-wisdom-text">
-                      {item.replace(/^- /, '')}
-                    </li>
-                  ))}
-                </ul>
-              );
-            }
-            if (paragraph.match(/^\d\. /)) {
-              return (
-                <ol key={index} className="list-decimal list-inside space-y-2 my-4">
-                  {paragraph.split('\n').map((item, i) => (
-                    <li key={i} className="text-wisdom-text">
-                      {item.replace(/^\d\. /, '')}
-                    </li>
-                  ))}
-                </ol>
-              );
-            }
-            return (
-              <p key={index} className="text-wisdom-text mb-4 leading-relaxed">
-                {paragraph}
-              </p>
-            );
-          })}
+          {renderContent(post.content.en)}
         </div>
       </section>
 
-      {/* Reflection Questions */}
-      <section className="max-w-3xl mx-auto mb-12">
+      {/* Chinese Content */}
+      <section className="max-w-4xl mx-auto mb-16">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="text-sm font-semibold text-white bg-saffron px-3 py-1 rounded">中文</span>
+          <h2 className="text-2xl font-bold text-saffron">Chinese / 中文</h2>
+        </div>
+        <div className="prose prose-lg prose-wisdom font-serif">
+          {renderContent(post.content.zh)}
+        </div>
+      </section>
+
+      {/* Japanese Content */}
+      <section className="max-w-4xl mx-auto mb-16">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="text-sm font-semibold text-white bg-saffron px-3 py-1 rounded">日本語</span>
+          <h2 className="text-2xl font-bold text-saffron">Japanese / 日本語</h2>
+        </div>
+        <div className="prose prose-lg prose-wisdom font-serif">
+          {renderContent(post.content.ja)}
+        </div>
+      </section>
+
+      {/* Reflection Questions - All Languages */}
+      <section className="max-w-4xl mx-auto mb-12">
         <div className="bg-lotus-cream/30 rounded-lg border border-lotus-pink/20 p-8">
-          <h2 className="text-2xl font-bold text-saffron mb-6 flex items-center gap-3">
+          <h2 className="text-2xl font-bold text-saffron mb-8 flex items-center gap-3">
             <span>🪷</span>
-            {locale === 'zh' ? '反思问题' : locale === 'ja' ? '振り返りの質問' : 'Reflection Questions'}
+            Reflection Questions
           </h2>
-          <ol className="space-y-4">
-            {(post.reflectionQuestions[locale] || post.reflectionQuestions.en).map((question, index) => (
-              <li key={index} className="flex gap-4">
-                <span className="flex-shrink-0 w-8 h-8 bg-saffron/20 rounded-full flex items-center justify-center text-saffron font-bold">
-                  {index + 1}
-                </span>
-                <p className="text-wisdom-text font-serif pt-1">
-                  {question}
-                </p>
-              </li>
-            ))}
-          </ol>
+
+          {/* English Questions */}
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold text-saffron mb-4">English</h3>
+            <ol className="space-y-3">
+              {post.reflectionQuestions.en.map((question, index) => (
+                <li key={index} className="flex gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 bg-saffron/20 rounded-full flex items-center justify-center text-saffron text-sm font-bold">
+                    {index + 1}
+                  </span>
+                  <p className="text-wisdom-text">{question}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          {/* Chinese Questions */}
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold text-saffron mb-4">中文</h3>
+            <ol className="space-y-3">
+              {post.reflectionQuestions.zh.map((question, index) => (
+                <li key={index} className="flex gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 bg-saffron/20 rounded-full flex items-center justify-center text-saffron text-sm font-bold">
+                    {index + 1}
+                  </span>
+                  <p className="text-wisdom-text">{question}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          {/* Japanese Questions */}
+          <div>
+            <h3 className="text-lg font-semibold text-saffron mb-4">日本語</h3>
+            <ol className="space-y-3">
+              {post.reflectionQuestions.ja.map((question, index) => (
+                <li key={index} className="flex gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 bg-saffron/20 rounded-full flex items-center justify-center text-saffron text-sm font-bold">
+                    {index + 1}
+                  </span>
+                  <p className="text-wisdom-text">{question}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 
       {/* Navigation */}
-      <nav className="max-w-3xl mx-auto pt-8 border-t border-lotus-pink/20">
+      <nav className="max-w-4xl mx-auto pt-8 border-t border-lotus-pink/20">
         <div className="flex justify-center">
           <Link
             href={`/${locale}/posts`}
@@ -703,7 +776,7 @@ export default async function PostPage({
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
             </svg>
-            {locale === 'zh' ? '查看所有文章' : locale === 'ja' ? 'すべての記事を見る' : 'View All Posts'}
+            View All Posts
           </Link>
         </div>
       </nav>
@@ -711,11 +784,9 @@ export default async function PostPage({
   );
 }
 
-// Generate static params for all posts
+// Generate static params for all posts (only need one locale now)
 export async function generateStaticParams() {
   return Object.keys(posts).flatMap((slug) => [
-    { locale: 'zh', slug },
     { locale: 'en', slug },
-    { locale: 'ja', slug },
   ]);
 }
