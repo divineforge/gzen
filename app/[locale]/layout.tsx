@@ -1,8 +1,11 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import Link from 'next/link';
 import '../globals.css';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import MobileNav from '@/components/MobileNav';
 
 export default async function LocaleLayout({
   children,
@@ -18,17 +21,16 @@ export default async function LocaleLayout({
   const navLinks = [
     { href: `/${locale}`, label: t('home') },
     { href: `/${locale}/blog`, label: t('blog') },
-    { href: `/${locale}/calendar`, label: t('calendar') },
     { href: `/${locale}/about`, label: t('about') },
   ];
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&family=Noto+Serif:wght@400;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
@@ -38,11 +40,11 @@ export default async function LocaleLayout({
             <header className="border-b border-lotus-pink/20 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
               <nav className="container mx-auto px-4 py-4">
                 <div className="flex items-center justify-between">
-                  <Link href={`/${locale}`} className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                  <Link href={`/${locale}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                     <span className="text-3xl">🪷</span>
                     <div>
-                      <h1 className="text-xl font-bold text-saffron">GrowZen</h1>
-                      <p className="text-sm text-zen-stone font-serif">禅生定，定生慧</p>
+                      <h1 className="text-lg font-bold text-saffron">GrowZen</h1>
+                      <p className="text-xs text-zen-stone font-serif">禅生定，定生慧</p>
                     </div>
                   </Link>
 
@@ -61,15 +63,13 @@ export default async function LocaleLayout({
                       ))}
                     </ul>
 
-                    {/* Language Switcher */}
-                    <LanguageSwitcher currentLocale={locale} />
+                    {/* Language Switcher - Desktop only */}
+                    <div className="hidden md:block">
+                      <LanguageSwitcher currentLocale={locale} />
+                    </div>
 
-                    {/* Mobile Menu Button */}
-                    <button className="md:hidden text-wisdom-text hover:text-saffron">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                      </svg>
-                    </button>
+                    {/* Mobile Menu */}
+                    <MobileNav navLinks={navLinks} locale={locale} />
                   </div>
                 </div>
               </nav>
@@ -77,11 +77,15 @@ export default async function LocaleLayout({
 
             <main className="flex-1">{children}</main>
 
-            <footer className="border-t border-lotus-pink/20 bg-white/50 mt-12">
-              <div className="container mx-auto px-4 py-8 text-center text-sm text-zen-stone">
-                <p className="font-serif">🪷 禅生定，定生慧</p>
-                <p className="mt-2">
-                  © {new Date().getFullYear()} GrowZen. Built with wisdom and compassion.
+            <footer className="border-t border-lotus-pink/20 bg-white/50 mt-8">
+              <div className="container mx-auto px-4 py-6 text-center text-zen-stone">
+                <div className="text-3xl mb-2">🪷</div>
+                <p className="text-sm max-w-md mx-auto leading-relaxed">
+                  Buddhist wisdom for mindful living. <br className="sm:hidden" />
+                  Grow with the lotus, one breath at a time.
+                </p>
+                <p className="mt-3 text-xs">
+                  © {new Date().getFullYear()} GrowZen (gzen.io)
                 </p>
               </div>
             </footer>

@@ -1,19 +1,22 @@
 import { getTranslations } from 'next-intl/server';
-import { getLunarDay, getLotusStage, getLotusEmoji, getLotusStageDescription, isFullMoon, isNewMoon } from '@/lib/utils/lunar-calendar';
+import { getLunarDate, getLunarDay, getLotusStage, getLotusEmoji, getLotusStageDescription, isFullMoon, isNewMoon } from '@/lib/utils/lunar-calendar';
 import LotusPreview from '@/components/LotusPreview';
+import Link from 'next/link';
+import { getLatestPosts } from '@/lib/data/posts';
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations();
 
-  // Get current lunar information
-  const lunarDay = getLunarDay();
+  const lunarDate = getLunarDate();
+  const lunarDay = lunarDate.day;
+  const daysInMonth = lunarDate.daysInMonth;
   const lotusStage = getLotusStage();
   const isFullMoonDay = isFullMoon();
   const isNewMoonDay = isNewMoon();
 
-  // Pre-compute all stages for the client component
-  const allStages = Array.from({ length: 15 }, (_, i) => {
+  // Generate all 30 stages for full lunar month cycle
+  const allStages = Array.from({ length: 30 }, (_, i) => {
     const stage = i + 1;
     return {
       stage,
@@ -29,100 +32,135 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     lotusDescription: getLotusStageDescription(lotusStage, locale),
     isFullMoonDay,
     isNewMoonDay,
+    daysInMonth,
     allStages,
   };
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      {/* Hero Section with Lotus */}
-      <section className="max-w-4xl mx-auto text-center mb-16">
+    <div className="container mx-auto px-6 py-16">
+      {/* Hero */}
+      <section className="max-w-4xl mx-auto text-center mb-20">
         <LotusPreview data={lotusData} locale={locale} />
 
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-saffron">
-          {t('home.hero.title')}
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-saffron leading-tight">
+          {locale === 'ja' ? '禅定慧' : (
+            <>
+              禅生定<br />定生慧
+            </>
+          )}
         </h1>
-        <p className="text-xl md:text-2xl text-zen-stone font-serif">
-          {t('home.hero.subtitle')}
+        <p className="text-2xl md:text-3xl text-zen-stone">
+          {locale === 'ja'
+            ? '蓮のように、日々成長する'
+            : '如莲绽放，日日精进'
+          }
         </p>
+        {locale !== 'ja' && (
+          <p className="text-xl text-zen-stone/70 mt-2">
+            Grow like the lotus, day by day
+          </p>
+        )}
       </section>
 
-      {/* Buddha Quote Section - Will be populated later */}
-      <section className="max-w-3xl mx-auto mb-16">
-        <blockquote className="buddha-quote">
-          <p className="text-wisdom-text mb-4">
-            "Just as a lotus flower is born in water, grows in water and rises out of water to stand above it unsoiled, so I, born in the world, raised in the world having overcome the world, live unsoiled by the world."
+      {/* Simple Quote */}
+      <section className="max-w-3xl mx-auto mb-20">
+        <blockquote className="buddha-quote text-center">
+          <p className="text-2xl md:text-3xl mb-6">
+            {locale === 'ja'
+              ? '「泥より出でて、泥に染まらず」'
+              : '"出淤泥而不染"'
+            }
           </p>
-          <footer className="text-sm text-zen-stone">
-            — The Buddha, Anguttara Nikaya
+          {locale !== 'ja' && (
+            <p className="text-xl text-zen-stone/70 mb-4">
+              &quot;Rising from mud, unstained&quot;
+            </p>
+          )}
+          <footer className="text-lg text-zen-stone">
+            — {locale === 'ja' ? '仏陀' : '佛陀 Buddha'}
           </footer>
         </blockquote>
       </section>
 
-      {/* Latest Posts Section - Placeholder */}
-      <section className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-saffron mb-8">
-          {t('home.latestPosts')}
-        </h2>
-        <div className="text-center py-12 text-zen-stone">
-          <p className="text-lg">{t('blog.noPosts')}</p>
-          <p className="text-sm mt-2">Posts will appear on even lunar days (2, 4, 6, 8, 10, 12, 14)</p>
+      {/* Latest Posts */}
+      <section className="max-w-6xl mx-auto mb-20">
+        <div className="flex items-center justify-between mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-saffron">
+            {locale === 'ja' ? '最新の智慧' : '最新智慧'}
+          </h2>
+          <Link
+            href={`/${locale}/blog`}
+            className="text-xl text-saffron hover:text-saffron-dark transition-colors font-medium"
+          >
+            {locale === 'ja' ? 'すべて見る' : '查看全部'} →
+          </Link>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {getLatestPosts(3).map((post) => (
+            <article
+              key={post.id}
+              className="bg-white rounded-2xl shadow-sm border border-lotus-pink/10 overflow-hidden hover:shadow-lg transition-shadow"
+            >
+              {/* Day indicator */}
+              <div className="bg-gradient-to-r from-lotus-cream to-lotus-pink/20 px-6 py-4 flex items-center justify-between">
+                <span className="text-lg text-zen-stone font-medium">
+                  {locale === 'ja' ? `${post.lunarDay}日目` : `第${post.lunarDay}天`}
+                </span>
+                <span className="text-3xl">
+                  {getLotusEmoji(post.lunarDay)}
+                </span>
+              </div>
+
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-wisdom-text mb-4 hover:text-saffron transition-colors leading-tight">
+                  <Link href={`/${locale}/blog/${post.slug}`}>
+                    {locale === 'ja' ? post.title.ja : post.title.zh}
+                  </Link>
+                </h3>
+
+                {locale !== 'ja' && (
+                  <p className="text-lg text-zen-stone/70 mb-4">
+                    {post.title.en}
+                  </p>
+                )}
+
+                <Link
+                  href={`/${locale}/blog/${post.slug}`}
+                  className="inline-flex items-center text-xl text-saffron hover:text-saffron-dark transition-colors font-medium"
+                >
+                  {locale === 'ja' ? '読む' : '阅读'} →
+                </Link>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* Info Section */}
-      <section className="max-w-3xl mx-auto mt-16 text-center">
-        <div className="bg-lotus-cream/30 rounded-lg p-8 border border-lotus-pink/20">
-          <h3 className="text-2xl font-bold text-saffron mb-4">
-            {locale === 'zh' ? '关于这个博客' : locale === 'ja' ? 'このブログについて' : 'About This Blog'}
+      {/* Simple Info */}
+      <section className="max-w-3xl mx-auto text-center">
+        <div className="bg-lotus-cream/30 rounded-3xl p-10 border border-lotus-pink/20">
+          <div className="text-6xl mb-6">🪷</div>
+          <h3 className="text-2xl md:text-3xl font-bold text-saffron mb-6">
+            {locale === 'ja' ? '私たちについて' : '关于我们'}
           </h3>
-          <div className="space-y-4 text-wisdom-text font-serif">
-            {locale === 'zh' ? (
-              <>
-                <p>
-                  GrowZen（禅生定，定生慧）是一个跟随农历月相的佛法智慧博客。
-                </p>
-                <p>
-                  每逢农历偶数日（2、4、6、8、10、12、14），我们发布一篇新的佛法智慧文章。
-                </p>
-                <p>
-                  每逢朔月（初一）与望月（十五），莲花完成一个生长周期，带来特别的佛语。
-                </p>
-                <p className="text-saffron font-semibold">
-                  如莲花于污泥中绽放，我们在日常生活中觉醒。
-                </p>
-              </>
-            ) : locale === 'ja' ? (
-              <>
-                <p>
-                  GrowZen（禅定慧の道）は、太陰暦の満ち欠けに従う仏教智慧のブログです。
-                </p>
-                <p>
-                  偶数の太陰暦日（2、4、6、8、10、12、14日）ごとに、新しい仏教の智慧の記事を公開します。
-                </p>
-                <p>
-                  新月（1日）と満月（15日）には、蓮が成長サイクルを完了し、特別な仏陀の言葉をお届けします。
-                </p>
-                <p className="text-saffron font-semibold">
-                  蓮の花が泥の中から咲くように、私たちは日常生活の中で目覚めます。
-                </p>
-              </>
-            ) : (
-              <>
-                <p>
-                  GrowZen (禅生定，定生慧) is a Buddhist wisdom blog that follows the lunar calendar cycles.
-                </p>
-                <p>
-                  On even lunar days (2, 4, 6, 8, 10, 12, 14), we publish new Buddhist wisdom teachings.
-                </p>
-                <p>
-                  On new moon (day 1) and full moon (day 15), the lotus completes its growth cycle with special Buddha quotes.
-                </p>
-                <p className="text-saffron font-semibold">
-                  Like the lotus blooming from mud, we awaken in the midst of daily life.
-                </p>
-              </>
-            )}
-          </div>
+          <p className="text-xl text-wisdom-text mb-4">
+            {locale === 'ja'
+              ? '月の満ち欠けに従い、智慧を共有します'
+              : '跟随月亮盈缺，分享佛法智慧'
+            }
+          </p>
+          {locale !== 'ja' && (
+            <p className="text-lg text-zen-stone/70 mb-6">
+              Following the moon phases, sharing Buddhist wisdom
+            </p>
+          )}
+          <Link
+            href={`/${locale}/about`}
+            className="btn-primary inline-block"
+          >
+            {locale === 'ja' ? '詳しく見る' : '了解更多'}
+          </Link>
         </div>
       </section>
     </div>
