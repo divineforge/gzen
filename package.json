@@ -14,7 +14,7 @@
     "date-fns": "^3.6.0",
     "geist": "^1.5.1",
     "lunar-javascript": "^1.6.12",
-    "next": "^15.0.3",
+    "next": "^16.1.5",
     "next-intl": "^3.22.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
