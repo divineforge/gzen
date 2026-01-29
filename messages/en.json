@@ -3,11 +3,11 @@
     "title": "GrowZen",
     "name": "禅生定，定生慧",
     "tagline": "Where Meditation Blooms into Wisdom",
-    "description": "Buddhist wisdom following lunar cycles. New posts on even lunar days, blooming like the lotus."
+    "description": "Buddhist wisdom for mindful living, blooming like the lotus."
   },
   "nav": {
     "home": "Home",
-    "blog": "Blog",
+    "posts": "Posts",
     "calendar": "Calendar",
     "about": "About"
   },
@@ -47,8 +47,8 @@
     "latestPosts": "Latest Wisdom Posts",
     "viewAll": "View All"
   },
-  "blog": {
-    "title": "Wisdom Blog",
+  "posts": {
+    "title": "Wisdom Posts",
     "readMore": "Read More",
     "publishedOn": "Published on",
     "tags": "Tags",
@@ -68,8 +68,8 @@
   },
   "telegram": {
     "subscribe": "Subscribe via Telegram",
-    "subscribed": "✅ Subscribed! You'll receive wisdom on even lunar days.",
-    "dailyWisdom": "🪷 Daily Zen Wisdom"
+    "subscribed": "✅ Subscribed! You'll receive wisdom updates.",
+    "dailyWisdom": "🪷 Zen Wisdom"
   },
   "common": {
     "loading": "Loading...",

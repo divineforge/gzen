@@ -1,7 +1,7 @@
 {
   "name": "growzen",
   "version": "0.1.0",
-  "description": "GrowZen (禅生定，定生慧) - Buddhist wisdom blog following lunar cycles",
+  "description": "GrowZen (禅生定，定生慧) - Buddhist wisdom for mindful living",
   "private": true,
   "scripts": {
     "dev": "next dev",

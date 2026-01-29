@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Link, useRouter, usePathname } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 
 interface NavLink {
   href: string;
@@ -10,18 +10,10 @@ interface NavLink {
 
 interface MobileNavProps {
   navLinks: NavLink[];
-  locale: string;
 }
 
-// Two modes: bilingual (zh - default) and Japanese only (ja)
-const localeOptions = [
-  { code: 'zh' as const, label: 'EN/CN' },
-  { code: 'ja' as const, label: 'JP' },
-];
-
-export default function MobileNav({ navLinks, locale }: MobileNavProps) {
+export default function MobileNav({ navLinks }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
   const pathname = usePathname();
 
   // Close menu when route changes
@@ -40,14 +32,6 @@ export default function MobileNav({ navLinks, locale }: MobileNavProps) {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
-
-  // Treat 'en' as 'zh' for display purposes (both are bilingual)
-  const displayLocale = locale === 'en' ? 'zh' : locale;
-
-  const handleLocaleChange = (newLocale: 'zh' | 'ja') => {
-    router.replace(pathname, { locale: newLocale });
-    setIsOpen(false);
-  };
 
   return (
     <div className="md:hidden">
@@ -86,7 +70,7 @@ export default function MobileNav({ navLinks, locale }: MobileNavProps) {
         <div className="bg-wisdom-bg border-b border-lotus-pink/20 shadow-lg">
           <div className="container mx-auto px-4 py-4">
             {/* Navigation Links */}
-            <nav className="mb-4">
+            <nav>
               <ul className="space-y-1">
                 {navLinks.map((link) => (
                   <li key={link.href}>
@@ -105,30 +89,6 @@ export default function MobileNav({ navLinks, locale }: MobileNavProps) {
                 ))}
               </ul>
             </nav>
-
-            {/* Language Switcher */}
-            <div className="border-t border-lotus-pink/20 pt-4">
-              <p className="text-xs text-zen-stone mb-2 px-4">Language / 语言</p>
-              <div className="flex gap-2 px-4">
-                {localeOptions.map((loc) => {
-                  const isActive = displayLocale === loc.code;
-
-                  return (
-                    <button
-                      key={loc.code}
-                      onClick={() => handleLocaleChange(loc.code)}
-                      className={`flex-1 py-3 px-4 text-center rounded-lg font-medium transition-colors ${
-                        isActive
-                          ? 'bg-saffron text-white'
-                          : 'bg-white text-zen-stone border border-lotus-pink/20 hover:border-saffron hover:text-saffron'
-                      }`}
-                    >
-                      {loc.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
 
             {/* Footer */}
             <div className="mt-4 pt-4 border-t border-lotus-pink/20 text-center">
