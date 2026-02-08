@@ -94,7 +94,7 @@ export default function MobileNav({ navLinks }: MobileNavProps) {
             <div className="mt-4 pt-4 border-t border-lotus-pink/20 text-center">
               <span className="text-2xl">🪷</span>
               <p className="text-sm text-zen-stone font-serif mt-1">
-                禅生定，定生慧
+                Calm grows wisdom
               </p>
             </div>
           </div>

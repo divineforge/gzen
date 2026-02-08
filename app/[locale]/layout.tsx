@@ -32,6 +32,10 @@ export default async function LocaleLayout({
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          rel="stylesheet"
+        />
       </head>
       <body className="font-sans bg-wisdom-bg text-wisdom-text min-h-screen">
         <NextIntlClientProvider messages={messages}>
@@ -43,7 +47,7 @@ export default async function LocaleLayout({
                     <span className="text-3xl">🪷</span>
                     <div>
                       <h1 className="text-lg font-bold text-saffron">GrowZen</h1>
-                      <p className="text-xs text-zen-stone font-serif">禅生定，定生慧</p>
+                      <p className="text-xs text-zen-stone font-serif">Calm grows wisdom</p>
                     </div>
                   </Link>
 
@@ -75,7 +79,7 @@ export default async function LocaleLayout({
               <div className="container mx-auto px-4 py-6 text-center text-zen-stone">
                 <div className="text-3xl mb-2">🪷</div>
                 <p className="text-sm max-w-md mx-auto leading-relaxed">
-                  Buddhist wisdom for mindful living. <br className="sm:hidden" />
+                  Simple Buddhist wisdom for calm living. <br className="sm:hidden" />
                   Grow with the lotus, one breath at a time.
                 </p>
                 <p className="mt-3 text-xs">

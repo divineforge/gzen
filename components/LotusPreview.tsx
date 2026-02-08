@@ -19,10 +19,9 @@ interface LotusData {
 
 interface LotusPreviewProps {
   data: LotusData;
-  locale: string;
 }
 
-export default function LotusPreview({ data, locale }: LotusPreviewProps) {
+export default function LotusPreview({ data }: LotusPreviewProps) {
   const [previewOffset, setPreviewOffset] = useState(0);
 
   const isPreviewMode = previewOffset !== 0;
@@ -72,9 +71,9 @@ export default function LotusPreview({ data, locale }: LotusPreviewProps) {
         <button
           onClick={handlePrev}
           className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 shadow-md text-saffron hover:bg-saffron hover:text-white transition-colors"
-          aria-label="Previous"
+          aria-label="Back"
         >
-          ←
+          <i className="fa-solid fa-chevron-left" aria-hidden="true" />
         </button>
 
         <button
@@ -82,7 +81,7 @@ export default function LotusPreview({ data, locale }: LotusPreviewProps) {
           className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 shadow-md text-saffron hover:bg-saffron hover:text-white transition-colors"
           aria-label="Next"
         >
-          →
+          <i className="fa-solid fa-chevron-right" aria-hidden="true" />
         </button>
 
         {/* Main Emoji Display */}
@@ -99,7 +98,7 @@ export default function LotusPreview({ data, locale }: LotusPreviewProps) {
 
           {isPreviewMode && (
             <span className="inline-block bg-blue-400/80 text-white text-xs px-3 py-1 rounded-full mb-2">
-              {locale === 'ja' ? 'プレビュー' : '预览 Preview'}
+              Preview
             </span>
           )}
         </div>
@@ -110,10 +109,7 @@ export default function LotusPreview({ data, locale }: LotusPreviewProps) {
         <p className={`text-3xl sm:text-4xl font-bold mb-2 ${
           isPreviewMode ? 'text-blue-400' : 'text-saffron'
         }`}>
-          {locale === 'ja'
-            ? `${previewLunarDay}日目`
-            : `第${previewLunarDay}天`
-          }
+          Day {previewLunarDay}
         </p>
 
         <p className={`text-xl sm:text-2xl font-serif mb-3 ${
@@ -129,20 +125,14 @@ export default function LotusPreview({ data, locale }: LotusPreviewProps) {
               ? 'bg-wisdom-text text-white'
               : 'bg-lotus-gold text-wisdom-text'
           }`}>
-            {data.isNewMoonDay
-              ? (locale === 'ja' ? '🌑 新月' : '🌑 朔月')
-              : (locale === 'ja' ? '🌕 満月' : '🌕 望月')
-            }
+            {data.isNewMoonDay ? '🌑 New Moon' : '🌕 Full Moon'}
           </span>
         )}
 
         {/* Preview moon phases */}
         {isPreviewMode && (isPreviewNewMoon || isPreviewFullMoon) && (
           <span className="inline-block px-4 py-2 rounded-full text-lg font-medium bg-blue-400/20 text-blue-500">
-            {isPreviewNewMoon
-              ? (locale === 'ja' ? '🌑 新月' : '🌑 朔月')
-              : (locale === 'ja' ? '🌕 満月' : '🌕 望月')
-            }
+            {isPreviewNewMoon ? '🌑 New Moon' : '🌕 Full Moon'}
           </span>
         )}
       </div>
@@ -151,9 +141,10 @@ export default function LotusPreview({ data, locale }: LotusPreviewProps) {
       {isPreviewMode && (
         <button
           onClick={handleReset}
-          className="mt-4 px-6 py-2 rounded-full text-sm font-medium bg-zen-stone/10 text-zen-stone border border-zen-stone/30 hover:bg-zen-stone/20 transition-colors"
+          className="mt-4 w-11 h-11 rounded-full text-base font-medium bg-zen-stone/10 text-zen-stone border border-zen-stone/30 hover:bg-zen-stone/20 transition-colors flex items-center justify-center"
+          aria-label="Back to today"
         >
-          {locale === 'ja' ? '今日に戻る' : '返回今天'}
+          <i className="fa-solid fa-rotate-left" aria-hidden="true" />
         </button>
       )}
 
@@ -199,8 +190,8 @@ export default function LotusPreview({ data, locale }: LotusPreviewProps) {
 
       {/* Phase Labels */}
       <div className="flex justify-center gap-6 mt-2 text-xs text-zen-stone">
-        <span>🌑→🌕 {locale === 'ja' ? '成長' : '生长'}</span>
-        <span>🌕→🌑 {locale === 'ja' ? '完成' : '圆满'}</span>
+        <span>🌑→🌕 Grow</span>
+        <span>🌕→🌑 Fade</span>
       </div>
     </div>
   );
