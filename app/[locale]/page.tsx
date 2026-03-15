@@ -38,16 +38,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <div className="container mx-auto px-6 py-16">
       {/* Hero */}
       <section className="max-w-4xl mx-auto text-center mb-20">
-        <LotusPreview data={lotusData} locale="en" />
+        <LotusPreview data={lotusData} />
 
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-saffron leading-tight">
-          禅生定<br />定生慧
+          Calm grows
+          <br />
+          Wisdom grows
         </h1>
         <p className="text-2xl md:text-3xl text-zen-stone">
-          Where Meditation Blooms into Wisdom
+          Meditation grows wisdom
         </p>
         <p className="text-xl text-zen-stone/70 mt-2">
-          Grow like the lotus, day by day
+          Grow like a lotus, day by day
         </p>
       </section>
 
@@ -55,10 +57,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="max-w-3xl mx-auto mb-20">
         <blockquote className="buddha-quote text-center">
           <p className="text-2xl md:text-3xl mb-4">
-            &ldquo;Rising from mud, unstained&rdquo;
-          </p>
-          <p className="text-xl text-zen-stone/70 mb-4">
-            出淤泥而不染
+            &ldquo;Rise from mud, stay clean&rdquo;
           </p>
           <footer className="text-lg text-zen-stone">
             — The Buddha
@@ -70,13 +69,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="max-w-6xl mx-auto mb-20">
         <div className="flex items-center justify-between mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-saffron">
-            Latest Wisdom
+            Latest posts
           </h2>
           <Link
             href={`/${locale}/posts`}
             className="text-xl text-saffron hover:text-saffron-dark transition-colors font-medium"
           >
-            View All →
+            View all →
           </Link>
         </div>
 
@@ -104,7 +103,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </h3>
 
                 <p className="text-sm text-zen-stone/60 mb-4">
-                  {post.title.zh} · {post.title.ja}
+                  {post.title.en}
                 </p>
 
                 <Link
@@ -127,7 +126,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             About GrowZen
           </h3>
           <p className="text-xl text-wisdom-text mb-6">
-            Following the moon phases, sharing Buddhist wisdom for mindful living.
+            Follow the moon. Share simple Buddhist wisdom.
           </p>
           <Link
             href={`/${locale}/about`}
