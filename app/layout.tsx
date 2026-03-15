@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import './globals.css';
@@ -21,12 +22,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col">
         <header className="border-b border-stone-200 bg-white sticky top-0 z-10">
           <div className="max-w-3xl mx-auto px-4 h-14 flex items-center justify-between">
-            <a href="/" className="font-mono text-sm font-medium text-stone-800 tracking-tight hover:text-stone-600 transition-colors">
+            <Link href="/" className="font-mono text-sm font-medium text-stone-800 tracking-tight hover:text-stone-600 transition-colors">
               gzen
-            </a>
+            </Link>
             <nav className="flex items-center gap-6">
-              <a href="/posts" className="nav-link">writing</a>
-              <a href="/principles" className="nav-link">principles</a>
+              <Link href="/posts" className="nav-link">writing</Link>
+              <Link href="/principles" className="nav-link">principles</Link>
             </nav>
           </div>
         </header>

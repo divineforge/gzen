@@ -88,7 +88,7 @@ export function getAllTags(): string[] {
 }
 
 export async function renderMarkdown(content: string): Promise<string> {
-  const result = await remark().use(remarkHtml, { sanitize: false }).process(content);
+  const result = await remark().use(remarkHtml).process(content);
   return result.toString();
 }
 
