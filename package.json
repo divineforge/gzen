@@ -1,22 +1,24 @@
 {
-  "name": "growzen",
+  "name": "gzen",
   "version": "0.1.0",
-  "description": "GrowZen (禅生定，定生慧) - Buddhist wisdom for mindful living",
+  "description": "gzen — a philosophy platform centered on clarity, virtue, and disciplined thinking",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "new-koan": "node scripts/new-post.js koan",
+    "new-principle": "node scripts/new-post.js principle",
+    "new-practice": "node scripts/new-post.js practice",
+    "new-engineering": "node scripts/new-post.js engineering",
+    "new-library": "node scripts/new-post.js library"
   },
   "dependencies": {
-    "date-fns": "^3.6.0",
     "geist": "^1.5.1",
     "gray-matter": "^4.0.3",
-    "lunar-javascript": "^1.6.12",
     "next": "^16.1.5",
-    "next-intl": "^3.22.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remark": "^15.0.1",

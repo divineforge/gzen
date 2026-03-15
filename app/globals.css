@@ -4,103 +4,66 @@
 
 @layer base {
   html {
-    font-size: 18px; /* Larger base font for readability */
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply font-sans antialiased;
-    @apply text-lg leading-relaxed;
-    font-family: var(--font-geist-sans), 'Noto Sans SC', system-ui, sans-serif;
+    @apply bg-stone-50 text-stone-800;
   }
 
-  /* Chinese text specific styling */
-  :lang(zh) {
-    font-family: var(--font-geist-sans), 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium tracking-tight;
   }
 
-  :lang(zh) .font-serif {
-    font-family: 'Noto Serif SC', 'Songti SC', serif;
-    @apply leading-loose;
-  }
-
-  /* Japanese text specific styling */
-  :lang(ja) {
-    font-family: var(--font-geist-sans), 'Noto Sans JP', 'Yu Gothic', 'Hiragino Sans', sans-serif;
-  }
-
-  :lang(ja) .font-serif {
-    font-family: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
-    @apply leading-loose;
-  }
-
-  /* Larger headings */
-  h1 {
-    @apply text-4xl md:text-6xl font-bold leading-tight;
-  }
-
-  h2 {
-    @apply text-3xl md:text-4xl font-bold leading-tight;
-  }
-
-  h3 {
-    @apply text-2xl md:text-3xl font-semibold leading-snug;
-  }
-
-  p {
-    @apply text-xl leading-relaxed;
+  a {
+    @apply transition-colors duration-150;
   }
 }
 
 @layer components {
-  .lotus-container {
-    @apply flex flex-col items-center justify-center;
+  .prose-philosophy {
+    @apply max-w-prose mx-auto;
   }
 
-  .lotus-visual {
-    @apply w-40 h-40 flex items-center justify-center text-7xl;
-    animation: lotus-grow 2s ease-in-out;
+  .prose-philosophy h2 {
+    @apply text-lg font-medium text-stone-700 mt-10 mb-3 pb-2 border-b border-stone-200;
   }
 
-  .buddha-quote {
-    @apply font-serif text-xl md:text-2xl text-center text-zen-stone;
-    @apply px-8 py-10 bg-lotus-cream/30 rounded-2xl border-l-4 border-saffron;
-    @apply leading-relaxed;
+  .prose-philosophy p {
+    @apply text-base leading-relaxed text-stone-700 mb-4;
   }
 
-  .blog-card {
-    @apply bg-white rounded-2xl shadow-sm border border-lotus-pink/20;
-    @apply hover:shadow-lg transition-shadow duration-300;
+  .prose-philosophy blockquote {
+    @apply border-l-2 border-stone-300 pl-4 italic text-stone-500 my-6;
   }
 
-  .btn-primary {
-    @apply px-8 py-4 bg-saffron text-white rounded-xl;
-    @apply hover:bg-saffron-dark transition-colors duration-200;
-    @apply font-semibold text-lg;
+  .prose-philosophy strong {
+    @apply font-medium text-stone-800;
   }
 
-  .btn-secondary {
-    @apply px-8 py-4 bg-white text-saffron border-2 border-saffron rounded-xl;
-    @apply hover:bg-saffron hover:text-white transition-colors duration-200;
-    @apply font-semibold text-lg;
+  .prose-philosophy ul, .prose-philosophy ol {
+    @apply ml-4 mb-4 space-y-1;
   }
-}
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .prose-philosophy li {
+    @apply text-stone-700 leading-relaxed;
   }
-}
 
-/* Smooth scrolling */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
+  .tag-pill {
+    @apply inline-block text-xs font-medium px-2 py-0.5 rounded bg-stone-100 text-stone-500 hover:bg-stone-200 transition-colors;
   }
-}
 
-/* Even larger fonts on bigger screens */
-@media (min-width: 768px) {
-  html {
-    font-size: 20px;
+  .post-card {
+    @apply border border-stone-200 rounded p-5 hover:border-stone-300 transition-colors bg-white;
+  }
+
+  .principle-chip {
+    @apply inline-block text-xs px-2 py-0.5 rounded-full bg-stone-800 text-stone-100;
+  }
+
+  .nav-link {
+    @apply text-sm text-stone-500 hover:text-stone-800 transition-colors;
   }
 }
