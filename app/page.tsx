@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { getAllPosts, getAllPrinciples, getAllTags } from '@/lib/content';
+import LunarHero from '@/components/LunarHero';
+import { getLunarDate, getLotusEmoji, getLotusStageDescription } from '@/lib/utils/lunar-calendar';
+import type { LunarStage } from '@/components/LunarHero';
 
 const CATEGORY_LABELS: Record<string, string> = {
   koans: 'koan',
@@ -14,19 +17,32 @@ export default function HomePage() {
   const principles = getAllPrinciples();
   const tags = getAllTags();
 
-  return (
-    <div className="max-w-3xl mx-auto px-4 py-16 animate-fade-in">
+  // Compute lunar data server-side — all 30 stages passed to client LunarHero
+  const lunarDate = getLunarDate();
+  const allStages: LunarStage[] = Array.from({ length: lunarDate.daysInMonth }, (_, i) => {
+    const stage = i + 1;
+    return {
+      stage,
+      emoji: getLotusEmoji(stage),
+      description: getLotusStageDescription(stage, 'en'),
+      chineseDescription: getLotusStageDescription(stage, 'zh'),
+    };
+  });
 
-      {/* Hero */}
-      <section className="mb-16">
-        <h1 className="text-2xl font-medium text-stone-800 mb-3">
-          gzen
-        </h1>
-        <p className="text-base text-stone-500 leading-relaxed max-w-lg">
-          A philosophy platform centered on clarity, virtue, and disciplined thinking.
-          Ideas gain meaning through repetition.
-        </p>
-      </section>
+  return (
+    <div className="animate-fade-in">
+
+      {/* Lunar Hero — full-width, dynamic per-day backdrop with scroll-fade */}
+      <LunarHero
+        currentLunarDay={lunarDate.day}
+        lunarMonthName={lunarDate.monthName}
+        lunarYearName={lunarDate.yearName}
+        daysInMonth={lunarDate.daysInMonth}
+        allStages={allStages}
+      />
+
+      {/* Page content — sits below the hero */}
+      <div className="max-w-3xl mx-auto px-4 py-12">
 
       {/* Core Principles */}
       <section className="mb-14">
@@ -91,6 +107,7 @@ export default function HomePage() {
           </div>
         </section>
       )}
+      </div>
     </div>
   );
 }
