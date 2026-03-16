@@ -9,6 +9,14 @@ interface PageParams {
   slug: string;
 }
 
+const CATEGORY_LABELS: Record<string, string> = {
+  koans: '公案',
+  principles: '禅理',
+  practice: '修行',
+  engineering: '工程',
+  library: '典藏',
+};
+
 export async function generateStaticParams() {
   return getAllSlugs().map(({ category, slug }) => ({ category, slug }));
 }
@@ -36,7 +44,7 @@ export default async function PostPage({ params }: { params: Promise<PageParams>
   const related = getRelatedPosts(post, 3);
 
   return (
-    <article className="max-w-3xl mx-auto px-4 py-16 animate-fade-in">
+    <article className="max-w-3xl mx-auto px-4 py-10 sm:py-16 animate-fade-in">
       {/* Header */}
       <header className="mb-10">
         <div className="flex items-center gap-2 mb-4">
@@ -44,7 +52,7 @@ export default async function PostPage({ params }: { params: Promise<PageParams>
             文章
           </Link>
           <span className="text-xs" style={{ color: '#d5c9c0' }}>/</span>
-          <span className="text-xs" style={{ color: '#a8a29e' }}>{category}</span>
+          <span className="text-xs" style={{ color: '#a8a29e' }}>{CATEGORY_LABELS[category] ?? category}</span>
         </div>
         <h1 className="text-2xl font-medium text-stone-800 mb-3 tracking-tight">
           {post.frontmatter.title}
@@ -100,8 +108,7 @@ export default async function PostPage({ params }: { params: Promise<PageParams>
                 className="post-card block"
               >
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs text-stone-400">{r.category}</span>
-                  <span className="text-stone-300 text-xs">·</span>
+                  <span className="principle-chip">{CATEGORY_LABELS[r.category] ?? r.category}</span>
                   <span className="text-xs text-stone-400">{r.frontmatter.date}</span>
                 </div>
                 <h3 className="text-sm font-medium text-stone-800">{r.frontmatter.title}</h3>

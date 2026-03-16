@@ -35,7 +35,7 @@ export default function PostsPage() {
   }, {} as Record<ContentCategory, typeof posts>);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-16 animate-fade-in">
+    <div className="max-w-3xl mx-auto px-4 py-10 sm:py-16 animate-fade-in">
       <h1 className="text-xl font-medium mb-1" style={{ color: '#78350f' }}>文章</h1>
       <p className="text-xs mb-1" style={{ color: '#92400e', opacity: 0.5 }}>Writing</p>
       <p className="text-sm mb-12" style={{ color: '#57534e' }}>

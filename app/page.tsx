@@ -26,6 +26,7 @@ export default function HomePage() {
       emoji: getLotusEmoji(stage),
       description: getLotusStageDescription(stage, 'en'),
       chineseDescription: getLotusStageDescription(stage, 'zh'),
+      japaneseDescription: getLotusStageDescription(stage, 'ja'),
     };
   });
 
@@ -42,7 +43,7 @@ export default function HomePage() {
       />
 
       {/* Page content — sits below the hero */}
-      <div className="max-w-3xl mx-auto px-4 py-12">
+      <div className="max-w-3xl mx-auto px-4 py-8 sm:py-12">
 
       {/* Core Principles */}
       <section className="mb-14">

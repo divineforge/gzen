@@ -7,6 +7,7 @@ export interface LunarStage {
   emoji: string;
   description: string;
   chineseDescription: string;
+  japaneseDescription: string;
 }
 
 export interface LunarHeroProps {
@@ -107,7 +108,7 @@ export default function LunarHero({
   return (
     <section
       className="relative w-full overflow-hidden"
-      style={{ minHeight: '48vh' }}
+      style={{ minHeight: 'min(52vh, 480px)' }}
       aria-label="Lunar phase backdrop"
     >
       {/* Dynamic gradient background — changes per lunar day */}
@@ -129,7 +130,7 @@ export default function LunarHero({
       />
 
       {/* ── Hero content ── */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-4 pt-14 pb-20">
+      <div className="relative z-10 flex flex-col items-center justify-center px-4 pt-10 pb-16 sm:pt-14 sm:pb-20">
 
         {/* Preview badge */}
         {isPreviewMode && (
@@ -140,7 +141,7 @@ export default function LunarHero({
 
         {/* Main emoji */}
         <div
-          className={`text-7xl sm:text-8xl mb-3 select-none transition-all duration-500 ${isPreviewMode ? 'opacity-70 scale-90' : ''}`}
+          className={`text-6xl sm:text-8xl mb-3 select-none transition-all duration-500 ${isPreviewMode ? 'opacity-70 scale-90' : ''}`}
           role="img"
           aria-label={`Lunar day ${viewedDay}`}
         >
@@ -155,26 +156,29 @@ export default function LunarHero({
           )}
         </p>
 
-        {/* Stage description — Chinese primary (large), English secondary (small) */}
-        <p className={`text-xl sm:text-2xl font-medium mb-1 text-center max-w-sm transition-colors duration-500 ${theme.textClass}`}>
+        {/* Stage description — Chinese primary (large), Japanese secondary, English tertiary */}
+        <p className={`text-xl sm:text-2xl font-medium mb-0.5 text-center px-2 transition-colors duration-500 ${theme.textClass}`}>
           {stageData.chineseDescription}
         </p>
-        <p className={`text-sm mb-4 text-center transition-colors duration-500 ${theme.textClass} opacity-45`}>
+        <p className={`text-xs sm:text-sm mb-1 text-center px-2 transition-colors duration-500 ${theme.textClass} opacity-50`}>
+          {stageData.japaneseDescription}
+        </p>
+        <p className={`text-xs mb-4 text-center px-2 transition-colors duration-500 ${theme.textClass} opacity-35`}>
           {stageData.description}
         </p>
 
         {/* Lunar month info (only shown on today) */}
         {!isPreviewMode && (
-          <p className={`text-xs mb-6 ${theme.textClass} opacity-40`}>
+          <p className={`text-xs mb-5 ${theme.textClass} opacity-40`}>
             {lunarMonthName}月 · {lunarYearName}年 · 聚善
           </p>
         )}
 
         {/* ← → Navigation */}
-        <div className="flex items-center gap-5 mb-5">
+        <div className="flex items-center gap-4 sm:gap-5 mb-5">
           <button
             onClick={handlePrev}
-            className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all border border-white/15"
+            className="w-10 h-10 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all border border-white/15 text-base"
             aria-label="前一天"
           >
             ←
@@ -183,7 +187,7 @@ export default function LunarHero({
           {isPreviewMode ? (
             <button
               onClick={handleReset}
-              className="text-xs px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all border border-white/15"
+              className="text-xs px-4 py-2 sm:px-3 sm:py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all border border-white/15"
               aria-label="返回今日"
             >
               今日
@@ -194,45 +198,49 @@ export default function LunarHero({
 
           <button
             onClick={handleNext}
-            className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all border border-white/15"
+            className="w-10 h-10 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all border border-white/15 text-base"
             aria-label="后一天"
           >
             →
           </button>
         </div>
 
-        {/* Dot indicators — two rows of 15 */}
-        <div className="flex flex-col gap-1.5" aria-label="Lunar cycle progress">
+        {/* Dot indicators — two rows of 15, with larger touch targets on mobile */}
+        <div className="flex flex-col gap-2" aria-label="Lunar cycle progress">
           {/* Days 1–15: waxing */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5 sm:gap-1">
             {allStages.slice(0, 15).map((s) => (
               <button
                 key={s.stage}
                 onClick={() => handleDotClick(s.stage)}
                 aria-label={`农历 第${s.stage}日`}
-                className={`rounded-full transition-all duration-300 ${
+                className="w-6 h-6 sm:w-5 sm:h-5 flex items-center justify-center"
+              >
+                <span className={`rounded-full transition-all duration-300 block ${
                   viewedDay === s.stage
                     ? 'bg-white w-2.5 h-2.5'
                     : s.stage === 15
-                    ? 'bg-white/50 w-2 h-2 hover:bg-white/70'
-                    : 'bg-white/20 w-1.5 h-1.5 hover:bg-white/40'
-                }`}
-              />
+                    ? 'bg-white/50 w-2 h-2'
+                    : 'bg-white/25 w-1.5 h-1.5'
+                }`} />
+              </button>
             ))}
           </div>
           {/* Days 16–30: waning */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5 sm:gap-1">
             {allStages.slice(15, 30).map((s) => (
               <button
                 key={s.stage}
                 onClick={() => handleDotClick(s.stage)}
                 aria-label={`农历 第${s.stage}日`}
-                className={`rounded-full transition-all duration-300 ${
+                className="w-6 h-6 sm:w-5 sm:h-5 flex items-center justify-center"
+              >
+                <span className={`rounded-full transition-all duration-300 block ${
                   viewedDay === s.stage
                     ? 'bg-white w-2.5 h-2.5'
-                    : 'bg-white/20 w-1.5 h-1.5 hover:bg-white/40'
-                }`}
-              />
+                    : 'bg-white/25 w-1.5 h-1.5'
+                }`} />
+              </button>
             ))}
           </div>
           <div className="flex justify-between text-white/25 text-xs mt-0.5 px-0.5">

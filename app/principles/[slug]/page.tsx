@@ -7,6 +7,14 @@ interface PageParams {
   slug: string;
 }
 
+const CATEGORY_LABELS: Record<string, string> = {
+  koans: '公案',
+  principles: '禅理',
+  practice: '修行',
+  engineering: '工程',
+  library: '典藏',
+};
+
 export async function generateStaticParams() {
   return getAllPrinciples().map((p) => ({ slug: p.slug }));
 }
@@ -36,7 +44,7 @@ export default async function PrinciplePage({ params }: { params: Promise<PagePa
   );
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-16 animate-fade-in">
+    <div className="max-w-3xl mx-auto px-4 py-10 sm:py-16 animate-fade-in">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 mb-8">
         <Link href="/principles" className="text-xs transition-colors" style={{ color: '#a8a29e' }}>
@@ -88,8 +96,7 @@ export default async function PrinciplePage({ params }: { params: Promise<PagePa
                 className="post-card block"
               >
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs text-stone-400">{post.category}</span>
-                  <span className="text-stone-300 text-xs">·</span>
+                  <span className="principle-chip">{CATEGORY_LABELS[post.category] ?? post.category}</span>
                   <span className="text-xs text-stone-400">{post.frontmatter.date}</span>
                 </div>
                 <h3 className="text-sm font-medium text-stone-800">{post.frontmatter.title}</h3>
