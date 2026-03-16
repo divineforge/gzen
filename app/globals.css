@@ -7,6 +7,9 @@
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Prevent text size adjustment on mobile orientation change */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
@@ -23,6 +26,11 @@
   a {
     @apply transition-colors duration-150;
   }
+
+  /* Ensure tap targets meet accessibility minimum on mobile */
+  button, [role="button"] {
+    touch-action: manipulation;
+  }
 }
 
 @layer components {
@@ -36,7 +44,7 @@
   }
 
   .prose-philosophy p {
-    @apply text-base leading-loose mb-5;
+    @apply text-sm sm:text-base leading-loose mb-5;
     color: #44403c; /* warm stone-700 */
   }
 
@@ -56,7 +64,7 @@
   }
 
   .prose-philosophy li {
-    @apply leading-loose;
+    @apply text-sm sm:text-base leading-loose;
     color: #44403c;
   }
 
@@ -73,7 +81,7 @@
 
   /* Post card — white card with warm border */
   .post-card {
-    @apply rounded p-5 bg-white transition-all;
+    @apply rounded p-4 sm:p-5 bg-white transition-all;
     border: 1px solid #e7e5e4;
   }
   .post-card:hover {

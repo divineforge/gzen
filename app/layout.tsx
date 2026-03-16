@@ -25,14 +25,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="font-mono text-sm font-medium tracking-tight hover:text-saffron-600 transition-colors" style={{ color: '#78350f' }}>
               gzen <span className="text-xs font-normal opacity-60 ml-1">聚善</span>
             </Link>
-            <nav className="flex items-center gap-6">
-              <Link href="/posts" className="nav-link flex flex-col items-center leading-none">
+            <nav className="flex items-center gap-1 sm:gap-6">
+              <Link href="/posts" className="nav-link flex flex-col items-center leading-none px-3 py-2 sm:px-0 sm:py-0 rounded hover:bg-amber-50 sm:hover:bg-transparent transition-colors">
                 <span className="text-xs font-medium" style={{ color: '#78350f' }}>文章</span>
-                <span className="text-[10px] opacity-40">writing</span>
+                <span className="text-[10px] opacity-40 hidden sm:block">writing</span>
               </Link>
-              <Link href="/principles" className="nav-link flex flex-col items-center leading-none">
+              <Link href="/principles" className="nav-link flex flex-col items-center leading-none px-3 py-2 sm:px-0 sm:py-0 rounded hover:bg-amber-50 sm:hover:bg-transparent transition-colors">
                 <span className="text-xs font-medium" style={{ color: '#78350f' }}>禅理</span>
-                <span className="text-[10px] opacity-40">principles</span>
+                <span className="text-[10px] opacity-40 hidden sm:block">principles</span>
               </Link>
             </nav>
           </div>

@@ -6,6 +6,14 @@ interface PageParams {
   tag: string;
 }
 
+const CATEGORY_LABELS: Record<string, string> = {
+  koans: '公案',
+  principles: '禅理',
+  practice: '修行',
+  engineering: '工程',
+  library: '典藏',
+};
+
 export async function generateStaticParams() {
   return getAllTags().map((tag) => ({ tag }));
 }
@@ -27,7 +35,7 @@ export default async function TagPage({ params }: { params: Promise<PageParams> 
   const posts = getPostsByTag(tag);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-16 animate-fade-in">
+    <div className="max-w-3xl mx-auto px-4 py-10 sm:py-16 animate-fade-in">
       <div className="flex items-center gap-2 mb-8">
         <Link href="/" className="text-xs transition-colors" style={{ color: '#a8a29e' }}>
           gzen
@@ -45,7 +53,7 @@ export default async function TagPage({ params }: { params: Promise<PageParams> 
       </p>
 
       {posts.length === 0 ? (
-        <p className="text-sm text-stone-400">No writing found for this tag.</p>
+        <p className="text-sm" style={{ color: '#a8a29e' }}>此主题暂无文章。<span className="opacity-60 ml-1">No writing found for this tag.</span></p>
       ) : (
         <div className="space-y-3">
           {posts.map((post) => (
@@ -55,8 +63,7 @@ export default async function TagPage({ params }: { params: Promise<PageParams> 
               className="post-card block"
             >
               <div className="flex items-center gap-2 mb-1.5">
-                <span className="text-xs text-stone-400">{post.category}</span>
-                <span className="text-stone-300 text-xs">·</span>
+                <span className="principle-chip">{CATEGORY_LABELS[post.category] ?? post.category}</span>
                 <span className="text-xs text-stone-400">{post.frontmatter.date}</span>
               </div>
               <h3 className="text-sm font-medium text-stone-800 mb-1">{post.frontmatter.title}</h3>
