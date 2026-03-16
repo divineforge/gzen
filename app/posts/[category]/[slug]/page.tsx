@@ -40,11 +40,11 @@ export default async function PostPage({ params }: { params: Promise<PageParams>
       {/* Header */}
       <header className="mb-10">
         <div className="flex items-center gap-2 mb-4">
-          <Link href={`/posts`} className="text-xs text-stone-400 hover:text-stone-600 transition-colors">
-            writing
+          <Link href={`/posts`} className="text-xs transition-colors" style={{ color: '#a8a29e' }}>
+            文章
           </Link>
-          <span className="text-stone-300 text-xs">/</span>
-          <span className="text-xs text-stone-400">{category}</span>
+          <span className="text-xs" style={{ color: '#d5c9c0' }}>/</span>
+          <span className="text-xs" style={{ color: '#a8a29e' }}>{category}</span>
         </div>
         <h1 className="text-2xl font-medium text-stone-800 mb-3 tracking-tight">
           {post.frontmatter.title}
@@ -87,10 +87,11 @@ export default async function PostPage({ params }: { params: Promise<PageParams>
 
       {/* Related Posts */}
       {related.length > 0 && (
-        <aside className="mt-16 pt-8 border-t border-stone-200">
-          <h2 className="text-xs font-medium uppercase tracking-widest text-stone-400 mb-5">
-            Related Writing
+        <aside className="mt-16 pt-8 border-t border-amber-200">
+          <h2 className="text-xs font-medium uppercase tracking-widest mb-1" style={{ color: '#d97706' }}>
+            相关文章
           </h2>
+          <p className="text-[10px] mb-5" style={{ color: '#92400e', opacity: 0.45 }}>Related Writing</p>
           <div className="space-y-3">
             {related.map((r) => (
               <Link

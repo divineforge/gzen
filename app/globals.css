@@ -10,7 +10,10 @@
   }
 
   body {
-    @apply bg-stone-50 text-stone-800;
+    /* Warm Buddhist cream background; text is warm dark brown */
+    background-color: #fffbeb; /* zen-wisdom / amber-50 */
+    color: #2c2416;            /* zen-text — warm dark brown */
+    line-height: 1.75;         /* CJK readability */
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -28,19 +31,24 @@
   }
 
   .prose-philosophy h2 {
-    @apply text-lg font-medium text-stone-700 mt-10 mb-3 pb-2 border-b border-stone-200;
+    @apply text-lg font-medium mt-10 mb-3 pb-2 border-b border-amber-200;
+    color: #78350f; /* warm brown for headings */
   }
 
   .prose-philosophy p {
-    @apply text-base leading-relaxed text-stone-700 mb-4;
+    @apply text-base leading-loose mb-5;
+    color: #44403c; /* warm stone-700 */
   }
 
   .prose-philosophy blockquote {
-    @apply border-l-2 border-stone-300 pl-4 italic text-stone-500 my-6;
+    @apply border-l-2 border-amber-400 pl-4 italic my-6;
+    color: #78350f;
+    background-color: rgba(253, 230, 138, 0.15);
   }
 
   .prose-philosophy strong {
-    @apply font-medium text-stone-800;
+    @apply font-medium;
+    color: #2c2416;
   }
 
   .prose-philosophy ul, .prose-philosophy ol {
@@ -48,22 +56,49 @@
   }
 
   .prose-philosophy li {
-    @apply text-stone-700 leading-relaxed;
+    @apply leading-loose;
+    color: #44403c;
   }
 
+  /* Tag pill — warm amber tint */
   .tag-pill {
-    @apply inline-block text-xs font-medium px-2 py-0.5 rounded bg-stone-100 text-stone-500 hover:bg-stone-200 transition-colors;
+    @apply inline-block text-xs font-medium px-2 py-0.5 rounded;
+    background-color: #fef3c7; /* amber-100 */
+    color: #92400e;            /* amber-800 */
+    transition: background-color 0.15s;
+  }
+  .tag-pill:hover {
+    background-color: #fde68a; /* amber-200 */
   }
 
+  /* Post card — white card with warm border */
   .post-card {
-    @apply border border-stone-200 rounded p-5 hover:border-stone-300 transition-colors bg-white;
+    @apply rounded p-5 bg-white transition-all;
+    border: 1px solid #e7e5e4;
+  }
+  .post-card:hover {
+    border-color: #d97706; /* saffron on hover */
+    box-shadow: 0 1px 8px rgba(217, 119, 6, 0.08);
   }
 
+  /* Category chip — saffron/amber */
   .principle-chip {
-    @apply inline-block text-xs px-2 py-0.5 rounded-full bg-stone-800 text-stone-100;
+    @apply inline-block text-xs px-2 py-0.5 rounded-full;
+    background-color: #92400e; /* amber-800 */
+    color: #fef3c7;            /* amber-100 */
   }
 
+  /* Nav links */
   .nav-link {
-    @apply text-sm text-stone-500 hover:text-stone-800 transition-colors;
+    @apply text-sm transition-colors;
+    color: #57534e; /* stone-600 */
+  }
+  .nav-link:hover {
+    color: #d97706; /* saffron */
+  }
+
+  /* Saffron divider */
+  .saffron-divider {
+    border-color: #fde68a; /* amber-200 */
   }
 }

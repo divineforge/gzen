@@ -39,11 +39,11 @@ export default async function PrinciplePage({ params }: { params: Promise<PagePa
     <div className="max-w-3xl mx-auto px-4 py-16 animate-fade-in">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 mb-8">
-        <Link href="/principles" className="text-xs text-stone-400 hover:text-stone-600 transition-colors">
-          principles
+        <Link href="/principles" className="text-xs transition-colors" style={{ color: '#a8a29e' }}>
+          禅理
         </Link>
-        <span className="text-stone-300 text-xs">/</span>
-        <span className="text-xs text-stone-400">{principle.frontmatter.title}</span>
+        <span className="text-xs" style={{ color: '#d5c9c0' }}>/</span>
+        <span className="text-xs" style={{ color: '#a8a29e' }}>{principle.frontmatter.title}</span>
       </div>
 
       {/* Header */}
@@ -75,10 +75,11 @@ export default async function PrinciplePage({ params }: { params: Promise<PagePa
 
       {/* Posts referencing this principle */}
       {referenced.length > 0 && (
-        <aside className="pt-8 border-t border-stone-200">
-          <h2 className="text-xs font-medium uppercase tracking-widest text-stone-400 mb-5">
-            Writing That References This Principle
+        <aside className="pt-8 border-t border-amber-200">
+          <h2 className="text-xs font-medium uppercase tracking-widest mb-1" style={{ color: '#d97706' }}>
+            引用此禅理的文章
           </h2>
+          <p className="text-[10px] mb-5" style={{ color: '#92400e', opacity: 0.45 }}>Writing That References This Principle</p>
           <div className="space-y-3">
             {referenced.map((post) => (
               <Link

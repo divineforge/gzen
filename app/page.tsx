@@ -5,11 +5,11 @@ import { getLunarDate, getLotusEmoji, getLotusStageDescription } from '@/lib/uti
 import type { LunarStage } from '@/components/LunarHero';
 
 const CATEGORY_LABELS: Record<string, string> = {
-  koans: 'koan',
-  principles: 'principle',
-  practice: 'practice',
-  engineering: 'engineering',
-  library: 'library',
+  koans: '公案',
+  principles: '禅理',
+  practice: '修行',
+  engineering: '工程',
+  library: '典藏',
 };
 
 export default function HomePage() {
@@ -46,7 +46,8 @@ export default function HomePage() {
 
       {/* Core Principles */}
       <section className="mb-14">
-        <h2 className="text-xs font-medium uppercase tracking-widest text-stone-400 mb-5">Core Principles</h2>
+        <h2 className="text-xs font-medium uppercase tracking-widest mb-1" style={{ color: '#d97706' }}>禅理</h2>
+        <p className="text-[11px] mb-5" style={{ color: '#92400e', opacity: 0.5 }}>Core Principles</p>
         <div className="space-y-2">
           {principles.map((p) => (
             <Link
@@ -54,12 +55,12 @@ export default function HomePage() {
               href={`/principles/${p.slug}`}
               className="flex items-start gap-3 group"
             >
-              <span className="text-stone-300 mt-1 group-hover:text-stone-500 transition-colors">→</span>
+              <span className="mt-1 transition-colors" style={{ color: '#d97706', opacity: 0.5 }}>→</span>
               <div>
-                <span className="text-sm font-medium text-stone-700 group-hover:text-stone-900 transition-colors">
+                <span className="text-sm font-medium transition-colors" style={{ color: '#78350f' }}>
                   {p.frontmatter.title}
                 </span>
-                <p className="text-xs text-stone-400 mt-0.5 leading-relaxed">
+                <p className="text-xs mt-0.5 leading-relaxed" style={{ color: '#92400e', opacity: 0.6 }}>
                   {p.frontmatter.summary}
                 </p>
               </div>
@@ -70,12 +71,13 @@ export default function HomePage() {
 
       {/* Recent Writing */}
       <section className="mb-14">
-        <div className="flex items-center justify-between mb-5">
-          <h2 className="text-xs font-medium uppercase tracking-widest text-stone-400">Recent Writing</h2>
-          <Link href="/posts" className="text-xs text-stone-400 hover:text-stone-600 transition-colors">
-            all writing →
+        <div className="flex items-center justify-between mb-1">
+          <h2 className="text-xs font-medium uppercase tracking-widest" style={{ color: '#d97706' }}>近期文章</h2>
+          <Link href="/posts" className="text-xs transition-colors" style={{ color: '#92400e', opacity: 0.6 }}>
+            全部文章 →
           </Link>
         </div>
+        <p className="text-[11px] mb-5" style={{ color: '#92400e', opacity: 0.5 }}>Recent Writing</p>
         <div className="space-y-4">
           {recentPosts.map((post) => (
             <Link
@@ -97,7 +99,8 @@ export default function HomePage() {
       {/* Tags */}
       {tags.length > 0 && (
         <section>
-          <h2 className="text-xs font-medium uppercase tracking-widest text-stone-400 mb-3">Topics</h2>
+          <h2 className="text-xs font-medium uppercase tracking-widest mb-1" style={{ color: '#d97706' }}>主题</h2>
+          <p className="text-[11px] mb-3" style={{ color: '#92400e', opacity: 0.5 }}>Topics</p>
           <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
               <Link key={tag} href={`/tags/${tag}`} className="tag-pill">

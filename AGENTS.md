@@ -1,4 +1,6 @@
-# AGENTS.md — gzen Agent Reference
+# AGENTS.md — gzen · 聚善 Agent Reference
+
+> 聚善：禅生定，定生慧
 
 This is the primary reference document for all agents (GitHub Copilot, Claude, Codex, and others) working on this repository. Read this before making any changes.
 
@@ -6,12 +8,15 @@ This is the primary reference document for all agents (GitHub Copilot, Claude, C
 
 ## What Is gzen
 
-gzen.io is a focused philosophy platform combining:
+gzen.io is a Buddhist-inspired philosophy platform combining:
 
 - A **dynamic lunar calendar hero** on the homepage — the background theme changes every day of the Chinese lunar month; users can browse the 30-day cycle with ← → arrows
-- A **markdown content platform** organized around a small set of core philosophical principles that are cited across many short writings, reinforcing: *meaning is made with repetitive narration*
+- A **markdown content platform** organized around a small set of core principles, reinforcing the site's core mission: **聚善：禅生定，定生慧**
 
-**This is a standalone philosophy project.** Do not add references to other domains, identities, or external projects.
+**Language priority: Chinese first, Japanese second, English third.**  
+All UI labels and descriptions display Chinese (中文) as the primary language.
+
+**This is a standalone philosophy project.** Do not add references to other domains or external projects.
 
 ---
 
@@ -21,8 +26,8 @@ gzen.io is a focused philosophy platform combining:
 |---|---|
 | Framework | Next.js 16, App Router |
 | Language | TypeScript (strict) |
-| Styling | Tailwind CSS 3 — minimal stone/neutral palette |
-| Fonts | Geist Sans + Geist Mono |
+| Styling | Tailwind CSS 3 — warm Buddhist amber/saffron palette |
+| Fonts | Geist Sans + Geist Mono + CJK fallbacks (PingFang SC, Microsoft YaHei) |
 | Markdown | gray-matter (frontmatter) + remark + remark-html |
 | Lunar calendar | lunar-javascript (Malaysia UTC+8 timezone) |
 | Deployment | Vercel (auto-deploy on push to `main`) |
@@ -137,9 +142,9 @@ The `textClass` is a Tailwind text color class for labels/descriptions.
 
 **The scroll-fade overlay** is a fixed CSS gradient at the bottom of the section:
 ```css
-background: linear-gradient(to bottom, transparent 0%, #fafaf9 100%)
+background: linear-gradient(to bottom, transparent 0%, #fffbeb 100%)
 ```
-`#fafaf9` = `stone-50` (the page background). If you change the page background color, update this value too.
+`#fffbeb` = `amber-50` / `zen-wisdom` (the Buddhist warm cream page background). If you change the page background color, update this value too.
 
 ---
 
@@ -182,25 +187,26 @@ npm run type-check  # TypeScript check
 
 ## Design Constraints
 
-1. **Stone/neutral palette** — no bright accent colors except in the lunar hero gradient
-2. **Geist font** — do not add Google Fonts or other web fonts
-3. **No heavy UI frameworks** — no shadcn/ui, no MUI, no framer-motion
-4. **Minimal page chrome** — the writing is the content; UI should recede
-5. **No cross-domain references** — standalone project only
-6. **No placeholder text** — all content must be real
+1. **Buddhist warm palette** — amber-50 background (`#fffbeb`), saffron (`#d97706`) accents, warm brown headings (`#78350f`); not cold stone/gray
+2. **Chinese first** — all UI text shows Chinese as the primary label; English is secondary (smaller, lower opacity)
+3. **CJK readability** — maintain `line-height: 1.75+` in body; CJK font fallbacks (PingFang SC, Microsoft YaHei) in the font stack
+4. **Geist font** — do not add Google Fonts or other web fonts
+5. **No heavy UI frameworks** — no shadcn/ui, no MUI, no framer-motion
+6. **No cross-domain references** — standalone project only
+7. **No placeholder text** — all content must be real
 
 ---
 
 ## Common Tasks
 
 ### Change the page background color
-1. Update `body { @apply bg-stone-50 }` in `app/globals.css`
-2. Update `#fafaf9` in the scroll-fade overlay in `components/LunarHero.tsx`
+1. Update `background-color: #fffbeb` in `app/globals.css` body rule
+2. Update `#fffbeb` in the scroll-fade overlay in `components/LunarHero.tsx`
 
 ### Add a new category
 1. Create `content/<category>/` directory
 2. Add the category to `CATEGORIES` array in `lib/content.ts`
-3. Add a label to `CATEGORY_LABELS` in `app/posts/page.tsx` and `app/page.tsx`
+3. Add Chinese label to `CATEGORY_LABELS` in `app/posts/page.tsx` and `app/page.tsx`
 4. Add a template to `scripts/new-post.js`
 5. Add a new npm script in `package.json`
 

@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { getAllPrinciples, getAllPosts } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: 'Principles',
-  description: 'Core philosophical principles that guide the writing on gzen.',
+  title: '禅理',
+  description: '聚善之道：以禅理引路，以文章印证，于重复中积累智慧。',
 };
 
 export default function PrinciplesPage() {
@@ -13,10 +13,13 @@ export default function PrinciplesPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-16 animate-fade-in">
-      <h1 className="text-xl font-medium text-stone-800 mb-2">Principles</h1>
-      <p className="text-sm text-stone-500 mb-12 leading-relaxed">
-        A small set of core ideas, repeated and refined across many writings.
-        Meaning accumulates through repetition.
+      <h1 className="text-xl font-medium mb-1" style={{ color: '#78350f' }}>禅理</h1>
+      <p className="text-xs mb-1" style={{ color: '#92400e', opacity: 0.5 }}>Principles</p>
+      <p className="text-sm mb-12 leading-relaxed" style={{ color: '#57534e' }}>
+        以少许核心思想贯通诸文，于重复诵读中积累智慧。
+        <span className="block text-xs mt-1" style={{ opacity: 0.6 }}>
+          A small set of core ideas, refined across many writings.
+        </span>
       </p>
 
       <div className="space-y-8">
@@ -28,18 +31,19 @@ export default function PrinciplesPage() {
           );
 
           return (
-            <div key={principle.slug} className="border border-stone-200 rounded p-6 bg-white">
+            <div key={principle.slug} className="rounded p-6 bg-white" style={{ border: '1px solid #e7e5e4' }}>
               <Link href={`/principles/${principle.slug}`} className="group block mb-2">
-                <h2 className="text-base font-medium text-stone-800 group-hover:text-stone-600 transition-colors">
+                <h2 className="text-base font-medium transition-colors group-hover:opacity-70" style={{ color: '#78350f' }}>
                   {principle.frontmatter.title}
                 </h2>
               </Link>
-              <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+              <p className="text-sm mb-4 leading-relaxed" style={{ color: '#57534e' }}>
                 {principle.frontmatter.summary}
               </p>
               {refPosts.length > 0 && (
                 <div>
-                  <span className="text-xs text-stone-400 uppercase tracking-widest">Referenced in</span>
+                  <span className="text-xs uppercase tracking-widest" style={{ color: '#d97706', opacity: 0.7 }}>引用于</span>
+                  <span className="text-[10px] ml-2" style={{ color: '#92400e', opacity: 0.4 }}>Referenced in</span>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {refPosts.map((p) => (
                       <Link

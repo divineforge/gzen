@@ -29,18 +29,19 @@ export default async function TagPage({ params }: { params: Promise<PageParams> 
   return (
     <div className="max-w-3xl mx-auto px-4 py-16 animate-fade-in">
       <div className="flex items-center gap-2 mb-8">
-        <Link href="/" className="text-xs text-stone-400 hover:text-stone-600 transition-colors">
+        <Link href="/" className="text-xs transition-colors" style={{ color: '#a8a29e' }}>
           gzen
         </Link>
-        <span className="text-stone-300 text-xs">/</span>
-        <span className="text-xs text-stone-400">tags</span>
-        <span className="text-stone-300 text-xs">/</span>
-        <span className="text-xs text-stone-400">{tag}</span>
+        <span className="text-xs" style={{ color: '#d5c9c0' }}>/</span>
+        <span className="text-xs" style={{ color: '#a8a29e' }}>主题</span>
+        <span className="text-xs" style={{ color: '#d5c9c0' }}>/</span>
+        <span className="text-xs" style={{ color: '#a8a29e' }}>{tag}</span>
       </div>
 
-      <h1 className="text-xl font-medium text-stone-800 mb-2">#{tag}</h1>
-      <p className="text-sm text-stone-500 mb-10">
-        {posts.length} {posts.length === 1 ? 'piece' : 'pieces'} of writing
+      <h1 className="text-xl font-medium mb-1" style={{ color: '#78350f' }}>#{tag}</h1>
+      <p className="text-sm mb-10" style={{ color: '#57534e' }}>
+        {posts.length} 篇文章
+        <span className="ml-2 text-xs" style={{ opacity: 0.5 }}>· {posts.length} {posts.length === 1 ? 'piece' : 'pieces'}</span>
       </p>
 
       {posts.length === 0 ? (

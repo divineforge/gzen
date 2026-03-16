@@ -1,4 +1,6 @@
-# gzen — Project Handoff
+# gzen · 聚善 — Project Handoff
+
+> 聚善：禅生定，定生慧
 
 This document records what has been built, how it works, and what remains.
 Every agent working on this project should read it before making changes.
@@ -7,10 +9,12 @@ Every agent working on this project should read it before making changes.
 
 ## Current State
 
-**gzen.io** is a philosophy platform combining two things:
+**gzen.io** is a Buddhist-inspired philosophy platform combining two things:
 
 1. **A lunar-calendar dynamic backdrop** — the homepage hero changes theme for every day of the Chinese lunar month, with a to/fro carousel so readers can browse the 30-day cycle.
-2. **A markdown philosophy content platform** — short writings in five categories, linked through a principle-reference system that reinforces the core narrative: *meaning is made with repetitive narration*.
+2. **A markdown content platform** organized around a small set of core principles, reinforcing the site's core message: *聚善：禅生定，定生慧*.
+
+**Language priority**: Chinese (中文) is the primary language; English is the tertiary fallback. UI labels and descriptions show Chinese first, English second (smaller/muted).
 
 The site is deployed on Vercel and auto-deploys from `main`.
 
@@ -21,8 +25,8 @@ The site is deployed on Vercel and auto-deploys from `main`.
 ### Framework
 - **Next.js 16** — App Router (not Pages Router)
 - **TypeScript** throughout
-- **Tailwind CSS 3** — minimal stone/neutral palette
-- **Geist fonts** — sans + mono
+- **Tailwind CSS 3** — warm Buddhist amber/saffron palette (amber-50 bg, saffron accents)
+- **Geist fonts** — sans + mono + CJK fallbacks (PingFang SC, Microsoft YaHei)
 - Server components by default; only `LunarHero` uses `'use client'`
 
 ### Content
@@ -142,13 +146,13 @@ Every post follows this three-section pattern:
 
 ### Categories
 
-| Category | Purpose |
-|---|---|
-| `koans` | Short philosophical reflections from real-life observations |
-| `principles` | Core ideas that recur across the whole site |
-| `practice` | Meditation, reflection, personal discipline |
-| `engineering` | Philosophy applied to systems and technology |
-| `library` | Curated references, quotes, inspirations |
+| 中文 | Category key | Purpose |
+|---|---|---|
+| 公案 | `koans` | Short Zen reflections from real-life observations |
+| 禅理 | `principles` | Core ideas that recur across the whole site |
+| 修行 | `practice` | Meditation, reflection, personal discipline |
+| 工程 | `engineering` | Philosophy applied to systems and technology |
+| 典藏 | `library` | Curated references, quotes, inspirations |
 
 ### Principle references
 
@@ -192,14 +196,20 @@ Each generates a dated markdown template with the correct frontmatter structure.
 - [x] **Built** `LunarHero` — dynamic per-day gradient backdrop with to/fro preview carousel and scroll-fade
 - [x] Created `HANDOFF.md` (this file)
 - [x] Created `AGENTS.md`
+- [x] **Chinese-first UI** — all labels, section headings, and descriptions show Chinese as primary language
+- [x] **Buddhist warm theme** — amber-50 background, saffron accents, warm brown headings
+- [x] **CJK font stack** — PingFang SC / Microsoft YaHei fallbacks added for Chinese readability
+- [x] **聚善 core message** — featured in header, LunarHero, footer, and README
+- [x] **Category labels in Chinese** — 公案 / 禅理 / 修行 / 工程 / 典藏
+- [x] Updated README.md to reflect current architecture and mission
 
 ## What Remains (Possible Next Steps)
 
 - [ ] Lunar calendar `/calendar` page (restored full lunar cycle view)
+- [ ] Japanese (日本語) translations for UI labels (tertiary language layer)
 - [ ] RSS feed for the writing
 - [ ] Open Graph images per post
 - [ ] Search across all writing
-- [ ] Knowledge graph visualization (optional — see original PLAN.md)
 - [ ] More content — target ~20-30 posts to demonstrate the repetition engine fully
 
 ---
@@ -215,7 +225,10 @@ Each generates a dated markdown template with the correct frontmatter structure.
 
 ## Important Constraints
 
-1. **No cross-domain references** — the site must appear as a standalone philosophy project
+1. **No cross-domain references** — the site must appear as a standalone project
 2. **No placeholder content** — every piece of writing should be real and complete
-3. **Minimal design** — stone/neutral palette, Geist font, no heavy UI frameworks
-4. **Self-contained** — the repository is the publishing backend; no external CMS
+3. **Buddhist warm palette** — amber/saffron theme; no cold gray or stark white accents
+4. **Chinese first** — all UI labels, section headings, and hero descriptions show Chinese as primary
+5. **CJK readability** — maintain adequate font size and line-height for Chinese text (1.75+ line-height)
+6. **Self-contained** — the repository is the publishing backend; no external CMS
+7. **Scroll-fade colour** — if changing page background, also update `#fffbeb` in `components/LunarHero.tsx`

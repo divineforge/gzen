@@ -134,7 +134,7 @@ export default function LunarHero({
         {/* Preview badge */}
         {isPreviewMode && (
           <span className="mb-3 inline-block text-xs font-medium px-3 py-1 rounded-full bg-white/10 text-white/70 border border-white/20">
-            Preview — day {viewedDay}
+            预览 · 第{viewedDay}日
           </span>
         )}
 
@@ -147,26 +147,26 @@ export default function LunarHero({
           {stageData.emoji}
         </div>
 
-        {/* Day label */}
+        {/* Day label — Chinese primary */}
         <p className={`text-sm font-medium mb-1 transition-colors duration-500 ${theme.textClass} opacity-60`}>
-          Lunar day {viewedDay}
+          农历 第{viewedDay}日
           {(isViewedFullMoon || isViewedNewMoon) && (
-            <span className="ml-2">{isViewedFullMoon ? '· Full Moon 🌕' : '· New Moon 🌑'}</span>
+            <span className="ml-2">{isViewedFullMoon ? '· 满月 🌕' : '· 新月 🌑'}</span>
           )}
         </p>
 
-        {/* Stage description */}
-        <p className={`text-lg sm:text-xl font-medium mb-0.5 text-center max-w-xs transition-colors duration-500 ${theme.textClass}`}>
-          {stageData.description}
-        </p>
-        <p className={`text-sm mb-4 text-center transition-colors duration-500 ${theme.textClass} opacity-50`}>
+        {/* Stage description — Chinese primary (large), English secondary (small) */}
+        <p className={`text-xl sm:text-2xl font-medium mb-1 text-center max-w-sm transition-colors duration-500 ${theme.textClass}`}>
           {stageData.chineseDescription}
+        </p>
+        <p className={`text-sm mb-4 text-center transition-colors duration-500 ${theme.textClass} opacity-45`}>
+          {stageData.description}
         </p>
 
         {/* Lunar month info (only shown on today) */}
         {!isPreviewMode && (
           <p className={`text-xs mb-6 ${theme.textClass} opacity-40`}>
-            {lunarMonthName}月 · {lunarYearName}年
+            {lunarMonthName}月 · {lunarYearName}年 · 聚善
           </p>
         )}
 
@@ -175,7 +175,7 @@ export default function LunarHero({
           <button
             onClick={handlePrev}
             className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all border border-white/15"
-            aria-label="Previous lunar day"
+            aria-label="前一天"
           >
             ←
           </button>
@@ -184,18 +184,18 @@ export default function LunarHero({
             <button
               onClick={handleReset}
               className="text-xs px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all border border-white/15"
-              aria-label="Return to today"
+              aria-label="返回今日"
             >
-              today
+              今日
             </button>
           ) : (
-            <span className={`text-xs ${theme.textClass} opacity-30`}>today</span>
+            <span className={`text-xs ${theme.textClass} opacity-30`}>今日</span>
           )}
 
           <button
             onClick={handleNext}
             className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all border border-white/15"
-            aria-label="Next lunar day"
+            aria-label="后一天"
           >
             →
           </button>
@@ -209,7 +209,7 @@ export default function LunarHero({
               <button
                 key={s.stage}
                 onClick={() => handleDotClick(s.stage)}
-                aria-label={`Go to lunar day ${s.stage}`}
+                aria-label={`农历 第${s.stage}日`}
                 className={`rounded-full transition-all duration-300 ${
                   viewedDay === s.stage
                     ? 'bg-white w-2.5 h-2.5'
@@ -226,7 +226,7 @@ export default function LunarHero({
               <button
                 key={s.stage}
                 onClick={() => handleDotClick(s.stage)}
-                aria-label={`Go to lunar day ${s.stage}`}
+                aria-label={`农历 第${s.stage}日`}
                 className={`rounded-full transition-all duration-300 ${
                   viewedDay === s.stage
                     ? 'bg-white w-2.5 h-2.5'
@@ -236,18 +236,18 @@ export default function LunarHero({
             ))}
           </div>
           <div className="flex justify-between text-white/25 text-xs mt-0.5 px-0.5">
-            <span>🌑 grow</span>
-            <span>fade 🌑</span>
+            <span>🌑 月盈</span>
+            <span>月亏 🌑</span>
           </div>
         </div>
       </div>
 
-      {/* Scroll-fade: gradient overlay that blends into page background (stone-50) */}
+      {/* Scroll-fade: gradient overlay that blends into page background (amber-50 / zen-wisdom #fffbeb) */}
       <div
         className="absolute inset-x-0 bottom-0 pointer-events-none"
         style={{
           height: '40%',
-          background: 'linear-gradient(to bottom, transparent 0%, #fafaf9 100%)',
+          background: 'linear-gradient(to bottom, transparent 0%, #fffbeb 100%)',
         }}
       />
     </section>

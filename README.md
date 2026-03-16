@@ -1,410 +1,212 @@
-# 🪷 GrowZen - Buddhist Wisdom Blog
+# 🪷 gzen · 聚善
 
-> **禅生定，定生慧** — *Zen gives rise to concentration, concentration gives rise to wisdom*
+> **禅生定，定生慧** — *Zen gives rise to stillness; stillness gives rise to wisdom.*
 
 **Live Site:** [gzen.io](https://gzen.io)
 
 ---
 
-## 🌸 Overview
+## 聚善 — 核心使命
 
-GrowZen (禅生定，定生慧) is a Buddhist wisdom blog that follows the natural growth cycles of the lotus flower, aligned with the Chinese lunar calendar. The site automatically generates and publishes Buddhist teachings on even lunar days, with special celebrations on the 1st and 15th of each lunar month.
+**聚善（Jù Shàn）**意为积累善念与善行。  
+本站以中文为主，辅以日文与英文，围绕少数核心禅理展开，  
+通过反复叙述与引用强化每一个思想的重量：  
+*意义在重复中诞生。*
 
-### The Lotus Growth Cycle
-
-The lotus symbolizes spiritual awakening in Buddhism—purity rising from muddy waters. Our blog visualizes this through:
-
-- **Days 1-15**: Lotus grows from seed 🌱 to full bloom 🪷
-- **Day 1** (New Moon): New cycle begins with Buddha quote
-- **Day 15** (Full Moon): Full bloom with special Buddha quote
-- **Even Days** (2, 4, 6, 8, 10, 12, 14): New wisdom posts published
-- **Endless Renewal**: Cycles repeat, representing the continuous path to enlightenment
-
-```
-Day 1  → 🌑 Seed planted (New Moon) + Buddha Quote
-Day 2  → 🌱 Sprout emerges + Blog Post
-Day 3  → 🌿 Young stem
-Day 4  → 🪴 Leaves form + Blog Post
-Day 5  → 🍃 Growth continues
-Day 6  → 🌿 Stem strengthens + Blog Post
-Day 7  → 🪷 Bud forms
-Day 8  → 🌸 Bud develops + Blog Post
-Day 9  → 🌺 Petals visible
-Day 10 → 🪷 Opening begins + Blog Post
-Day 11 → 🌸 Petals unfold
-Day 12 → 🌺 Nearly open + Blog Post
-Day 13 → 🪷 Almost full
-Day 14 → 🌸 Final opening + Blog Post
-Day 15 → 🪷✨ FULL BLOOM (Full Moon) + Special Buddha Quote
-[Cycle restarts on Day 1]
-```
+> 禅生定，定生慧 — 修禅培定力，定力开慧根。  
+> 以公案启悟，以禅理立道，以修行践行，以文章传承。
 
 ---
 
 ## ✨ Features
 
-### Current
-- 🪷 **Lotus Visualization** - Watch the lotus grow with each lunar day
-- 📅 **Lunar Calendar** - Follows traditional Chinese lunar calendar
-- 💬 **Buddha Quotes** - Rotating wisdom on peak days (1st & 15th)
-- 🌏 **Multilingual** - Chinese (primary), English, Japanese (Phase 2)
-- 📱 **Responsive Design** - Beautiful on all devices
-
-### Coming Soon *(see [TODO.md](TODO.md))*
-- 🤖 **AI-Generated Content** - Claude API for daily wisdom posts
-- 📝 **Wisdom Blog** - Automated posts every even lunar day
-- 🤖 **Telegram Bot** - Subscribe for daily wisdom notifications
-- 🗄️ **Database Integration** - Vercel KV + MongoDB support
+- 🌕 **Dynamic Lunar Hero** — Homepage backdrop changes theme for every Chinese lunar day; browse all 30 phases with ← → arrows (to/fro preview)
+- 🪷 **30-Day Lotus Cycle** — Each lunar day shows unique emoji and Chinese/English description
+- 📖 **Content Platform** — Five categories of philosophical writing, all interconnected via principle references
+- 🔁 **Repetition Engine** — Related posts surfaced by shared `principle_reference` (+3 pts) and tags (+1 pt each)
+- 🖊️ **Writing CLI** — Scaffold new posts in any category with one command
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **[Next.js 15](https://nextjs.org)** - Full-stack React framework with App Router
-- **[Vercel](https://vercel.com)** - Hosting, serverless functions, cron jobs
-- **[React 19](https://react.dev)** - UI library
-- **[Tailwind CSS](https://tailwindcss.com)** - Utility-first styling
-- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
-- **[next-intl](https://next-intl-docs.vercel.app/)** - Internationalization (i18n)
-- **[lunar-javascript](https://github.com/6tail/lunar-javascript)** - Chinese lunar calendar
-
-### Future Integrations
-- **[Vercel KV](https://vercel.com/storage/kv)** - Redis key-value storage
-- **[MongoDB Atlas](https://www.mongodb.com/atlas)** - Document database
-- **[Grammy](https://grammy.dev/)** - Telegram bot framework
-- **[@anthropic-ai/sdk](https://docs.anthropic.com/)** - AI content generation
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16, App Router |
+| Language | TypeScript |
+| Styling | Tailwind CSS 3 — warm Buddhist amber/saffron palette |
+| Fonts | Geist Sans (CJK fallback: PingFang SC, Microsoft YaHei) |
+| Markdown | gray-matter + remark + remark-html |
+| Lunar Calendar | lunar-javascript (Malaysia UTC+8) |
+| Deployment | Vercel (auto-deploy on push to `main`) |
 
 ---
 
-## 🎯 Getting Started
-
-### Prerequisites
-
-- Node.js 20+
-- npm, pnpm, or yarn
-- Anthropic API key (for automated content generation)
-
-### Local Development
-
-```bash
-# Install dependencies
-npm install
-
-# Start dev server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm run start
-
-# Type check
-npm run type-check
-```
-
-The site will be available at `http://localhost:3000`
-
----
-
-## 📦 Project Structure
+## 📁 Project Structure
 
 ```
 gzen/
 ├── app/
-│   ├── [locale]/           # Locale-based routing
-│   │   ├── layout.tsx      # Locale layout with i18n
-│   │   ├── page.tsx        # Homepage with lotus
-│   │   ├── blog/           # Blog pages (coming soon)
-│   │   ├── calendar/       # Lunar calendar (coming soon)
-│   │   └── about/          # About page (coming soon)
-│   ├── api/                # API routes (coming soon)
-│   │   ├── cron/           # Vercel cron jobs
-│   │   └── telegram/       # Telegram bot webhook
-│   ├── globals.css         # Global styles
-│   └── layout.tsx          # Root layout
+│   ├── layout.tsx              # Root layout — header (文章/禅理), footer (聚善：禅生定，定生慧)
+│   ├── page.tsx                # Homepage — LunarHero + 禅理 + 近期文章 + 主题
+│   ├── globals.css             # Buddhist warm theme (amber/saffron palette)
+│   ├── posts/
+│   │   ├── page.tsx            # 文章 — all writing grouped by category
+│   │   └── [category]/[slug]/
+│   │       └── page.tsx        # Post detail + 相关文章 (related posts engine)
+│   ├── principles/
+│   │   ├── page.tsx            # 禅理 — principle index with cross-references
+│   │   └── [slug]/
+│   │       └── page.tsx        # Principle detail + 引用此禅理的文章
+│   └── tags/[tag]/
+│       └── page.tsx            # 主题 — tag-filtered post listing
+│
+├── components/
+│   └── LunarHero.tsx           # 'use client' — dynamic lunar backdrop, 30 gradients
+│
 ├── lib/
+│   ├── content.ts              # Markdown pipeline (getAllPosts, getRelatedPosts, etc.)
 │   └── utils/
-│       └── lunar-calendar.ts   # Lunar calendar utilities
-├── messages/
-│   ├── zh.json             # Chinese translations (primary)
-│   ├── en.json             # English translations
-│   └── ja.json             # Japanese translations (Phase 2)
-├── types/                  # TypeScript type definitions
-├── i18n.ts                 # i18n configuration
-├── middleware.ts           # Next.js middleware for locale
-├── PLAN.md                 # Comprehensive project plan
-├── TODO.md                 # Implementation checklist
-├── NAMING_I18N.md          # Branding & i18n guide
-└── README.md               # This file
+│       └── lunar-calendar.ts   # getLunarDate, getLotusEmoji, getLotusStageDescription
+│
+├── content/                    # All markdown posts
+│   ├── koans/                  # 公案 — Zen koans
+│   ├── principles/             # 禅理 — Core principles
+│   ├── practice/               # 修行 — Practice notes
+│   ├── engineering/            # 工程 — Engineering reflections
+│   └── library/                # 典藏 — Curated references
+│
+├── scripts/
+│   └── new-post.js             # CLI scaffold for new posts
+│
+├── AGENTS.md                   # Agent reference (read first)
+├── HANDOFF.md                  # Full architecture & status
+└── README.md                   # This file
 ```
 
 ---
 
-## 🌏 Internationalization (i18n)
+## 🌙 Lunar Calendar
 
-GrowZen supports multiple languages with Chinese as the primary language:
+The homepage hero section dynamically changes its gradient background based on the current Chinese lunar day (Malaysia UTC+8 timezone):
 
-| Language | URL | Status |
-|----------|-----|--------|
-| 中文 (Chinese) | `gzen.io/` | ✅ Primary |
-| English | `gzen.io/en/` | ✅ Active |
-| 日本語 (Japanese) | `gzen.io/ja/` | 🔜 Phase 2 |
+- **Days 1–14**: Waxing moon — dark indigo → teal → warm amber (seed to near-full)
+- **Day 15**: Full Moon 🌕 — golden saffron peak (满月·莲开见佛)
+- **Days 16–30**: Waning moon — warm amber → dark indigo (completion to renewal)
 
-### Language-Specific Branding
-
-**Chinese:**
-```
-GrowZen
-禅生定，定生慧
-伴随月圆月缺，智慧如莲绽放
-```
-
-**English:**
-```
-GrowZen
-禅生定，定生慧
-Where Meditation Blooms into Wisdom
-```
-
----
-
-## 🤖 Automation
-
-### How It Works
-
-1. **Daily Check**: Vercel Cron runs at 00:00 UTC
-2. **Lunar Calculation**: Determines current lunar day
-3. **Content Generation**:
-   - On even days (2, 4, 6, etc.) → Generate wisdom blog post via Claude API
-   - On peak days (1 & 15) → Update homepage Buddha quote
-4. **Telegram Broadcast**: Send wisdom to subscribers
-5. **Auto-Deploy**: Vercel deploys updated site
-
-### Vercel Cron Configuration
-
-```json
-// vercel.json
-{
-  "crons": [
-    {
-      "path": "/api/cron/daily-wisdom",
-      "schedule": "0 0 * * *"
-    },
-    {
-      "path": "/api/cron/telegram-broadcast",
-      "schedule": "0 1 * * *"
-    }
-  ]
-}
-```
-
-**Required Environment Variables:**
-- `ANTHROPIC_API_KEY` - For Claude API content generation
-- `TELEGRAM_BOT_TOKEN` - For Telegram bot
-- `MONGODB_URI` - For MongoDB database (Phase 2+)
-
----
-
-## 📝 Content Topics
-
-The blog covers practical Buddhist teachings:
-
-- 🧘 Mindfulness in daily life
-- 💚 Compassion and loving-kindness (Metta)
-- 🍂 Understanding impermanence (Anicca)
-- 🗣️ Right speech and communication
-- 🪷 Meditation practices (Vipassana, Samatha)
-- ⚖️ Ethical living (Five Precepts)
-- 🌱 Overcoming suffering (Dukkha)
-- ⚖️ The Middle Way
-- 🎋 Non-attachment
-- ⏰ Present moment awareness
-- 📿 The Four Noble Truths & Eightfold Path
-
----
-
-## 🌙 Lunar Calendar Integration
+Users can browse all 30 phases with ← → navigation (preview mode).
 
 ```typescript
-import { getLunarDay, getLotusStage, isEvenLunarDay } from '@/lib/utils/lunar-calendar';
+import { getLunarDate, getLotusEmoji, getLotusStageDescription } from '@/lib/utils/lunar-calendar';
 
-// Get current lunar date
-const lunarDay = getLunarDay();        // 1-30
-const lotusStage = getLotusStage();    // 1-15
-
-// Check for special days
-const isNewMoon = lunarDay === 1;
-const isFullMoon = lunarDay === 15;
-const isBlogDay = isEvenLunarDay();    // Blog post day
+const lunarDate = getLunarDate();  // { day, month, year, monthName, yearName, daysInMonth }
+const emoji = getLotusEmoji(lunarDate.day);          // e.g. '🪷✨' on day 15
+const zhDesc = getLotusStageDescription(15, 'zh');   // '满月·莲开见佛'
+const enDesc = getLotusStageDescription(15, 'en');   // 'Full Moon · Lotus Enlightenment'
 ```
 
-### Important Buddhist Dates
+---
 
-The site automatically highlights:
-- **Vesak** (4th month, 15th day) - Buddha's birth, enlightenment, death
-- **Magha Puja** (3rd month, 15th day) - First sermon gathering
-- **Asalha Puja** (6th month, 15th day) - First teaching
-- **Uposatha Days** (1st, 8th, 15th, 23rd) - Observance days
+## 📝 Content Architecture
+
+### Frontmatter schema
+
+```yaml
+---
+title: "Post Title"
+date: "YYYY-MM-DD"
+tags: ["clarity", "discipline"]
+principle_reference: "clarity-before-tools"
+summary: "One clear sentence."
+---
+```
+
+### Post structure (Observation → Principle → Application)
+
+```markdown
+## Observation
+A real situation or reflection.
+
+## Principle
+The distilled insight.
+
+## Application
+How to use the idea in practice.
+```
+
+### Categories
+
+| 中文 | Category | Purpose |
+|---|---|---|
+| 公案 | koans | Short philosophical reflections |
+| 禅理 | principles | Core principles referenced sitewide |
+| 修行 | practice | Meditation and discipline techniques |
+| 工程 | engineering | Philosophy applied to systems |
+| 典藏 | library | Curated quotes and references |
+
+### Principle slugs
+- `clarity-before-tools`
+- `virtue-before-power`
+- `simplicity-before-scale`
+- `discipline-before-motivation`
+
+---
+
+## 🖊️ Writing CLI
+
+```bash
+npm run new-koan       <slug>   # content/koans/<slug>.md
+npm run new-principle  <slug>   # content/principles/<slug>.md
+npm run new-practice   <slug>   # content/practice/<slug>.md
+npm run new-engineering <slug>  # content/engineering/<slug>.md
+npm run new-library    <slug>   # content/library/<slug>.md
+```
+
+---
+
+## 🎨 Design
+
+### Buddhist colour palette
+
+| Token | Hex | Use |
+|---|---|---|
+| `saffron` | `#d97706` | Accent colour (section labels, hover) |
+| Warm cream | `#fffbeb` | Page background (amber-50) |
+| Warm brown | `#78350f` | Headings |
+| Warm text | `#2c2416` | Body text |
+| Amber border | `#e7e5e4` | Card borders |
+
+### Language priority
+1. **中文** — primary UI and descriptions (largest, most prominent)
+2. **日本語** — secondary (future expansion)
+3. **English** — tertiary (small subtitle/labels)
+
+---
+
+## 🚀 Getting Started
+
+```bash
+npm install
+npm run dev         # http://localhost:3000
+npm run build       # Production build
+npm run type-check  # TypeScript check
+```
 
 ---
 
 ## 🚢 Deployment
 
-### Automatic Deployment
-
-Push to `main` branch triggers automatic deployment to Vercel.
-
-```bash
-git add .
-git commit -m "Update content"
-git push origin main
-```
-
-### Manual Deployment
-
-```bash
-# Build the site
-npm run build
-
-# Deploy using Vercel CLI
-vercel --prod
-```
+Push to `main` triggers automatic deployment on Vercel. No environment variables required.
 
 ---
 
-## 🎨 Design Philosophy
+## 📚 Agent Reference
 
-### Zen Aesthetics
-- **Simplicity**: Clean, uncluttered layouts
-- **Whitespace**: Breathing room for contemplation
-- **Subtle Animations**: Smooth, never distracting
-- **Peaceful Colors**: Lotus pink, saffron, zen stone
-
-### Buddhist Color Palette
-
-```css
-/* Lotus */
---lotus-pink: #FFC0CB;
---lotus-cream: #FFF8E7;
---lotus-gold: #FFD700;
-
-/* Saffron (Monk robes) */
---saffron: #FF9933;
-
-/* Zen */
---zen-stone: #8B8680;
---zen-bamboo: #3D5A41;
---zen-water: #4A90A4;
-
-/* Wisdom */
---wisdom-bg: #FFF9F0;
---wisdom-text: #2C2416;
-```
+See **[AGENTS.md](AGENTS.md)** for the quick-reference guide for all agents.  
+See **[HANDOFF.md](HANDOFF.md)** for full architecture and project status.
 
 ---
 
-## 🗺️ Implementation Roadmap
+> 🪷 *聚善：禅生定，定生慧*  
+> *Accumulate goodness. Zen gives rise to stillness; stillness gives rise to wisdom.*
 
-### Status: 🔄 Phase 1 - Foundation
-
-See [TODO.md](TODO.md) for detailed checklist.
-
-1. ✅ **Foundation Setup**
-   - ✅ Next.js 15 with App Router
-   - ✅ Tailwind CSS with Buddhist theme
-   - ✅ i18n with next-intl (zh, en, ja)
-   - ✅ Lunar calendar utilities
-   - ✅ Homepage with lotus visualizer
-
-2. 🔄 **Core Features** (In Progress)
-   - 🔜 Blog listing page
-   - 🔜 Individual post pages
-   - 🔜 Calendar page
-   - 🔜 About page
-   - 🔜 Navigation links
-
-3. ⏳ **Automation** (Phase 2)
-   - Vercel Cron jobs
-   - Claude API integration
-   - Telegram bot
-
-4. ⏳ **Polish & Launch** (Phase 3)
-   - SEO optimization
-   - Performance tuning
-   - Full testing
-
-**Full Plan:** See [PLAN.md](PLAN.md)
-
----
-
-## 🤝 Contributing
-
-This is a personal Buddhist practice project, but suggestions are welcome!
-
-### How to Contribute
-- 🐛 Report bugs via [GitHub Issues](https://github.com/divineforge/gzen/issues)
-- 💡 Suggest features or improvements
-- 📚 Submit authentic Buddha quotes
-- 🎨 Share design feedback
-
-### Content Guidelines
-- Teachings must be authentic to Buddhist tradition
-- Quotes must be properly attributed
-- Content should be accessible to modern practitioners
-- Approach should be non-dogmatic and inclusive
-
----
-
-## 📚 Resources & Inspiration
-
-### Buddhist Sources
-- [Access to Insight](https://accesstoinsight.org) - Theravada texts
-- [BuddhaNet](https://buddhanet.net) - Buddhist education
-- [Tricycle Magazine](https://tricycle.org) - Buddhist magazine
-- [Plum Village](https://plumvillage.org) - Thich Nhat Hanh's teachings
-
-### Technical References
-- [Next.js 15 Docs](https://nextjs.org/docs)
-- [next-intl Docs](https://next-intl-docs.vercel.app/)
-- [lunar-javascript Docs](https://github.com/6tail/lunar-javascript)
-- [Anthropic API](https://docs.anthropic.com/)
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Philosophy
-
-This project aims to:
-- Make Buddhist wisdom accessible to modern seekers
-- Demonstrate impermanence through ever-changing content
-- Provide practical teachings for daily life
-- Create beauty through simplicity (Zen aesthetics)
-- Honor the Buddha's teachings authentically
-
-> *"The lotus grows from mud to bloom—may this site help others on their path to awakening."*
-
----
-
-## 🔗 Links
-
-- **Website:** [gzen.io](https://gzen.io)
-- **Repository:** [github.com/divineforge/gzen](https://github.com/divineforge/gzen)
-- **Issues:** [Report bugs or request features](https://github.com/divineforge/gzen/issues)
-- **Planning Docs:**
-  - [PLAN.md](PLAN.md) - Comprehensive vision & architecture
-  - [TODO.md](TODO.md) - Implementation checklist
-  - [NAMING_I18N.md](NAMING_I18N.md) - Branding & i18n guide
-
----
-
-**Last Updated**: 2026-01-25
-**Status**: Phase 1 - Foundation (Next.js 15 + Vercel)
-**Next Milestone**: Complete core pages (Blog, Calendar, About)
-
-Built with 🪷 and the wisdom of the Buddha
