@@ -48,16 +48,16 @@ export default async function PostPage({ params }: { params: Promise<PageParams>
       {/* Header */}
       <header className="mb-10">
         <div className="flex items-center gap-2 mb-4">
-          <Link href={`/posts`} className="text-xs transition-colors" style={{ color: '#a8a29e' }}>
+          <Link href={`/posts`} className="text-xs transition-colors" style={{ color: '#c4a882' }}>
             文章
           </Link>
-          <span className="text-xs" style={{ color: '#d5c9c0' }}>/</span>
-          <span className="text-xs" style={{ color: '#a8a29e' }}>{CATEGORY_LABELS[category] ?? category}</span>
+          <span className="text-xs" style={{ color: '#e8cbb8' }}>/</span>
+          <span className="text-xs" style={{ color: '#c4a882' }}>{CATEGORY_LABELS[category] ?? category}</span>
         </div>
-        <h1 className="text-2xl font-medium text-stone-800 mb-3 tracking-tight">
+        <h1 className="text-2xl font-medium mb-3 tracking-tight" style={{ color: '#4a2c1a' }}>
           {post.frontmatter.title}
         </h1>
-        <div className="flex flex-wrap items-center gap-3 text-xs text-stone-400">
+        <div className="flex flex-wrap items-center gap-3 text-xs" style={{ color: '#c4a882' }}>
           <span>{post.frontmatter.date}</span>
           {post.frontmatter.principle_reference && (
             <>
@@ -81,7 +81,7 @@ export default async function PostPage({ params }: { params: Promise<PageParams>
           </div>
         )}
         {post.frontmatter.summary && (
-          <p className="mt-4 text-sm text-stone-500 italic leading-relaxed border-l-2 border-stone-200 pl-3">
+          <p className="mt-4 text-sm italic leading-relaxed border-l-2 pl-3" style={{ color: '#8c5c3a', borderColor: '#f0d9c8' }}>
             {post.frontmatter.summary}
           </p>
         )}
@@ -95,11 +95,11 @@ export default async function PostPage({ params }: { params: Promise<PageParams>
 
       {/* Related Posts */}
       {related.length > 0 && (
-        <aside className="mt-16 pt-8 border-t border-amber-200">
-          <h2 className="text-xs font-medium uppercase tracking-widest mb-1" style={{ color: '#d97706' }}>
+        <aside className="mt-16 pt-8 border-t" style={{ borderColor: '#f0d9c8' }}>
+          <h2 className="text-xs font-medium uppercase tracking-widest mb-1" style={{ color: '#e8956d' }}>
             相关文章
           </h2>
-          <p className="text-[10px] mb-5" style={{ color: '#92400e', opacity: 0.45 }}>Related Writing</p>
+          <p className="text-[10px] mb-5" style={{ color: '#9a5c2a', opacity: 0.45 }}>Related Writing</p>
           <div className="space-y-3">
             {related.map((r) => (
               <Link
@@ -109,10 +109,10 @@ export default async function PostPage({ params }: { params: Promise<PageParams>
               >
                 <div className="flex items-center gap-2 mb-1">
                   <span className="principle-chip">{CATEGORY_LABELS[r.category] ?? r.category}</span>
-                  <span className="text-xs text-stone-400">{r.frontmatter.date}</span>
+                  <span className="text-xs" style={{ color: '#c4a882' }}>{r.frontmatter.date}</span>
                 </div>
-                <h3 className="text-sm font-medium text-stone-800">{r.frontmatter.title}</h3>
-                <p className="text-xs text-stone-500 mt-1 leading-relaxed">{r.frontmatter.summary}</p>
+                <h3 className="text-sm font-medium" style={{ color: '#4a2c1a' }}>{r.frontmatter.title}</h3>
+                <p className="text-xs mt-1 leading-relaxed" style={{ color: '#8c5c3a' }}>{r.frontmatter.summary}</p>
               </Link>
             ))}
           </div>

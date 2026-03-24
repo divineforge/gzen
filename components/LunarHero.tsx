@@ -250,12 +250,12 @@ export default function LunarHero({
         </div>
       </div>
 
-      {/* Scroll-fade: gradient overlay that blends into page background (amber-50 / zen-wisdom #fffbeb) */}
+      {/* Scroll-fade: gradient overlay that blends into page background (peach cream #fff8f5) */}
       <div
         className="absolute inset-x-0 bottom-0 pointer-events-none"
         style={{
           height: '40%',
-          background: 'linear-gradient(to bottom, transparent 0%, #fffbeb 100%)',
+          background: 'linear-gradient(to bottom, transparent 0%, #fff8f5 100%)',
         }}
       />
     </section>

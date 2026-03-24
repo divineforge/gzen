@@ -36,9 +36,9 @@ export default function PostsPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10 sm:py-16 animate-fade-in">
-      <h1 className="text-xl font-medium mb-1" style={{ color: '#78350f' }}>文章</h1>
-      <p className="text-xs mb-1" style={{ color: '#92400e', opacity: 0.5 }}>Writing</p>
-      <p className="text-sm mb-12" style={{ color: '#57534e' }}>
+      <h1 className="text-xl font-medium mb-1" style={{ color: '#7c3d18' }}>文章</h1>
+      <p className="text-xs mb-1" style={{ color: '#9a5c2a', opacity: 0.5 }}>Writing</p>
+      <p className="text-sm mb-12" style={{ color: '#8c5c3a' }}>
         公案·修行·工程·典藏 — 以文载道，以道修身。
       </p>
 
@@ -48,10 +48,10 @@ export default function PostsPage() {
         return (
           <section key={category} className="mb-12">
             <div className="mb-4">
-              <h2 className="text-xs font-medium uppercase tracking-widest" style={{ color: '#d97706' }}>
+              <h2 className="text-xs font-medium uppercase tracking-widest" style={{ color: '#e8956d' }}>
                 {CATEGORY_LABELS[category]}
               </h2>
-              <span className="text-[10px]" style={{ color: '#92400e', opacity: 0.45 }}>{CATEGORY_LABELS_EN[category]}</span>
+              <span className="text-[10px]" style={{ color: '#9a5c2a', opacity: 0.45 }}>{CATEGORY_LABELS_EN[category]}</span>
             </div>
             <div className="space-y-3">
               {items.map((post) => (
@@ -62,13 +62,13 @@ export default function PostsPage() {
                 >
                   <div className="flex items-center gap-2 mb-1.5">
                     <span className="principle-chip">{CATEGORY_LABELS[category]}</span>
-                    <span className="text-xs" style={{ color: '#a8a29e' }}>{post.frontmatter.date}</span>
+                    <span className="text-xs" style={{ color: '#c4a882' }}>{post.frontmatter.date}</span>
                     {post.frontmatter.tags?.slice(0, 2).map((tag) => (
                       <span key={tag} className="tag-pill">{tag}</span>
                     ))}
                   </div>
-                  <h3 className="text-sm font-medium mb-1" style={{ color: '#2c2416' }}>{post.frontmatter.title}</h3>
-                  <p className="text-xs leading-relaxed" style={{ color: '#57534e' }}>{post.frontmatter.summary}</p>
+                  <h3 className="text-sm font-medium mb-1" style={{ color: '#4a2c1a' }}>{post.frontmatter.title}</h3>
+                  <p className="text-xs leading-relaxed" style={{ color: '#8c5c3a' }}>{post.frontmatter.summary}</p>
                 </Link>
               ))}
             </div>
