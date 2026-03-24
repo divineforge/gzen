@@ -47,19 +47,19 @@ export default async function PrinciplePage({ params }: { params: Promise<PagePa
     <div className="max-w-3xl mx-auto px-4 py-10 sm:py-16 animate-fade-in">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 mb-8">
-        <Link href="/principles" className="text-xs transition-colors" style={{ color: '#a8a29e' }}>
+        <Link href="/principles" className="text-xs transition-colors" style={{ color: '#c4a882' }}>
           禅理
         </Link>
-        <span className="text-xs" style={{ color: '#d5c9c0' }}>/</span>
-        <span className="text-xs" style={{ color: '#a8a29e' }}>{principle.frontmatter.title}</span>
+        <span className="text-xs" style={{ color: '#e8cbb8' }}>/</span>
+        <span className="text-xs" style={{ color: '#c4a882' }}>{principle.frontmatter.title}</span>
       </div>
 
       {/* Header */}
       <header className="mb-10">
-        <h1 className="text-2xl font-medium text-stone-800 mb-3 tracking-tight">
+        <h1 className="text-2xl font-medium mb-3 tracking-tight" style={{ color: '#4a2c1a' }}>
           {principle.frontmatter.title}
         </h1>
-        <div className="flex flex-wrap items-center gap-3 text-xs text-stone-400">
+        <div className="flex flex-wrap items-center gap-3 text-xs" style={{ color: '#c4a882' }}>
           <span>{principle.frontmatter.date}</span>
         </div>
         {principle.frontmatter.tags?.length > 0 && (
@@ -72,7 +72,7 @@ export default async function PrinciplePage({ params }: { params: Promise<PagePa
           </div>
         )}
         {principle.frontmatter.summary && (
-          <p className="mt-4 text-sm text-stone-500 italic leading-relaxed border-l-2 border-stone-200 pl-3">
+          <p className="mt-4 text-sm italic leading-relaxed border-l-2 pl-3" style={{ color: '#8c5c3a', borderColor: '#f0d9c8' }}>
             {principle.frontmatter.summary}
           </p>
         )}
@@ -83,11 +83,11 @@ export default async function PrinciplePage({ params }: { params: Promise<PagePa
 
       {/* Posts referencing this principle */}
       {referenced.length > 0 && (
-        <aside className="pt-8 border-t border-amber-200">
-          <h2 className="text-xs font-medium uppercase tracking-widest mb-1" style={{ color: '#d97706' }}>
+        <aside className="pt-8 border-t" style={{ borderColor: '#f0d9c8' }}>
+          <h2 className="text-xs font-medium uppercase tracking-widest mb-1" style={{ color: '#e8956d' }}>
             引用此禅理的文章
           </h2>
-          <p className="text-[10px] mb-5" style={{ color: '#92400e', opacity: 0.45 }}>Writing That References This Principle</p>
+          <p className="text-[10px] mb-5" style={{ color: '#9a5c2a', opacity: 0.45 }}>Writing That References This Principle</p>
           <div className="space-y-3">
             {referenced.map((post) => (
               <Link
@@ -97,10 +97,10 @@ export default async function PrinciplePage({ params }: { params: Promise<PagePa
               >
                 <div className="flex items-center gap-2 mb-1">
                   <span className="principle-chip">{CATEGORY_LABELS[post.category] ?? post.category}</span>
-                  <span className="text-xs text-stone-400">{post.frontmatter.date}</span>
+                  <span className="text-xs" style={{ color: '#c4a882' }}>{post.frontmatter.date}</span>
                 </div>
-                <h3 className="text-sm font-medium text-stone-800">{post.frontmatter.title}</h3>
-                <p className="text-xs text-stone-500 mt-1 leading-relaxed">{post.frontmatter.summary}</p>
+                <h3 className="text-sm font-medium" style={{ color: '#4a2c1a' }}>{post.frontmatter.title}</h3>
+                <p className="text-xs mt-1 leading-relaxed" style={{ color: '#8c5c3a' }}>{post.frontmatter.summary}</p>
               </Link>
             ))}
           </div>

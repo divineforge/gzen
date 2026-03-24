@@ -4,30 +4,34 @@
 
 @layer base {
   html {
-    font-size: 16px;
+    font-size: 16px; /* 1rem = 16px base */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Prevent text size adjustment on mobile orientation change */
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
 
   body {
-    /* Warm Buddhist cream background; text is warm dark brown */
-    background-color: #fffbeb; /* zen-wisdom / amber-50 */
-    color: #2c2416;            /* zen-text — warm dark brown */
-    line-height: 1.75;         /* CJK readability */
+    /* Soft warm peach-cream background — innocent, gentle, pastel */
+    background-color: #fff8f5; /* warm peach cream */
+    color: #4a2c1a;            /* warm dark brown */
+    line-height: 1.8;          /* CJK readability */
+    font-size: 1rem;
   }
 
+  h1 { font-size: 1.5rem;   line-height: 1.4; font-weight: 500; }
+  h2 { font-size: 1.25rem;  line-height: 1.5; font-weight: 500; }
+  h3 { font-size: 1.1rem;   line-height: 1.6; font-weight: 500; }
+  h4, h5, h6 { font-size: 1rem; line-height: 1.6; font-weight: 500; }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-medium tracking-tight;
+    @apply tracking-tight;
   }
 
   a {
     @apply transition-colors duration-150;
   }
 
-  /* Ensure tap targets meet accessibility minimum on mobile */
   button, [role="button"] {
     touch-action: manipulation;
   }
@@ -39,74 +43,92 @@
   }
 
   .prose-philosophy h2 {
-    @apply text-lg font-medium mt-10 mb-3 pb-2 border-b border-amber-200;
-    color: #78350f; /* warm brown for headings */
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f0d9c8;
+    color: #7c3d18; /* warm brown headings */
   }
 
   .prose-philosophy p {
-    @apply text-sm sm:text-base leading-loose mb-5;
-    color: #44403c; /* warm stone-700 */
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+    color: #5a3825; /* warm body text */
   }
 
   .prose-philosophy blockquote {
-    @apply border-l-2 border-amber-400 pl-4 italic my-6;
-    color: #78350f;
-    background-color: rgba(253, 230, 138, 0.15);
+    border-left: 2px solid #e8956d;
+    padding-left: 1rem;
+    font-style: italic;
+    margin: 1.5rem 0;
+    color: #7c3d18;
+    background-color: rgba(248, 212, 188, 0.15);
   }
 
   .prose-philosophy strong {
-    @apply font-medium;
-    color: #2c2416;
+    font-weight: 600;
+    color: #4a2c1a;
   }
 
   .prose-philosophy ul, .prose-philosophy ol {
-    @apply ml-4 mb-4 space-y-1;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
   }
 
   .prose-philosophy li {
-    @apply text-sm sm:text-base leading-loose;
-    color: #44403c;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #5a3825;
+    margin-bottom: 0.25rem;
   }
 
-  /* Tag pill — warm amber tint */
+  /* Tag pill — soft peach tint */
   .tag-pill {
     @apply inline-block text-xs font-medium px-2 py-0.5 rounded;
-    background-color: #fef3c7; /* amber-100 */
-    color: #92400e;            /* amber-800 */
+    font-size: 0.75rem;
+    background-color: #fce7d6; /* soft peach */
+    color: #9a4a20;
     transition: background-color 0.15s;
   }
   .tag-pill:hover {
-    background-color: #fde68a; /* amber-200 */
+    background-color: #f8d4bc;
   }
 
-  /* Post card — white card with warm border */
+  /* Post card — soft warm card */
   .post-card {
-    @apply rounded p-4 sm:p-5 bg-white transition-all;
-    border: 1px solid #e7e5e4;
+    @apply rounded-xl p-4 sm:p-5 transition-all;
+    background-color: #fffcfa;
+    border: 1px solid #f0d9c8;
   }
   .post-card:hover {
-    border-color: #d97706; /* saffron on hover */
-    box-shadow: 0 1px 8px rgba(217, 119, 6, 0.08);
+    border-color: #e8956d;
+    box-shadow: 0 2px 12px rgba(232, 149, 109, 0.12);
+    background-color: #fffaf7;
   }
 
-  /* Category chip — saffron/amber */
+  /* Category chip — soft warm */
   .principle-chip {
     @apply inline-block text-xs px-2 py-0.5 rounded-full;
-    background-color: #92400e; /* amber-800 */
-    color: #fef3c7;            /* amber-100 */
+    font-size: 0.7rem;
+    background-color: #f8d4bc;
+    color: #7c3d18;
   }
 
   /* Nav links */
   .nav-link {
     @apply text-sm transition-colors;
-    color: #57534e; /* stone-600 */
+    color: #8c5c3a;
   }
   .nav-link:hover {
-    color: #d97706; /* saffron */
+    color: #d97355;
   }
 
   /* Saffron divider */
   .saffron-divider {
-    border-color: #fde68a; /* amber-200 */
+    border-color: #f0d9c8;
   }
 }
+

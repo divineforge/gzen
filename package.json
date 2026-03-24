@@ -16,6 +16,7 @@
     "new-library": "node scripts/new-post.js library"
   },
   "dependencies": {
+    "@next/font": "^14.2.15",
     "geist": "^1.5.1",
     "gray-matter": "^4.0.3",
     "lunar-javascript": "^1.7.7",

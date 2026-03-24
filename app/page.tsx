@@ -47,8 +47,8 @@ export default function HomePage() {
 
       {/* Core Principles */}
       <section className="mb-14">
-        <h2 className="text-xs font-medium uppercase tracking-widest mb-1" style={{ color: '#d97706' }}>禅理</h2>
-        <p className="text-[11px] mb-5" style={{ color: '#92400e', opacity: 0.5 }}>Core Principles</p>
+        <h2 className="text-xs font-medium uppercase tracking-widest mb-1" style={{ color: '#e8956d' }}>禅理</h2>
+        <p className="text-[11px] mb-5" style={{ color: '#9a5c2a', opacity: 0.5 }}>Core Principles</p>
         <div className="space-y-2">
           {principles.map((p) => (
             <Link
@@ -56,12 +56,12 @@ export default function HomePage() {
               href={`/principles/${p.slug}`}
               className="flex items-start gap-3 group"
             >
-              <span className="mt-1 transition-colors" style={{ color: '#d97706', opacity: 0.5 }}>→</span>
+              <span className="mt-1 transition-colors" style={{ color: '#e8956d', opacity: 0.5 }}>→</span>
               <div>
-                <span className="text-sm font-medium transition-colors" style={{ color: '#78350f' }}>
+                <span className="text-sm font-medium transition-colors" style={{ color: '#7c3d18' }}>
                   {p.frontmatter.title}
                 </span>
-                <p className="text-xs mt-0.5 leading-relaxed" style={{ color: '#92400e', opacity: 0.6 }}>
+                <p className="text-xs mt-0.5 leading-relaxed" style={{ color: '#9a5c2a', opacity: 0.7 }}>
                   {p.frontmatter.summary}
                 </p>
               </div>
@@ -73,12 +73,12 @@ export default function HomePage() {
       {/* Recent Writing */}
       <section className="mb-14">
         <div className="flex items-center justify-between mb-1">
-          <h2 className="text-xs font-medium uppercase tracking-widest" style={{ color: '#d97706' }}>近期文章</h2>
-          <Link href="/posts" className="text-xs transition-colors" style={{ color: '#92400e', opacity: 0.6 }}>
+          <h2 className="text-xs font-medium uppercase tracking-widest" style={{ color: '#e8956d' }}>近期文章</h2>
+          <Link href="/posts" className="text-xs transition-colors" style={{ color: '#9a5c2a', opacity: 0.6 }}>
             全部文章 →
           </Link>
         </div>
-        <p className="text-[11px] mb-5" style={{ color: '#92400e', opacity: 0.5 }}>Recent Writing</p>
+        <p className="text-[11px] mb-5" style={{ color: '#9a5c2a', opacity: 0.5 }}>Recent Writing</p>
         <div className="space-y-4">
           {recentPosts.map((post) => (
             <Link
@@ -88,10 +88,10 @@ export default function HomePage() {
             >
               <div className="flex items-center gap-2 mb-1.5">
                 <span className="principle-chip">{CATEGORY_LABELS[post.category] ?? post.category}</span>
-                <span className="text-xs text-stone-400">{post.frontmatter.date}</span>
+                <span className="text-xs" style={{ color: '#c4a882' }}>{post.frontmatter.date}</span>
               </div>
-              <h3 className="text-sm font-medium text-stone-800 mb-1">{post.frontmatter.title}</h3>
-              <p className="text-xs text-stone-500 leading-relaxed">{post.frontmatter.summary}</p>
+              <h3 className="text-sm font-medium mb-1" style={{ color: '#4a2c1a' }}>{post.frontmatter.title}</h3>
+              <p className="text-xs leading-relaxed" style={{ color: '#8c5c3a' }}>{post.frontmatter.summary}</p>
             </Link>
           ))}
         </div>
@@ -100,8 +100,8 @@ export default function HomePage() {
       {/* Tags */}
       {tags.length > 0 && (
         <section>
-          <h2 className="text-xs font-medium uppercase tracking-widest mb-1" style={{ color: '#d97706' }}>主题</h2>
-          <p className="text-[11px] mb-3" style={{ color: '#92400e', opacity: 0.5 }}>Topics</p>
+          <h2 className="text-xs font-medium uppercase tracking-widest mb-1" style={{ color: '#e8956d' }}>主题</h2>
+          <p className="text-[11px] mb-3" style={{ color: '#9a5c2a', opacity: 0.5 }}>Topics</p>
           <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
               <Link key={tag} href={`/tags/${tag}`} className="tag-pill">
