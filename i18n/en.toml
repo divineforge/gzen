@@ -1,0 +1,86 @@
+[brand_subtitle]
+other = "Where Goodness Gathers"
+
+[nav_home]
+other = "Home"
+
+[nav_koans]
+other = "Koans"
+
+[nav_principles]
+other = "Principles"
+
+[nav_practice]
+other = "Practice"
+
+[nav_engineering]
+other = "Engineering"
+
+[nav_library]
+other = "Library"
+
+[nav_about]
+other = "About"
+
+[nav_posts]
+other = "Writing"
+
+[principles]
+other = "Core Principles"
+
+[principles_en]
+other = "核心禅理"
+
+[recent_posts]
+other = "Recent Writing"
+
+[recent_posts_en]
+other = "近期文章"
+
+[all_posts]
+other = "All Writing"
+
+[topics]
+other = "Topics"
+
+[back_home]
+other = "Back to Home"
+
+[no_posts]
+other = "No posts yet"
+
+[read_in]
+other = "Read in other languages"
+
+[lunar_hero_label]
+other = "Lunar phase backdrop"
+
+[prev_day]
+other = "Previous day"
+
+[next_day]
+other = "Next day"
+
+[today]
+other = "Today"
+
+[waxing]
+other = "Waxing"
+
+[waning]
+other = "Waning"
+
+[lunar_cycle_progress]
+other = "Lunar cycle progress"
+
+[koans]
+other = "Koans"
+
+[practice]
+other = "Practice"
+
+[engineering]
+other = "Engineering"
+
+[library]
+other = "Library"

@@ -1,0 +1,86 @@
+[brand_subtitle]
+other = "善聚慧生"
+
+[nav_home]
+other = "首页"
+
+[nav_koans]
+other = "公案"
+
+[nav_principles]
+other = "禅理"
+
+[nav_practice]
+other = "修行"
+
+[nav_engineering]
+other = "工程"
+
+[nav_library]
+other = "典藏"
+
+[nav_about]
+other = "关于"
+
+[nav_posts]
+other = "文章"
+
+[principles]
+other = "禅理"
+
+[principles_en]
+other = "Core Principles"
+
+[recent_posts]
+other = "近期文章"
+
+[recent_posts_en]
+other = "Recent Writing"
+
+[all_posts]
+other = "全部文章"
+
+[topics]
+other = "主题"
+
+[back_home]
+other = "返回首页"
+
+[no_posts]
+other = "暂无文章"
+
+[read_in]
+other = "以其他语言阅读"
+
+[lunar_hero_label]
+other = "农历月相"
+
+[prev_day]
+other = "前一天"
+
+[next_day]
+other = "后一天"
+
+[today]
+other = "今日"
+
+[waxing]
+other = "月盈"
+
+[waning]
+other = "月亏"
+
+[lunar_cycle_progress]
+other = "农历月相进度"
+
+[koans]
+other = "公案"
+
+[practice]
+other = "修行"
+
+[engineering]
+other = "工程"
+
+[library]
+other = "典藏"

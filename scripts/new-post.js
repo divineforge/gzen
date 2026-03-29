@@ -1,171 +1,44 @@
 #!/usr/bin/env node
 /**
- * gzen content generator
- * Usage: node scripts/new-post.js <category> <slug>
- * Example: node scripts/new-post.js koan the-silent-room
+ * GrowZen — new post helper
+ * Usage: node scripts/new-post.js <type> <slug>
+ * e.g.:  node scripts/new-post.js koan my-koan-slug
+ *
+ * Creates a new post in content/zh/<section>/<slug>.md using Hugo archetypes.
  */
 
-const fs = require('fs');
+const { execSync } = require('child_process');
 const path = require('path');
 
-const CATEGORIES = ['koan', 'principle', 'practice', 'engineering', 'library'];
-
-// Map singular category name to directory name
-const CATEGORY_DIR = {
-  koan: 'koans',
-  principle: 'principles',
-  practice: 'practice',
+const TYPE_MAP = {
+  koan:        'koans',
+  principle:   'principles',
+  practice:    'practice',
   engineering: 'engineering',
-  library: 'library',
+  library:     'library',
 };
 
-const TEMPLATES = {
-  koan: (title, date) => `---
-title: "${title}"
-date: "${date}"
-tags: ["clarity"]
-principle_reference: "clarity-before-tools"
-summary: ""
----
+const [,, type, slug] = process.argv;
 
-## Observation
-
-_A real-life situation, problem, or reflection._
-
-## Principle
-
-_The distilled insight extracted from the observation._
-
-## Application
-
-_How the idea can guide behavior, thinking, or decision-making._
-`,
-  principle: (title, date) => `---
-title: "${title}"
-date: "${date}"
-tags: ["clarity"]
-principle_reference: ""
-summary: ""
----
-
-## Observation
-
-_A real-life situation, problem, or reflection._
-
-## Principle
-
-_The distilled insight extracted from the observation._
-
-## Application
-
-_How the idea can guide behavior, thinking, or decision-making._
-`,
-  practice: (title, date) => `---
-title: "${title}"
-date: "${date}"
-tags: ["mindfulness", "discipline"]
-principle_reference: "discipline-before-motivation"
-summary: ""
----
-
-## Observation
-
-_A real-life situation, problem, or reflection._
-
-## Principle
-
-_The distilled insight extracted from the observation._
-
-## Application
-
-_How the idea can guide behavior, thinking, or decision-making._
-`,
-  engineering: (title, date) => `---
-title: "${title}"
-date: "${date}"
-tags: ["clarity", "technology"]
-principle_reference: "clarity-before-tools"
-summary: ""
----
-
-## Observation
-
-_A real-life situation, problem, or reflection._
-
-## Principle
-
-_The distilled insight extracted from the observation._
-
-## Application
-
-_How the idea can guide behavior, thinking, or decision-making._
-`,
-  library: (title, date) => `---
-title: "${title}"
-date: "${date}"
-tags: ["clarity"]
-principle_reference: ""
-summary: ""
----
-
-## Observation
-
-_A real-life situation, problem, or reflection._
-
-## Principle
-
-_The distilled insight extracted from the observation._
-
-## Application
-
-_How the idea can guide behavior, thinking, or decision-making._
-
-## Selected References
-
-_Quotes and references._
-`,
-};
-
-function toTitleCase(slug) {
-  return slug
-    .split('-')
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ');
+if (!type || !slug) {
+  console.error('Usage: node scripts/new-post.js <type> <slug>');
+  console.error('Types:', Object.keys(TYPE_MAP).join(', '));
+  process.exit(1);
 }
 
-function run() {
-  const [,, category, slug] = process.argv;
-
-  if (!category || !slug) {
-    console.error(`Usage: node scripts/new-post.js <category> <slug>`);
-    console.error(`Categories: ${CATEGORIES.join(', ')}`);
-    process.exit(1);
-  }
-
-  if (!CATEGORIES.includes(category)) {
-    console.error(`Unknown category: ${category}`);
-    console.error(`Valid categories: ${CATEGORIES.join(', ')}`);
-    process.exit(1);
-  }
-
-  const dirName = CATEGORY_DIR[category];
-  const title = toTitleCase(slug);
-  const date = new Date().toISOString().split('T')[0];
-  const template = TEMPLATES[category](title, date);
-
-  const dir = path.join(process.cwd(), 'content', dirName);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
-
-  const filePath = path.join(dir, `${slug}.md`);
-  if (fs.existsSync(filePath)) {
-    console.error(`File already exists: ${filePath}`);
-    process.exit(1);
-  }
-
-  fs.writeFileSync(filePath, template, 'utf8');
-  console.log(`Created: ${filePath}`);
+const section = TYPE_MAP[type];
+if (!section) {
+  console.error(`Unknown type: ${type}. Valid types: ${Object.keys(TYPE_MAP).join(', ')}`);
+  process.exit(1);
 }
 
-run();
+const contentPath = `${section}/${slug}.md`;
+console.log(`Creating: content/zh/${contentPath}`);
+
+try {
+  execSync(`hugo new --contentDir content/zh ${contentPath}`, { stdio: 'inherit' });
+  console.log(`\n✅ Created content/zh/${contentPath}`);
+  console.log('Remember to also create English (content/en/) and Japanese (content/ja/) versions!');
+} catch (e) {
+  process.exit(1);
+}
