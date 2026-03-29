@@ -1,0 +1,86 @@
+[brand_subtitle]
+other = "善集慧生"
+
+[nav_home]
+other = "ホーム"
+
+[nav_koans]
+other = "公案"
+
+[nav_principles]
+other = "禅理"
+
+[nav_practice]
+other = "修行"
+
+[nav_engineering]
+other = "工程"
+
+[nav_library]
+other = "典籍"
+
+[nav_about]
+other = "について"
+
+[nav_posts]
+other = "記事"
+
+[principles]
+other = "禅理"
+
+[principles_en]
+other = "Core Principles"
+
+[recent_posts]
+other = "最近の記事"
+
+[recent_posts_en]
+other = "Recent Writing"
+
+[all_posts]
+other = "すべての記事"
+
+[topics]
+other = "トピック"
+
+[back_home]
+other = "ホームに戻る"
+
+[no_posts]
+other = "記事はまだありません"
+
+[read_in]
+other = "他の言語で読む"
+
+[lunar_hero_label]
+other = "月の満ち欠け"
+
+[prev_day]
+other = "前の日"
+
+[next_day]
+other = "次の日"
+
+[today]
+other = "今日"
+
+[waxing]
+other = "月が満ちる"
+
+[waning]
+other = "月が欠ける"
+
+[lunar_cycle_progress]
+other = "月の周期"
+
+[koans]
+other = "公案"
+
+[practice]
+other = "修行"
+
+[engineering]
+other = "工程"
+
+[library]
+other = "典籍"

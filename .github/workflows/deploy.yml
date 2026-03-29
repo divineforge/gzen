@@ -15,26 +15,32 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Set up Node.js (for Tailwind CSS)
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install Tailwind CSS dependencies
         run: npm ci
 
-      - name: Type check
-        run: npx tsc --noEmit
+      - name: Build CSS
+        run: npm run build:css
 
-      - name: Build Next.js site
-        run: npm run build
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.145.0'
+          extended: false
+
+      - name: Build Hugo site
+        run: hugo --minify
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: nextjs-build
-          path: .next/
+          name: hugo-build
+          path: public/
           retention-days: 7
 
   # Optional: Deploy to Vercel (requires VERCEL_TOKEN secret)

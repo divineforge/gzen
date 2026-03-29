@@ -1,0 +1,94 @@
+{{- define "main" }}
+<div class="animate-fade-in">
+
+  {{- partial "lunar-hero.html" . -}}
+
+  <div class="max-w-3xl mx-auto px-4 py-8 sm:py-12">
+
+    {{/* Core Principles */}}
+    {{ $principles := where .Site.RegularPages "Section" "principles" }}
+    {{ if $principles }}
+    <section class="mb-14">
+      <h2 class="text-xs font-medium uppercase tracking-widest mb-1" style="color:#e8956d;">
+        {{ i18n "principles" }}
+      </h2>
+      <p class="text-[11px] mb-5" style="color:#9a5c2a;opacity:0.5;">
+        {{ i18n "principles_en" }}
+      </p>
+      <div class="space-y-2">
+        {{ range $principles }}
+        <a href="{{ .RelPermalink }}" class="flex items-start gap-3 group">
+          <span class="mt-1 transition-colors" style="color:#e8956d;opacity:0.5;">→</span>
+          <div>
+            <span class="text-sm font-medium transition-colors" style="color:#7c3d18;">
+              {{ .Title }}
+            </span>
+            {{ with .Params.summary }}
+            <p class="text-xs mt-0.5 leading-relaxed" style="color:#9a5c2a;opacity:0.7;">
+              {{ . }}
+            </p>
+            {{ end }}
+          </div>
+        </a>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+
+    {{/* Recent Writing */}}
+    {{ $posts := first 6 (where .Site.RegularPages "Section" "!=" "principles") }}
+    {{ if $posts }}
+    <section class="mb-14">
+      <div class="flex items-center justify-between mb-1">
+        <h2 class="text-xs font-medium uppercase tracking-widest" style="color:#e8956d;">
+          {{ i18n "recent_posts" }}
+        </h2>
+        <a href="{{ "posts" | relLangURL }}" class="text-xs transition-colors" style="color:#9a5c2a;opacity:0.6;">
+          {{ i18n "all_posts" }} →
+        </a>
+      </div>
+      <p class="text-[11px] mb-5" style="color:#9a5c2a;opacity:0.5;">
+        {{ i18n "recent_posts_en" }}
+      </p>
+      <div class="space-y-4">
+        {{ range $posts }}
+        <a href="{{ .RelPermalink }}" class="post-card block">
+          <div class="flex items-center gap-2 mb-1.5">
+            <span class="category-chip">
+              {{ i18n .Section | default .Section }}
+            </span>
+            <span class="text-xs" style="color:#c4a882;">
+              {{ .Date.Format "2006-01-02" }}
+            </span>
+          </div>
+          <h3 class="text-sm font-medium mb-1" style="color:#4a2c1a;">{{ .Title }}</h3>
+          {{ with .Params.summary }}
+          <p class="text-xs leading-relaxed" style="color:#8c5c3a;">{{ . }}</p>
+          {{ end }}
+        </a>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+
+    {{/* Tags */}}
+    {{ $tags := .Site.Taxonomies.tags }}
+    {{ if $tags }}
+    <section>
+      <h2 class="text-xs font-medium uppercase tracking-widest mb-1" style="color:#e8956d;">
+        {{ i18n "topics" }}
+      </h2>
+      <p class="text-[11px] mb-3" style="color:#9a5c2a;opacity:0.5;">Topics</p>
+      <div class="flex flex-wrap gap-2">
+        {{ range $name, $pages := $tags }}
+        <a href="{{ printf "tags/%s" $name | relLangURL }}" class="tag-pill">
+          {{ $name }}
+        </a>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+
+  </div>
+</div>
+{{- end }}

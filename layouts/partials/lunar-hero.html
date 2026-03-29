@@ -1,0 +1,57 @@
+<!-- Lunar Hero — dynamic per-day backdrop with lotus visualizer -->
+<section
+  id="lunar-hero"
+  class="relative w-full overflow-hidden"
+  style="min-height:min(52vh,480px);"
+  aria-label="{{ i18n "lunar_hero_label" }}"
+  data-lang="{{ .Site.Language.Lang }}"
+>
+  <!-- Dynamic gradient background (set by lunar.js) -->
+  <div id="lunar-bg" class="absolute inset-0 transition-all duration-700" style="background:linear-gradient(135deg,#080816 0%,#0e0d22 60%,#0b0b18 100%);"></div>
+
+  <!-- Radial glow -->
+  <div id="lunar-glow" class="absolute inset-0 pointer-events-none"></div>
+
+  <!-- Hero content -->
+  <div class="relative z-10 flex flex-col items-center justify-center px-4 pt-10 pb-16 sm:pt-14 sm:pb-20">
+
+    <!-- Preview badge (shown when browsing off today) -->
+    <span id="lunar-preview-badge" class="mb-3 hidden text-xs font-medium px-3 py-1 rounded-full bg-white/10 text-white/70 border border-white/20"></span>
+
+    <!-- Main emoji -->
+    <div id="lunar-emoji" class="text-6xl sm:text-8xl mb-3 select-none transition-all duration-500" role="img" aria-label="Lotus stage">🪷</div>
+
+    <!-- Day label -->
+    <p id="lunar-day-label" class="text-sm font-medium mb-1 text-indigo-200 opacity-60"></p>
+
+    <!-- Stage description -->
+    <p id="lunar-desc-primary" class="text-xl sm:text-2xl font-medium mb-0.5 text-center px-2 text-indigo-200"></p>
+    <p id="lunar-desc-secondary" class="text-xs sm:text-sm mb-1 text-center px-2 text-indigo-200 opacity-50"></p>
+    <p id="lunar-desc-tertiary" class="text-xs mb-4 text-center px-2 text-indigo-200 opacity-35"></p>
+
+    <!-- Lunar month info -->
+    <p id="lunar-month-info" class="text-xs mb-5 text-indigo-200 opacity-40"></p>
+
+    <!-- Navigation -->
+    <div class="flex items-center gap-4 sm:gap-5 mb-5">
+      <button id="lunar-prev" class="w-10 h-10 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all border border-white/15 text-base" aria-label="{{ i18n "prev_day" }}">←</button>
+      <button id="lunar-today" class="text-xs px-4 py-2 sm:px-3 sm:py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all border border-white/15 hidden" aria-label="{{ i18n "today" }}">{{ i18n "today" }}</button>
+      <span id="lunar-today-label" class="text-xs text-indigo-200 opacity-30">{{ i18n "today" }}</span>
+      <button id="lunar-next" class="w-10 h-10 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all border border-white/15 text-base" aria-label="{{ i18n "next_day" }}">→</button>
+    </div>
+
+    <!-- Dot indicators -->
+    <div class="flex flex-col gap-2" aria-label="{{ i18n "lunar_cycle_progress" }}">
+      <div id="lunar-dots-1" class="flex items-center gap-0.5 sm:gap-1"></div>
+      <div id="lunar-dots-2" class="flex items-center gap-0.5 sm:gap-1"></div>
+      <div class="flex justify-between text-white/25 text-xs mt-0.5 px-0.5">
+        <span>🌑 {{ i18n "waxing" }}</span>
+        <span>{{ i18n "waning" }} 🌑</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll fade overlay -->
+  <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:40%;background:linear-gradient(to bottom,transparent 0%,#fff8f5 100%);"></div>
+</section>
