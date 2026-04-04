@@ -12,14 +12,17 @@
   <!-- Radial glow -->
   <div id="lunar-glow" class="absolute inset-0 pointer-events-none"></div>
 
+  <!-- Floating particle canvas -->
+  <canvas id="lunar-particles" class="absolute inset-0 pointer-events-none" style="z-index:2;"></canvas>
+
   <!-- Hero content -->
-  <div class="relative z-10 flex flex-col items-center justify-center px-4 pt-10 pb-16 sm:pt-14 sm:pb-20">
+  <div class="relative z-10 flex flex-col items-center justify-center px-4 pt-10 pb-16 sm:pt-14 sm:pb-20 animate-hero-rise">
 
     <!-- Preview badge (shown when browsing off today) -->
     <span id="lunar-preview-badge" class="mb-3 hidden text-xs font-medium px-3 py-1 rounded-full bg-white/10 text-white/70 border border-white/20"></span>
 
     <!-- Main emoji -->
-    <div id="lunar-emoji" class="text-6xl sm:text-8xl mb-3 select-none transition-all duration-500" role="img" aria-label="Lotus stage">🪷</div>
+    <div id="lunar-emoji" class="text-6xl sm:text-8xl mb-3 select-none transition-all duration-500 animate-petal-pulse" role="img" aria-label="Lotus stage">🪷</div>
 
     <!-- Day label -->
     <p id="lunar-day-label" class="text-sm font-medium mb-1 text-indigo-200 opacity-60"></p>

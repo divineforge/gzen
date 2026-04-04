@@ -64,10 +64,20 @@ module.exports = {
       animation: {
         "fade-in": "fadeIn 0.4s ease-in",
         bloom:     "bloom 0.6s ease-out",
+        "petal-pulse": "petalPulse 3.6s ease-in-out infinite",
+        "hero-rise": "heroRise 0.9s cubic-bezier(0.22,1,0.36,1) both",
       },
       keyframes: {
         fadeIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
         bloom:  { "0%": { opacity: "0", transform: "scale(0.97)" }, "100%": { opacity: "1", transform: "scale(1)" } },
+        petalPulse: {
+          "0%, 100%": { transform: "scale(1)",    filter: "drop-shadow(0 0 0px rgba(255,255,255,0))" },
+          "50%":       { transform: "scale(1.07)", filter: "drop-shadow(0 0 14px rgba(255,255,255,0.35))" },
+        },
+        heroRise: {
+          "0%":   { opacity: "0", transform: "translateY(12px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
     },
   },

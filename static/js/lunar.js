@@ -205,7 +205,75 @@
     30: {bg:'linear-gradient(135deg,#080812 0%,#0a0a1c 60%,#0c0c18 100%)',tc:'#c7d2fe'},
   };
 
-  // ─── Get current date in UTC+8 (Malaysia/China time) ─────────────────────
+  // ─── Particle system ─────────────────────────────────────────────────────
+  var pCanvas, pCtx, pParticles = [], pColor = '#c7d2fe', pAnimId = null;
+  var PARTICLE_COUNT = 28;
+  var FALLBACK_PARTICLE_RGBA = 'rgba(200,210,255,';
+
+  function hexToRgba(hex, alpha) {
+    var r = parseInt(hex.slice(1, 3), 16);
+    var g = parseInt(hex.slice(3, 5), 16);
+    var b = parseInt(hex.slice(5, 7), 16);
+    if (isNaN(r)) { return FALLBACK_PARTICLE_RGBA + alpha + ')'; }
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+  }
+
+  function mkParticle(randomY) {
+    var w = pCanvas ? pCanvas.width  : 1200;
+    var h = pCanvas ? pCanvas.height : 480;
+    return {
+      x:    Math.random() * w,
+      y:    randomY ? Math.random() * h : h + 8,
+      r:    Math.random() * 2 + 1,
+      vy:   Math.random() * 0.35 + 0.08,
+      vx:   (Math.random() - 0.5) * 0.25,
+      op:   Math.random() * 0.22 + 0.05,
+      wave: Math.random() * Math.PI * 2,
+    };
+  }
+
+  function initParticles() {
+    pCanvas = document.getElementById('lunar-particles');
+    if (!pCanvas) { return; }
+    pCtx = pCanvas.getContext('2d');
+    resizeParticles();
+    window.addEventListener('resize', resizeParticles);
+    pParticles = [];
+    for (var i = 0; i < PARTICLE_COUNT; i++) {
+      pParticles.push(mkParticle(true));
+    }
+    if (pAnimId) { cancelAnimationFrame(pAnimId); }
+    pAnimId = requestAnimationFrame(tickParticles);
+  }
+
+  function resizeParticles() {
+    var hero = document.getElementById('lunar-hero');
+    if (!hero || !pCanvas) { return; }
+    pCanvas.width  = hero.offsetWidth;
+    pCanvas.height = hero.offsetHeight;
+  }
+
+  function tickParticles() {
+    if (!pCtx || !pCanvas) { return; }
+    pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+    for (var i = 0; i < pParticles.length; i++) {
+      var p = pParticles[i];
+      p.y    -= p.vy;
+      p.wave += 0.018;
+      p.x    += p.vx + Math.sin(p.wave) * 0.18;
+      pCtx.beginPath();
+      pCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      pCtx.fillStyle = hexToRgba(pColor, p.op);
+      pCtx.fill();
+      if (p.y < -8) {
+        pParticles[i] = mkParticle(false);
+        pParticles[i].x = Math.random() * pCanvas.width;
+      }
+    }
+    pAnimId = requestAnimationFrame(tickParticles);
+  }
+
+
   function getNow() {
     var now = new Date();
     var utc = now.getTime() + now.getTimezoneOffset() * 60000;
@@ -253,6 +321,7 @@
     currentOffset = 0;
 
     render();
+    initParticles();
 
     document.getElementById('lunar-prev').addEventListener('click', function () {
       currentOffset = (currentOffset - 1 + totalDays) % totalDays;
@@ -278,6 +347,9 @@
 
     // Background
     document.getElementById('lunar-bg').style.background = theme.bg;
+
+    // Update particle colour to match the day theme
+    pColor = theme.tc || '#c7d2fe';
 
     // Glow
     var glowEl = document.getElementById('lunar-glow');
