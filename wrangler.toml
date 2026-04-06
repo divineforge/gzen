@@ -1,0 +1,10 @@
+name = "gzen"
+pages_build_output_dir = "public"
+
+[build]
+command = "npm ci && hugo mod download && npm run build:css && hugo --minify"
+
+[build.environment]
+HUGO_VERSION = "0.128.0"
+NODE_VERSION = "20"
+GO_VERSION   = "1.22"

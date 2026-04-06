@@ -1,0 +1,53 @@
+# ── GrowZen Blowfish params ──────────────────────────────
+# Overrides for the Blowfish theme (nunocoracao/blowfish/v2)
+# These layer on top of Blowfish defaults.
+# GrowZen's custom layouts/ take visual precedence; this
+# configures Blowfish features that augment those layouts.
+
+# ── Appearance ─────────────────────────────────────────
+colorScheme          = "gzen"
+defaultAppearance    = "light"
+autoSwitchAppearance = false        # No dark mode toggle; always warm cream
+
+# ── Typography ─────────────────────────────────────────
+# Blowfish loads its own fonts; we override via head partial.
+# Disable Blowfish's font loading to avoid double-loading.
+disableTextInHeader  = false
+
+# ── Features ───────────────────────────────────────────
+enableSearch         = false        # Enable later when search index is ready
+enableCodeCopy       = false        # GrowZen is not a code-focused site
+showReadingTime      = false        # Spiritual reading has no clock
+showWordCount        = false
+showTableOfContents  = false        # Short-form content; no ToC needed
+showSummary          = true
+showDate             = true
+showAuthor           = false        # All content is the tradition, not a person
+showBreadcrumbs      = false
+showPagination       = true
+invertPagination     = false
+showTaxonomies       = true
+showLikes            = false
+showViews            = false
+
+# ── Article layout ─────────────────────────────────────
+# GrowZen's single.html overrides this, but set sensible defaults.
+article.showRelatedContent  = true
+article.relatedContentLimit = 3
+
+# ── Homepage ───────────────────────────────────────────
+homepage.layoutStyle         = "custom"  # Use our custom layouts/index.html
+homepage.showRecent          = false
+homepage.recentLimit         = 5
+homepage.showFeaturedFirst   = false
+
+# ── Sections surfaced in listings ──────────────────────
+mainSections = ["principles", "koans", "practice", "engineering", "library"]
+
+# ── Taxonomies ─────────────────────────────────────────
+# Use Blowfish's taxonomy pages for tags/categories
+showTagCloud = true
+
+# ── Analytics / Privacy ────────────────────────────────
+# No tracking — this is a wisdom platform, not a product.
+disableAnalytics = true
