@@ -1,0 +1,6 @@
+name = "gzen"
+pages_build_output_dir = "public"
+
+[vars]
+HUGO_VERSION = "0.128.0"
+NODE_VERSION = "20"
