@@ -1,53 +1,36 @@
 # ── GrowZen Blowfish params ──────────────────────────────
-# Overrides for the Blowfish theme (nunocoracao/blowfish/v2)
-# These layer on top of Blowfish defaults.
-# GrowZen's custom layouts/ take visual precedence; this
-# configures Blowfish features that augment those layouts.
+# Full reference: https://blowfish.page/docs/configuration/
 
 # ── Appearance ─────────────────────────────────────────
-colorScheme          = "gzen"
-defaultAppearance    = "light"
-autoSwitchAppearance = false        # No dark mode toggle; always warm cream
+colorScheme          = "gzen"         # Our custom warm palette
+defaultAppearance    = "light"        # Always warm cream — no dark mode
+autoSwitchAppearance = false
 
-# ── Typography ─────────────────────────────────────────
-# Blowfish loads its own fonts; we override via head partial.
-# Disable Blowfish's font loading to avoid double-loading.
-disableTextInHeader  = false
-
-# ── Features ───────────────────────────────────────────
-enableSearch         = false        # Enable later when search index is ready
-enableCodeCopy       = false        # GrowZen is not a code-focused site
-showReadingTime      = false        # Spiritual reading has no clock
-showWordCount        = false
-showTableOfContents  = false        # Short-form content; no ToC needed
-showSummary          = true
-showDate             = true
-showAuthor           = false        # All content is the tradition, not a person
-showBreadcrumbs      = false
-showPagination       = true
-invertPagination     = false
-showTaxonomies       = true
-showLikes            = false
-showViews            = false
-
-# ── Article layout ─────────────────────────────────────
-# GrowZen's single.html overrides this, but set sensible defaults.
-article.showRelatedContent  = true
-article.relatedContentLimit = 3
+# ── Header / Footer ────────────────────────────────────
+showScrollToTop = true
 
 # ── Homepage ───────────────────────────────────────────
-homepage.layoutStyle         = "custom"  # Use our custom layouts/index.html
-homepage.showRecent          = false
-homepage.recentLimit         = 5
-homepage.showFeaturedFirst   = false
+[homepage]
+  layout     = "custom"    # Uses layouts/partials/home/custom.html
+  showRecent = false
 
-# ── Sections surfaced in listings ──────────────────────
+# ── Article defaults ───────────────────────────────────
+showDate            = true
+showDateUpdated     = false
+showAuthor          = false      # Wisdom is from the tradition, not a person
+showReadingTime     = false
+showWordCount       = false
+showTableOfContents = false
+showBreadcrumbs     = false
+showPagination      = true
+showSummary         = true
+showTaxonomies      = true
+
+# ── Features ───────────────────────────────────────────
+enableSearch   = false
+enableCodeCopy = false
+showLikes      = false
+showViews      = false
+
+# ── Content sections ───────────────────────────────────
 mainSections = ["principles", "koans", "practice", "engineering", "library"]
-
-# ── Taxonomies ─────────────────────────────────────────
-# Use Blowfish's taxonomy pages for tags/categories
-showTagCloud = true
-
-# ── Analytics / Privacy ────────────────────────────────
-# No tracking — this is a wisdom platform, not a product.
-disableAnalytics = true

@@ -1,0 +1,87 @@
+{{/* GrowZen custom homepage — renders inside Blowfish baseof > main block */}}
+
+{{/* ── Lunar hero ─────────────────────────────────────── */}}
+{{ partial "lunar-hero.html" . }}
+
+{{/* ── Content sections ──────────────────────────────── */}}
+<div class="mt-12 max-w-3xl mx-auto px-4 space-y-16">
+
+  {{/* Principles */}}
+  {{ $principles := where site.RegularPages "Section" "principles" }}
+  {{ if $principles }}
+  <section>
+    <h2 class="text-sm font-medium uppercase tracking-widest mb-6 text-neutral-500 dark:text-neutral-400">
+      {{ i18n "principles" | default "原则" }}
+    </h2>
+    <div class="space-y-4">
+      {{ range first 5 $principles }}
+      <a href="{{ .RelPermalink }}" class="block group">
+        <article class="flex items-start gap-3">
+          <span class="text-xs text-neutral-400 mt-1 shrink-0 w-20">
+            {{ .Date.Format "2006-01-02" }}
+          </span>
+          <div>
+            <h3 class="text-base font-medium group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+              {{ .Title }}
+            </h3>
+            {{ with .Summary }}
+            <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-0.5 line-clamp-2">{{ . }}</p>
+            {{ end }}
+          </div>
+        </article>
+      </a>
+      {{ end }}
+    </div>
+    <a href="{{ "principles" | relLangURL }}" class="inline-flex items-center gap-1 mt-4 text-sm text-primary-600 dark:text-primary-400 hover:underline">
+      {{ i18n "more" | default "更多" }} →
+    </a>
+  </section>
+  {{ end }}
+
+  {{/* Recent writing — koans, practice, engineering, library */}}
+  {{ $recent := where site.RegularPages "Section" "!=" "principles" | first 6 }}
+  {{ if $recent }}
+  <section>
+    <h2 class="text-sm font-medium uppercase tracking-widest mb-6 text-neutral-500 dark:text-neutral-400">
+      {{ i18n "recent" | default "近期" }}
+    </h2>
+    <div class="space-y-4">
+      {{ range $recent }}
+      <a href="{{ .RelPermalink }}" class="block group">
+        <article class="flex items-start gap-3">
+          <span class="text-xs text-neutral-400 mt-1 shrink-0 w-20">
+            {{ .Date.Format "2006-01-02" }}
+          </span>
+          <div>
+            <span class="text-xs text-primary-500 mr-1">{{ .Section }}</span>
+            <h3 class="inline text-base font-medium group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+              {{ .Title }}
+            </h3>
+          </div>
+        </article>
+      </a>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* Tags */}}
+  {{ $tags := site.Taxonomies.tags }}
+  {{ if $tags }}
+  <section>
+    <h2 class="text-sm font-medium uppercase tracking-widest mb-4 text-neutral-500 dark:text-neutral-400">
+      {{ i18n "tags" | default "标签" }}
+    </h2>
+    <div class="flex flex-wrap gap-2">
+      {{ range $tags.Alphabetical }}
+      <a href="{{ .Page.RelPermalink }}"
+         class="text-xs px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors">
+        {{ .Page.Title }}
+        <span class="text-neutral-400">({{ .Count }})</span>
+      </a>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+</div>

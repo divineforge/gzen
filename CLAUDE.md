@@ -16,16 +16,24 @@ This file governs Claude's behavior on this repository. Read it fully before any
 
 ---
 
-## Tech Stack (Current — Hugo, Not Next.js)
+## Tech Stack (Current — Hugo + Blowfish)
 
 | Layer | Detail |
 |---|---|
 | Generator | **Hugo** static site (NOT Next.js — the old stack was migrated) |
-| Styling | Tailwind CSS 3 (compiled via CLI) |
+| Theme | **Blowfish v2** (git submodule at `themes/blowfish`) |
+| Styling | Blowfish's built-in Tailwind CSS — customized via `assets/css/schemes/gzen.css` and `assets/css/custom.css` |
 | JS | Vanilla only — no React, no framework |
-| Deployment | **Cloudflare Pages** |
-| Build cmd | `npm ci && npm run build:css && hugo --minify` |
+| Deployment | **Cloudflare Pages** (enable "Initialize submodules" in Pages settings) |
+| Build cmd | `hugo --minify` |
 | Output | `public/` |
+
+**CSS customization layers:**
+1. `assets/css/schemes/gzen.css` — color palette (saffron/cream/earth) in Blowfish RGB format
+2. `assets/css/custom.css` — typography, lunar hero, component overrides
+3. Blowfish's own Tailwind handles everything else
+
+**Do NOT run `npm run build:css`** — Blowfish handles CSS internally via Hugo Pipes.
 
 ---
 
