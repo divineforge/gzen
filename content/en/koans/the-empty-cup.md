@@ -1,27 +1,39 @@
 ---
 title: "The Empty Cup"
 date: 2026-03-01
-summary: "A cluttered mind cannot receive new thinking. Clarity begins with emptying, not adding."
+summary: "A mind already full cannot receive anything new. Wisdom begins not with adding, but with emptying."
 tags: ["clarity", "simplicity", "mindfulness"]
 categories: ["koans"]
 ---
 
 ## Observation
 
-A colleague asked me to review their system architecture. Before I could speak, they began explaining every decision, every tradeoff, every constraint. Twenty minutes passed. When they finally stopped, they asked: "So what do you think?"
+A young person came to an old teacher seeking advice. Before the teacher could speak, the visitor began explaining everything — the situation, the history, every reason for every decision. Fifteen minutes passed. When they finally stopped, they asked: *So what should I do?*
 
-I had no room to think. The explanation had filled the space where thinking should occur.
+The teacher said nothing for a moment. Then: *You did not come here for advice. You came here to be heard. Those are different things.*
+
+The visitor had left no room for an answer. The question had been asked, but the space to receive an answer had already been filled.
 
 ## Principle
 
-Clarity begins with emptying, not adding.
+There is an old Zen story of a professor who visited a master to ask about Zen. The master poured tea into the professor's cup and kept pouring even when the cup overflowed.
 
-The mind that is already full cannot receive a new idea. A cup already filled cannot be filled again. This is not a metaphor — it is a description of how cognition actually works. When we speak first, we foreclose the possibility of discovery.
+The professor watched, startled, then said: *Stop! The cup is full — no more will go in!*
+
+The master said: *Like this cup, you are full of your own opinions. How can I show you Zen unless you first empty your cup?*
+
+This is *shoshin* — beginner's mind (初心). The Zen teacher Shunryu Suzuki wrote: *"In the beginner's mind there are many possibilities, but in the expert's mind there are few."*
+
+A cup that is empty can receive anything. A cup that is full can receive nothing. The same is true of the mind.
 
 ## Application
 
-Before asking someone for input, give them silence. Before presenting a solution, state only the problem. Before explaining your reasoning, let the other person reason first.
+The next time you come to someone for help — a parent, a friend, a teacher, a healer — try this:
 
-In your own thinking: before reaching for a tool, empty the question. What is actually being asked? What would the answer look like if it were simple? What would you do if you had no tools at all?
+Before asking your question, sit quietly for a moment. Notice what you are already certain of. Notice the answer you are hoping to hear.
 
-Clarity is not achieved by adding more information. It is achieved by removing what obscures.
+Then let that certainty soften. Not abandon — soften. Enter the conversation as if the answer is genuinely not known yet.
+
+This small act of emptying is not weakness. It is the beginning of real understanding.
+
+You cannot learn what you are already sure you know.

@@ -1,0 +1,9 @@
+# Cloudflare Pages redirects
+# Hugo multilingual — Chinese is root (/), English at /en/, Japanese at /ja/
+
+# Redirect old paths to canonical multilingual paths
+/posts/*  /en/posts/:splat  302
+/principles/*  /en/principles/:splat  302
+
+# 404 fallback
+/*  /404.html  404

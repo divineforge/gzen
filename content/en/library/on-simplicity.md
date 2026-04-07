@@ -1,44 +1,53 @@
 ---
 title: "On Simplicity"
 date: 2026-03-01
-summary: "Selected reflections on simplicity from philosophy, engineering, and practice."
-tags: ["simplicity", "clarity", "discipline"]
+summary: "Simplicity is not the absence of depth. It is depth made accessible. A collection of reflections from the Buddhist tradition and human wisdom."
+tags: ["simplicity", "clarity", "impermanence"]
 categories: ["library"]
 ---
 
 ## Observation
 
-Simplicity is consistently misunderstood as the absence of depth. The opposite is closer to true: genuine simplicity is the result of a great deal of depth — of understanding something thoroughly enough to express it without excess.
+Simplicity is often mistaken for emptiness. We see a bare room and think: something is missing. We hear a simple sentence and wonder if the speaker lacked something to say.
+
+The opposite is closer to true. The most simple things are usually the result of the most thorough understanding — of removing everything unnecessary until only what is essential remains.
 
 ## Principle
 
-Simplicity is not easy. It is the hardest form of honesty.
+The Buddha's teaching on *upadana* — grasping and clinging — describes how we accumulate complexity. We add not because more is needed, but because releasing requires courage. Every addition feels like gain. Every release feels like loss.
 
-To write a simple sentence, you must understand your subject completely. To build a simple system, you must have thought carefully about what the system actually needs to do. To live simply, you must have examined what actually matters and been willing to let go of what does not.
+Simplicity is the fruit of honesty about what is truly needed. It is not achieved by adding the right things — it is achieved by releasing what was never necessary.
 
-Complexity is often easier — it can hide confusion, delay decisions, and give the appearance of thoroughness.
+As the *Dhammapada* opens: *"Mind is the forerunner of all actions."* If the mind is clear, action is simple. If the mind is cluttered, no external simplicity will help.
 
-## Selected References
+## Selected Reflections
 
-**Marcus Aurelius, Meditations IV.3:**
+**The Buddha, *Dhammapada* v.183:**
+> "Not to do any evil, to cultivate good, to purify one's mind — this is the teaching of the Buddhas."
+
+Three things. Not thirty.
+
+**Thich Nhat Hanh:**
+> "The present moment is the only moment available to us, and it is the door to all moments."
+
+Simplicity in time: here, now, this.
+
+**A Zen proverb:**
+> "Before enlightenment, chop wood, carry water. After enlightenment, chop wood, carry water."
+
+The simplest life does not look different from the outside. It is different on the inside.
+
+**Marcus Aurelius, *Meditations* IV.3:**
 > "Confine yourself to the present."
 
-The instruction is simple. The practice of following it is the work of a lifetime.
-
-**Dieter Rams, Ten Principles of Good Design:**
-> "Good design is as little design as possible."
-
-This principle applies beyond objects. It applies to systems, to arguments, to lives.
-
-**Donald Knuth:**
-> "Premature optimization is the root of all evil."
-
-Complexity added before it is necessary creates debt that compounds.
+Across every tradition, this instruction returns: the present moment, met simply and fully, is enough.
 
 ## Application
 
-Examine your current work — whatever project or problem occupies you — and ask: what is the irreducible core of this? What would remain if everything unnecessary were removed?
+Look at one area of your life today — your home, your daily routine, your relationships, your mind — and ask: what here is truly necessary?
 
-That remainder is the thing worth doing. Everything else is optional.
+Not useful. Not pleasant. Not familiar. Necessary.
 
-Simplicity is a discipline. Practice it daily.
+What remains after that question is the essential thing. Begin there. Let everything else wait, or go.
+
+Simplicity is a practice, not a destination. Return to it every day.

@@ -3,8 +3,16 @@
   "private": true,
   "description": "Tailwind CSS tooling for GrowZen Hugo site",
   "scripts": {
-    "build:css": "tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify",
-    "watch:css": "tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --watch",
+    "build": "bash build.sh",
+    "build:css": "echo 'CSS is handled by Blowfish theme pipeline'",
+    "watch:css": "echo 'CSS is handled by Blowfish theme pipeline'",
+    "dev": "hugo server",
+    "lint": "npm run lint:md && npm run lint:config",
+    "lint:md": "markdownlint-cli2 \"content/**/*.md\" --config .markdownlint.json",
+    "lint:md:fix": "markdownlint-cli2 \"content/**/*.md\" --config .markdownlint.json --fix",
+    "lint:config": "hugo config > /dev/null && echo 'Hugo config OK'",
+    "format": "prettier --write \"assets/css/**/*.css\" \"static/js/**/*.js\" \"layouts/**/*.html\"",
+    "format:check": "prettier --check \"assets/css/**/*.css\" \"static/js/**/*.js\" \"layouts/**/*.html\"",
     "new-koan": "node scripts/new-post.js koan",
     "new-principle": "node scripts/new-post.js principle",
     "new-practice": "node scripts/new-post.js practice",
@@ -13,7 +21,10 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "markdownlint-cli2": "^0.17.0",
     "postcss": "^8.4.49",
+    "prettier": "^3.4.2",
+    "prettier-plugin-go-template": "^0.0.15",
     "tailwindcss": "^3.4.15"
   }
 }

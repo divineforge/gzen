@@ -1,0 +1,64 @@
+/*
+  GrowZen color scheme for Blowfish
+  Buddhist warm palette — saffron, cream, earth tones
+
+  Blowfish uses RGB triplets (no '#', space-separated)
+  for its CSS custom properties, consumed by Tailwind.
+*/
+
+/* ── Light mode (only mode — no dark theme for GrowZen) ── */
+:root,
+html.light {
+  /* Primary accent: saffron #e8956d → rgb(232,149,109) */
+  --color-primary-50:  255 248 245;
+  --color-primary-100: 253 237 226;
+  --color-primary-200: 249 210 185;
+  --color-primary-300: 244 182 144;
+  --color-primary-400: 240 163 122;
+  --color-primary-500: 232 149 109;
+  --color-primary-600: 210 118  76;
+  --color-primary-700: 175  88  50;
+  --color-primary-800: 140  64  30;
+  --color-primary-900:  98  40  15;
+  --color-primary-950:  74  26  10;
+
+  /* Neutral scale: warm brown → cream */
+  --color-neutral-50:  255 248 245;
+  --color-neutral-100: 250 238 228;
+  --color-neutral-200: 240 217 200;
+  --color-neutral-300: 220 185 158;
+  --color-neutral-400: 190 148 112;
+  --color-neutral-500: 156  96  64;
+  --color-neutral-600: 130  78  48;
+  --color-neutral-700: 100  56  32;
+  --color-neutral-800:  74  44  26;
+  --color-neutral-900:  48  26  12;
+  --color-neutral-950:  28  12   4;
+}
+
+/* Dark mode: keep warm tones even in dark (graceful fallback) */
+html.dark {
+  --color-primary-50:   74  44  26;
+  --color-primary-100:  98  60  34;
+  --color-primary-200: 130  82  50;
+  --color-primary-300: 160 106  68;
+  --color-primary-400: 196 128  88;
+  --color-primary-500: 232 149 109;
+  --color-primary-600: 240 172 138;
+  --color-primary-700: 246 198 172;
+  --color-primary-800: 251 224 208;
+  --color-primary-900: 253 240 232;
+  --color-primary-950: 255 248 245;
+
+  --color-neutral-50:   28  16   8;
+  --color-neutral-100:  48  30  16;
+  --color-neutral-200:  74  48  28;
+  --color-neutral-300: 100  70  44;
+  --color-neutral-400: 130  92  62;
+  --color-neutral-500: 160 116  84;
+  --color-neutral-600: 190 145 108;
+  --color-neutral-700: 210 175 145;
+  --color-neutral-800: 230 208 186;
+  --color-neutral-900: 246 234 224;
+  --color-neutral-950: 255 248 245;
+}

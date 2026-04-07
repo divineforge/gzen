@@ -1,0 +1,36 @@
+# ── GrowZen Blowfish params ──────────────────────────────
+# Full reference: https://blowfish.page/docs/configuration/
+
+# ── Appearance ─────────────────────────────────────────
+colorScheme          = "gzen"         # Our custom warm palette
+defaultAppearance    = "light"        # Always warm cream — no dark mode
+autoSwitchAppearance = false
+
+# ── Header / Footer ────────────────────────────────────
+showScrollToTop = true
+
+# ── Homepage ───────────────────────────────────────────
+[homepage]
+  layout     = "custom"    # Uses layouts/partials/home/custom.html
+  showRecent = false
+
+# ── Article defaults ───────────────────────────────────
+showDate            = true
+showDateUpdated     = false
+showAuthor          = false      # Wisdom is from the tradition, not a person
+showReadingTime     = false
+showWordCount       = false
+showTableOfContents = false
+showBreadcrumbs     = false
+showPagination      = true
+showSummary         = true
+showTaxonomies      = true
+
+# ── Features ───────────────────────────────────────────
+enableSearch   = false
+enableCodeCopy = false
+showLikes      = false
+showViews      = false
+
+# ── Content sections ───────────────────────────────────
+mainSections = ["principles", "koans", "practice", "engineering", "library"]

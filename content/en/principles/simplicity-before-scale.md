@@ -1,31 +1,37 @@
 ---
 title: "Simplicity Before Scale"
 date: 2026-02-15
-summary: "A simple thing that works is more valuable than a complex thing that scales to nothing."
-tags: ["simplicity", "technology", "discipline"]
+summary: "Adding more before understanding what is already there leads only to more confusion. Return to what is essential."
+tags: ["simplicity", "clarity", "mindfulness"]
 categories: ["principles"]
 ---
 
 ## Observation
 
-A startup I consulted for spent eight months building a platform capable of handling ten million users. They had twelve users when it launched. The architecture was flawless. The business did not survive to test it.
+A family kept adding rooms to their house over the years — a storage room, a guest room, a reading room. Each room filled quickly. Then each room became a place to store things they no longer used but could not bring themselves to release.
+
+The house became harder to clean, harder to move through, harder to feel at home in.
+
+One day the youngest daughter asked: *Why do we keep all of this?*
+
+No one had a good answer.
 
 ## Principle
 
-Scale is a solution to a problem you do not yet have.
+The Buddha's teaching on *upadana* — clinging — describes how we accumulate: not because things serve us, but because releasing them feels like loss.
 
-Complexity added in anticipation of future problems is a tax paid in the present for problems that may never arrive. The cost is real. The benefit is speculative.
+We add to our homes, our schedules, our relationships, our plans — not because the addition is needed, but because adding feels easier than discerning what is truly necessary. Adding takes no courage. Asking *is this essential?* takes real honesty.
 
-Simplicity is not a compromise. It is a form of honesty — about what you actually know, what you actually have, what you actually need right now.
+The Middle Way (中道) is not a compromise between extremes. It is a return to what is sufficient. Not too much, not too little — only enough.
 
-The simple thing that works is always more valuable than the complex thing that would work if only you had more of everything.
+Simplicity is not poverty. It is clarity. A life with fewer unnecessary things has more room for what matters.
 
 ## Application
 
-When designing a system — technical, organizational, or personal — ask: what is the simplest version that solves the actual current problem?
+Look today at one area of your life that feels heavy or hard to manage.
 
-Resist the temptation to solve problems you imagine. Solve the problem in front of you, as simply as possible.
+Ask: what here do I actually use and value? What do I hold onto out of habit, or fear, or the feeling that I might need it someday?
 
-When the problem changes, the simplicity remains available. It is easier to add complexity to a simple foundation than to remove it from a complex one.
+You do not need to release everything. Begin with one thing. Give it away to someone who needs it. Let the space it leaves remain empty for a while.
 
-Do not scale until you must.
+Empty space is not absence. It is room to breathe.

@@ -1,22 +1,21 @@
-# AGENTS.md — gzen · 聚善 Agent Reference
+# AGENTS.md — GrowZen · 善聚慧生 Agent Reference
 
-> 聚善：禅生定，定生慧
+> 聚善：禅生定，定生慧  
+> Goodness gathers; from stillness comes wisdom.
 
-This is the primary reference document for all agents (GitHub Copilot, Claude, Codex, and others) working on this repository. Read this before making any changes.
+This is the primary reference for all AI agents (Claude, Copilot, Codex, and others) working on this repository. **Read this before making any changes.**
 
 ---
 
-## What Is gzen
+## What Is GrowZen
 
-gzen.io is a Buddhist-inspired philosophy platform combining:
+GrowZen (gzen.io) is a Buddhist-inspired philosophy platform for all walks of life. Its mission: **collect goodness from the world and multiply it through Buddha's teachings**.
 
-- A **dynamic lunar calendar hero** on the homepage — the background theme changes every day of the Chinese lunar month; users can browse the 30-day cycle with ← → arrows
-- A **markdown content platform** organized around a small set of core principles, reinforcing the site's core mission: **聚善：禅生定，定生慧**
-
-**Language priority: Chinese first, Japanese second, English third.**  
-All UI labels and descriptions display Chinese (中文) as the primary language.
-
-**This is a standalone philosophy project.** Do not add references to other domains or external projects.
+Core design principles:
+- **Language priority**: Chinese (中文) primary → Japanese (日本語) secondary → English tertiary
+- **Audience**: Anyone seeking wisdom — not just technologists; content must be universally accessible
+- **Buddhist grounding**: All writing traces back to the Dharma (Four Noble Truths, Eightfold Path, compassion, mindfulness)
+- **Standalone project**: No cross-domain references in content
 
 ---
 
@@ -24,91 +23,112 @@ All UI labels and descriptions display Chinese (中文) as the primary language.
 
 | Layer | Technology |
 |---|---|
-| Framework | Next.js 16, App Router |
-| Language | TypeScript (strict) |
-| Styling | Tailwind CSS 3 — warm Buddhist amber/saffron palette |
-| Fonts | Geist Sans + Geist Mono + CJK fallbacks (PingFang SC, Microsoft YaHei) |
-| Markdown | gray-matter (frontmatter) + remark + remark-html |
-| Lunar calendar | lunar-javascript (Malaysia UTC+8 timezone) |
-| Deployment | Vercel (auto-deploy on push to `main`) |
+| Framework | **Hugo** (static site generator) |
+| Styling | **Tailwind CSS 3** — warm Buddhist saffron/amber palette |
+| Fonts | Noto Sans SC / Noto Serif SC (CJK-first) + system-ui |
+| Markup | Goldmark markdown (Hugo built-in) |
+| Lunar calendar | Vanilla JS — `static/js/lunar.js` (custom implementation) |
+| Deployment | **Cloudflare Pages** — auto-deploy on push to `main` |
+| Build | `npm run build` → CSS + Hugo → `public/` |
 
-**Important:** The site uses the App Router. All page components live in `app/`. Only `LunarHero` uses `'use client'`. All other components are server components.
-
----
-
-## Repository Layout (Quick Reference)
-
-```
-app/
-  layout.tsx                   # Root layout, header, footer
-  page.tsx                     # Homepage — server component, mounts LunarHero
-  globals.css                  # Tailwind layers + component utilities
-  posts/page.tsx               # /posts — all writing
-  posts/[category]/[slug]/page.tsx   # /posts/:cat/:slug — post detail
-  principles/page.tsx          # /principles — principle index
-  principles/[slug]/page.tsx   # /principles/:slug — principle detail
-  tags/[tag]/page.tsx          # /tags/:tag — tag listing
-
-components/
-  LunarHero.tsx                # Dynamic lunar backdrop (use client)
-
-lib/
-  content.ts                   # Markdown pipeline
-  utils/lunar-calendar.ts      # getLunarDate, getLotusEmoji, etc.
-
-content/                       # All markdown posts (add writing here)
-  koans/
-  principles/
-  practice/
-  engineering/
-  library/
-
-scripts/
-  new-post.js                  # npm run new-koan <slug>
-
-types/
-  lunar-javascript.d.ts        # Type declarations
-
-HANDOFF.md                     # Full status and architecture document
-AGENTS.md                      # This file
-```
+> **Note**: This project was previously Next.js. It is now fully Hugo. Do NOT reference TypeScript, App Router, `use client`, or Next.js patterns anywhere.
 
 ---
 
-## Adding Content
+## Repository Layout
 
-The fastest way to add a new piece of writing:
+```
+content/              # Markdown source (zh/ primary, en/ + ja/ secondary)
+  zh/                 # Chinese content (canonical)
+  en/                 # English translations
+  ja/                 # Japanese translations
 
-```bash
-npm run new-koan       my-slug     # Short philosophical reflection
-npm run new-principle  my-slug     # Core principle
-npm run new-practice   my-slug     # Practice or technique
-npm run new-engineering my-slug    # Engineering/systems reflection
-npm run new-library    my-slug     # Reference or quote collection
+layouts/              # Hugo HTML templates
+  index.html          # Homepage
+  _default/
+    baseof.html       # Root HTML shell
+    single.html       # Single post
+    list.html         # Section list
+  partials/
+    head.html         # Meta, fonts, CSS link
+    header.html       # Navigation
+    footer.html       # Footer + ecosystem links
+    lunar-hero.html   # Dynamic 30-day lunar backdrop
+    language-toggle.html
+
+assets/css/main.css   # Tailwind CSS entry point (compiled → static/css/)
+static/
+  css/main.css        # Generated (do not edit manually)
+  js/lunar.js         # Lunar calendar + lotus lifecycle (vanilla JS)
+  js/language-toggle.js
+  _headers            # Cloudflare Pages HTTP headers
+  _redirects          # Cloudflare Pages URL redirects
+
+i18n/                 # UI translation strings
+  zh.toml en.toml ja.toml
+
+hugo.toml             # Hugo configuration (languages, params, base URL)
+wrangler.toml         # Cloudflare Pages deployment config
+package.json          # Tailwind CLI + build scripts
+tailwind.config.js    # Custom color palette (saffron, lotus, zen)
+
+CLAUDE.md             # Claude-specific AI instructions
+AGENTS.md             # This file — all-agent reference
+.claude/
+  settings.json       # Claude Code hooks
+  agents/             # Custom subagent definitions
+    visual-check.md
+    writing-check.md
+    wisdom-check.md
+    accessibility-check.md
+    content-synergy.md
 ```
 
-This generates `content/<category>/my-slug.md` with the correct frontmatter template.
+---
 
-Then fill in:
+## Content Structure
 
+All content lives in `content/<lang>/<section>/<slug>.md`.
+
+**Sections:**
+- `koans/` — Short philosophical reflections (公案)
+- `principles/` — Core guiding principles (原则)
+- `practice/` — Practical daily guidance (修行)
+- `engineering/` — Systems thinking through a philosophical lens
+- `library/` — Reference texts and quotations
+
+**Frontmatter:**
 ```yaml
 ---
-title: "Post Title"
-date: "YYYY-MM-DD"
-tags: ["clarity", "discipline"]   # use existing tags where possible
-principle_reference: "clarity-before-tools"   # slug of a principle post
-summary: "One clear sentence."
+title: "Title here"
+date: 2026-03-01
+summary: "One clear sentence accessible to anyone."
+tags: ["clarity", "compassion", "mindfulness"]
+categories: ["principles"]  # or koans, practice, engineering, library
+draft: false
+---
+```
+
+**Content rules:**
+1. Every zh/ file must have a matching en/ and ja/ translation
+2. Language priority: write Chinese first, translate
+3. No content should be tech-only — use universal life examples
+4. Ground every piece in a Buddhist teaching (cite implicitly or explicitly)
+5. Summary must be readable by anyone, regardless of background
+
 ---
 
-## Observation
-...
+## Creating New Content
 
-## Principle
-...
-
-## Application
-...
+```bash
+npm run new-koan       my-slug   # Short philosophical reflection
+npm run new-principle  my-slug   # Core principle
+npm run new-practice   my-slug   # Practice or technique
+npm run new-engineering my-slug  # Systems/life reflection
+npm run new-library    my-slug   # Reference or quote collection
 ```
+
+Then create matching `content/en/<section>/my-slug.md` and `content/ja/<section>/my-slug.md`.
 
 ### Current principle slugs
 - `clarity-before-tools`
@@ -117,120 +137,68 @@ summary: "One clear sentence."
 - `discipline-before-motivation`
 
 ### Existing tags
-`clarity` · `discipline` · `virtue` · `simplicity` · `technology` · `mindfulness`
+`clarity` · `discipline` · `virtue` · `simplicity` · `compassion` · `mindfulness` · `impermanence` · `technology`
+
+---
+
+## Build & Deployment
+
+```bash
+# Local development
+npm install
+npm run dev            # Starts Tailwind watcher + Hugo server at localhost:1313
+
+# Production build (Cloudflare Pages runs this automatically)
+npm run build          # = npm run build:css && hugo --minify → public/
+
+# Cloudflare Pages settings (set in wrangler.toml)
+# Build command: npm ci && npm run build:css && hugo --minify
+# Output dir: public/
+# HUGO_VERSION: 0.128.0
+```
 
 ---
 
 ## Modifying the Lunar Hero
 
-The hero component is at `components/LunarHero.tsx`.
+The hero is rendered by `layouts/partials/lunar-hero.html` + `static/js/lunar.js`.
 
-It receives `allStages` (all 30 stages pre-computed on the server) and `currentLunarDay` as props from `app/page.tsx`.
+- **Themes**: 30 gradient backgrounds (one per lunar day) defined in `static/js/lunar.js` as `DAY_GRADIENTS`
+- **Lotus stages**: 30-stage lifecycle emoji + 3-language descriptions in `LOTUS_STAGES`
+- **Particle system**: Canvas-based, 28 floating particles, defined in `static/js/lunar.js`
+- Day 1 = new moon / seed; Day 15 = full moon / full bloom; Day 30 = completion
 
-**To change a day's gradient theme:**
-
-```typescript
-// LUNAR_THEMES in LunarHero.tsx
-const LUNAR_THEMES: Record<number, { bg: string; textClass: string }> = {
-  15: { bg: 'linear-gradient(135deg, #8c6210 0%, #d4a020 60%, #9a6c10 100%)', textClass: 'text-amber-900' },
-  // ...
-};
-```
-
-The `bg` is an inline-style CSS gradient (not a Tailwind class) to avoid build-time purging.
-The `textClass` is a Tailwind text color class for labels/descriptions.
-
-**The scroll-fade overlay** is a fixed CSS gradient at the bottom of the section:
-```css
-background: linear-gradient(to bottom, transparent 0%, #fffbeb 100%)
-```
-`#fffbeb` = `amber-50` / `zen-wisdom` (the Buddhist warm cream page background). If you change the page background color, update this value too.
-
----
-
-## Modifying the Content Pipeline
-
-`lib/content.ts` handles all markdown operations. Key functions:
-
-| Function | What it does |
-|---|---|
-| `getAllPosts()` | All posts, sorted by date desc |
-| `getPostBySlug(category, slug)` | Single post |
-| `getAllPrinciples()` | All posts in `principles/` |
-| `getPostsByPrincipleReference(ref)` | All posts citing a principle slug |
-| `getPostsByTag(tag)` | All posts with a given tag |
-| `getRelatedPosts(post, limit)` | Scores relatedness by shared principle (+3) and tags (+1 each) |
-| `renderMarkdown(content)` | remark → sanitized HTML |
-
----
-
-## Adding a New Page
-
-1. Create a file in `app/` following the Next.js App Router convention
-2. Use `export default async function MyPage()` for server components
-3. Add `export const metadata: Metadata = { title: '...' }` for SEO
-4. For dynamic routes, implement `generateStaticParams()`
-5. In Next.js 15+, route params must be `Promise<T>` and awaited
-
----
-
-## Running Locally
-
-```bash
-npm install
-npm run dev         # http://localhost:3000
-npm run build       # Production build
-npm run type-check  # TypeScript check
-```
+Do not change the lunar calculation functions (`solar2Lunar`, data tables) — they are precise.
 
 ---
 
 ## Design Constraints
 
-1. **Buddhist warm palette** — amber-50 background (`#fffbeb`), saffron (`#d97706`) accents, warm brown headings (`#78350f`); not cold stone/gray
-2. **Chinese first** — all UI text shows Chinese as the primary label; English is secondary (smaller, lower opacity)
-3. **CJK readability** — maintain `line-height: 1.75+` in body; CJK font fallbacks (PingFang SC, Microsoft YaHei) in the font stack
-4. **Geist font** — do not add Google Fonts or other web fonts
-5. **No heavy UI frameworks** — no shadcn/ui, no MUI, no framer-motion
-6. **No cross-domain references** — standalone project only
-7. **No placeholder text** — all content must be real
+1. **Buddhist warm palette** — background `#fff8f5` (cream), saffron `#e8956d`, warm brown `#4a2c1a`; never cold gray/blue
+2. **Chinese first** — UI labels show Chinese as primary; English secondary at lower opacity
+3. **CJK readability** — `line-height: 1.75+` for body; Noto Sans SC as primary font
+4. **No heavy frameworks** — no React, no shadcn/ui, no framer-motion; vanilla JS only
+5. **No placeholder text** — every word must be real, reviewed, grounded in Dharma
+6. **Universal accessibility** — content must be readable by a 16-year-old and a 70-year-old alike
+7. **No cross-domain content references** — standalone project only
 
 ---
 
-## Common Tasks
+## Files Not to Modify Without Reading CLAUDE.md
 
-### Change the page background color
-1. Update `background-color: #fffbeb` in `app/globals.css` body rule
-2. Update `#fffbeb` in the scroll-fade overlay in `components/LunarHero.tsx`
-
-### Add a new category
-1. Create `content/<category>/` directory
-2. Add the category to `CATEGORIES` array in `lib/content.ts`
-3. Add Chinese label to `CATEGORY_LABELS` in `app/posts/page.tsx` and `app/page.tsx`
-4. Add a template to `scripts/new-post.js`
-5. Add a new npm script in `package.json`
-
-### Add a new principle
-1. Run `npm run new-principle principle-name`
-2. Fill in the markdown file
-3. The principle will auto-appear in `/principles` and be linkable via `principle_reference`
-
----
-
-## Files Not to Modify Without Reading HANDOFF.md
-
-- `lib/utils/lunar-calendar.ts` — lunar calculations; Malaysia UTC+8 is intentional
-- `components/LunarHero.tsx` — the 30-theme gradient system is delicate
-- `lib/content.ts` — the getRelatedPosts scoring algorithm drives the repetition engine
+- `static/js/lunar.js` — lunar calculations are precise; the 30-theme system is carefully tuned
+- `layouts/partials/lunar-hero.html` — tightly coupled to lunar.js
+- `hugo.toml` — language routing, base URL; changes affect multilingual structure
 
 ---
 
 ## Security Notes
 
-- `remark-html` is used with default sanitization (no `{ sanitize: false }`)
-- All content is static markdown; no user input is processed
-- No API routes or server actions currently
+- Hugo generates fully static HTML — no server-side code, no API routes
+- All content is markdown; no user input is processed
+- `_headers` sets security headers via Cloudflare Pages
+- No secrets or API keys in this repo
 
 ---
 
-*Last updated: 2026-03-15. See HANDOFF.md for full status.*
+*Last updated: 2026-04-05. See CLAUDE.md for Claude-specific guidance.*

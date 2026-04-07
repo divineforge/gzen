@@ -1,5 +1,6 @@
 baseURL = "https://gzen.io/"
 title = "GrowZen"
+theme = "blowfish"
 defaultContentLanguage = "zh"
 defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
@@ -14,54 +15,46 @@ summaryLength = 70
     noClasses = false
 
 [outputs]
-  home = ["HTML"]
+  home    = ["HTML", "JSON"]   # JSON needed for Blowfish search
   section = ["HTML"]
   taxonomy = ["HTML"]
-  term = ["HTML"]
+  term    = ["HTML"]
 
 [taxonomies]
-  tag = "tags"
+  tag      = "tags"
   category = "categories"
 
 [languages]
   [languages.zh]
     languageName = "中文"
-    weight = 1
-    title = "GrowZen · 善聚慧生"
-    contentDir = "content/zh"
+    weight       = 1
+    title        = "GrowZen · 善聚慧生"
+    contentDir   = "content/zh"
     [languages.zh.params]
-      subtitle = "善聚慧生"
-      tagline = "伴随月圆月缺，智慧如莲绽放"
+      subtitle    = "善聚慧生"
       description = "GrowZen 禅生定，定生慧 — 聚集世间善念，以佛陀智慧广泽众生。跟随农历月相，如莲花般在日常生活中觉醒。"
-      rtl = false
+
   [languages.en]
     languageName = "English"
-    weight = 2
-    title = "GrowZen · 善聚慧生"
-    contentDir = "content/en"
+    weight       = 2
+    title        = "GrowZen · 善聚慧生"
+    contentDir   = "content/en"
     [languages.en.params]
-      subtitle = "Where Goodness Gathers, Wisdom Grows"
-      tagline = "Where Meditation Blooms into Wisdom"
-      description = "GrowZen — collecting goodness from around the world and multiplying it through Buddha's teachings. Buddhist wisdom following lunar cycles. New insights on even lunar days, blooming like the lotus."
-      rtl = false
+      subtitle    = "Where Goodness Gathers, Wisdom Grows"
+      description = "GrowZen — collecting goodness from around the world and multiplying it through Buddha's teachings."
+
   [languages.ja]
     languageName = "日本語"
-    weight = 3
-    title = "GrowZen · 善集慧生"
-    contentDir = "content/ja"
+    weight       = 3
+    title        = "GrowZen · 善集慧生"
+    contentDir   = "content/ja"
     [languages.ja.params]
-      subtitle = "善集慧生"
-      tagline = "月の満ち欠けとともに、智慧は蓮のように開く"
+      subtitle    = "善集慧生"
       description = "GrowZen — 世界中の善を集め、仏陀の教えで広げる。太陰暦に従って仏教の教えを更新。"
-      rtl = false
 
 [params]
-  author = "GrowZen"
-  favicon = "/favicon.svg"
-  brand = "GrowZen"
-  brandSubtitle = "聚善"
-  brandTagline = "禅生定，定生慧"
-  lotusEmoji = "🪷"
-  ecosystemLearn = "https://learn.gzen.io"
-  ecosystemInvest = "https://invest.gzen.io"
-  ecosystemArchitect = "https://architect.gzen.io"
+  # These are read by our custom partials, not by Blowfish directly
+  brand          = "GrowZen"
+  brandSubtitle  = "聚善"
+  brandTagline   = "禅生定，定生慧"
+  lotusEmoji     = "🪷"
