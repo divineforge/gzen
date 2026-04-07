@@ -3,7 +3,7 @@
   "private": true,
   "description": "Tailwind CSS tooling for GrowZen Hugo site",
   "scripts": {
-    "build": "hugo --minify",
+    "build": "bash build.sh",
     "build:css": "echo 'CSS is handled by Blowfish theme pipeline'",
     "watch:css": "echo 'CSS is handled by Blowfish theme pipeline'",
     "dev": "hugo server",
