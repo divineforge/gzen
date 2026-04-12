@@ -1,0 +1,29 @@
+# ── GrowZen menu config (Blowfish format) ────────────────
+# Blowfish reads menus from config/_default/menus.toml.
+# These are the top-level nav links for all languages.
+# Per-language overrides go in config/_default/languages.*.toml.
+
+[[main]]
+  name   = "原则"          # zh default; overridden per-language
+  pageRef = "principles"
+  weight  = 10
+
+[[main]]
+  name   = "公案"
+  pageRef = "koans"
+  weight  = 20
+
+[[main]]
+  name   = "修行"
+  pageRef = "practice"
+  weight  = 30
+
+[[main]]
+  name   = "工程"
+  pageRef = "engineering"
+  weight  = 40
+
+[[main]]
+  name   = "书库"
+  pageRef = "library"
+  weight  = 50

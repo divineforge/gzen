@@ -8,26 +8,30 @@ categories: ["practice"]
 
 ## Observation
 
-The first hour of the day is the most influential. Whatever orientation the mind takes in that hour tends to persist — not perfectly, but persistently. Begin in distraction and the day is spent recovering from it.
+Before the household wakes, there is a window. It might be five minutes. It might be less. It is the quietest the world will be all day.
+
+Most of us fill it immediately — with a phone, with worry about what needs to be done, with the noise of whatever is next. The window closes before we have stood in it.
 
 ## Principle
 
-Attention is the first resource of the day. How it is allocated at the beginning determines what remains available afterward.
+The Buddha called the first application of the Eightfold Path *sammā sankappa* — Right Intention. Before we act in the world, we orient ourselves. Before we move, we choose a direction.
 
-A morning practice is not about achieving a state. It is about establishing an orientation. The practice does not need to produce peace — it needs to precede the noise.
+*Sati* — mindfulness — is not something added to life. It is the quality of presence that is already available, in the silence before the day begins. The morning practice is simply returning to it before it is covered over.
+
+You do not need a meditation cushion. You do not need training. You need only to sit — in a chair, on a step, in the kitchen while the water heats — and be still for a few minutes before reaching for anything.
 
 ## Application
 
-Sit before looking at anything.
+Tomorrow morning, before touching anything — before the phone, before the news, before the first task — sit quietly for five minutes.
 
-Before the phone. Before the news. Before the conversation. Sit for five minutes and notice what is already present: the quality of attention, the residue of sleep, the direction thoughts want to move.
+Notice what is already present: the sounds of the house settling, the quality of light, the direction your thoughts are already moving.
 
-Do not try to change anything. Notice what is there.
+Do not try to change any of it. Simply notice.
 
-Then ask: what is the one thing that would make today complete? Not productive. Not successful. Complete.
+Then ask one question: *What would make today complete — not productive, not successful, but complete?*
 
-Write it down. This is not a goal. It is an anchor.
+Let the answer be small. A kind word to someone. One thing done with full attention. A moment of gratitude.
 
-Carry the anchor into the day. When the day loses direction — and it will — return to the anchor.
+Carry that small intention into the day. When the day loses its direction — and it will — return to it.
 
 Five minutes. Before anything else. Every day.

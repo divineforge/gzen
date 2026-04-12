@@ -1,33 +1,39 @@
 ---
-title: "Tools Follow Thinking"
+title: "Understanding Before Action"
 date: 2026-03-08
-summary: "The best engineers are distinguished not by the tools they know but by the thinking they apply before reaching for any tool."
-tags: ["clarity", "technology", "simplicity"]
+summary: "Reaching for a solution before understanding the problem creates more confusion, not less."
+tags: ["clarity", "mindfulness", "simplicity"]
 categories: ["engineering"]
 ---
 
 ## Observation
 
-A senior engineer on our team could debug systems he had never worked in before. He had no special knowledge of the codebase. He had a method: first understand what should be happening, then identify where what is happening diverges from that, then look for the simplest possible explanation.
+A woman's roof was leaking. She called a repairman. He arrived, looked at the ceiling stain, and replaced a section of tiles on the roof above it.
 
-He never began with the code. He always began with the question.
+The leak continued.
+
+He had fixed where the water appeared, not where it entered. The true source was a small crack several meters away. The water had traveled silently along a beam before dripping through the ceiling.
+
+He had fixed confidently and incorrectly. He had not asked: *where does this actually begin?*
 
 ## Principle
 
-The tool is the last thing, not the first.
+The Buddha described *sammā sankappa* — Right Intention — as pointing the whole self in the right direction before acting. Without this, even skillful action misses its mark.
 
-Engineering is applied thinking. The thinking precedes the application. When we invert this — when we begin with the tool and work backward to the problem — we produce technically sophisticated solutions to problems that were not clearly understood.
+In every craft — whether repairing a roof, raising a child, treating an illness, or mending a relationship — the temptation is to act quickly. Acting feels like progress. Thinking feels like waiting.
 
-A well-defined problem almost selects its own solution. A poorly defined problem selects whatever tool the engineer is most comfortable with.
+But a solution applied to the wrong problem does not reduce the problem. It adds a new one: the original problem, now hidden beneath a repair.
+
+Understanding is not delay. Understanding is the first action.
 
 ## Application
 
-Before opening an editor, a terminal, or a design tool, write one sentence: what is the problem I am solving?
+The next time a problem appears — in your home, your work, your body, or your relationships — resist the impulse to act on the first visible sign.
 
-Not "I need to refactor this module." What is the problem the module is causing? Not "I need to add caching." What is slow, and why is speed necessary here?
+Ask: *Is this where the problem is, or only where it shows itself?*
 
-The discipline of stating the problem precisely — before acting — is the most underrated skill in engineering.
+Sit with the question for a few minutes. Ask it again. Often the real source is quieter, less obvious, closer to something we have been avoiding.
 
-It is also transferable to every other domain. Every decision is an engineering problem: state it clearly, understand the constraints, then select the simplest tool that fits.
+Then act — but act on what is real.
 
-Thinking first. Tools second. Always.
+The repair that addresses the true cause is lasting. The repair that addresses only the symptom must be made again and again.

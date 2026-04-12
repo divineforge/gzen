@@ -1,31 +1,37 @@
 ---
 title: "Virtue Before Power"
 date: 2026-02-08
-summary: "Capability without character amplifies existing tendencies. Build the person before building the power."
-tags: ["virtue", "discipline", "clarity"]
+summary: "Ability without goodness only makes us more effective at causing harm. Tend to the person before seeking influence."
+tags: ["virtue", "discipline", "compassion"]
 categories: ["principles"]
 ---
 
 ## Observation
 
-A team lead I worked with was brilliant. Technically exceptional. Within six months of promotion, his team had the highest output and the highest attrition rate in the company.
+A father was a hard worker. He provided for his family. He was never idle.
 
-The promotion had amplified what was already there: enormous capability and very little patience for others.
+But he was impatient. He cut people off when they spoke. He dismissed his children's worries as weakness. As the years passed and his influence at work grew, these habits grew with him. His children learned to go quiet around him. His colleagues learned to hide problems from him.
+
+More capability had not made him better. It had simply made his existing nature more visible.
 
 ## Principle
 
-Power reveals character; it does not create it.
+The Buddha taught that our actions arise from the mind — and the mind must be cultivated before we act in the world.
 
-When we give capability to a person without virtue, we do not create a better person. We create a more effective version of whoever that person already is. If that person has not cultivated patience, fairness, and the capacity to bear discomfort — those absences become visible at scale.
+In the *Dhammapada*, the opening verse says: *"Mind is the forerunner of all actions. If one speaks or acts with a corrupt mind, suffering follows."* And: *"If one speaks or acts with a serene mind, happiness follows like a shadow that never departs."*
 
-This is why the sequence matters: build character first. Then build capability.
+Power reveals character — it does not create it. When we gain influence, responsibility, or capability without first building goodness within, we do not become a better person. We become a more effective version of whoever we already are.
+
+This is why the Buddhist path begins not with action, but with right intention (正思维) — the second step of the Eightfold Path. Before we do, we must become.
 
 ## Application
 
-Before pursuing mastery in any domain, ask what kind of person is doing the pursuing.
+Before seeking more — more responsibility, more skill, more authority — pause and ask honestly:
 
-The question is not only: am I becoming more capable? It is: am I becoming more patient? More fair? More willing to sit with difficulty? More honest about what I do not know?
+Am I becoming more patient? More willing to listen? More honest about my own faults?
 
-Capability that outpaces character creates instability. Virtue that grows alongside capability creates something durable.
+Small daily practices matter more than large ambitions. Bow slightly when you enter a room. Let someone else speak first. Do a kind act that no one will see or thank you for.
 
-Build the person. Then build the power.
+The goal is not to become powerful. It is to become good. Goodness, cultivated steadily, is the only power that does not harm.
+
+Build the character. Then the capability will have somewhere worthwhile to go.
