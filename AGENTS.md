@@ -24,12 +24,12 @@ Core design principles:
 | Layer | Technology |
 |---|---|
 | Framework | **Hugo** (static site generator) |
-| Styling | **Tailwind CSS 3** — warm Buddhist saffron/amber palette |
+| Styling | **Blowfish Tailwind pipeline** — warm Buddhist saffron/amber palette |
 | Fonts | Noto Sans SC / Noto Serif SC (CJK-first) + system-ui |
 | Markup | Goldmark markdown (Hugo built-in) |
 | Lunar calendar | Vanilla JS — `static/js/lunar.js` (custom implementation) |
 | Deployment | **Cloudflare Pages** — auto-deploy on push to `main` |
-| Build | `npm run build` → CSS + Hugo → `public/` |
+| Build | `hugo --minify` → `public/` |
 
 > **Note**: This project was previously Next.js. It is now fully Hugo. Do NOT reference TypeScript, App Router, `use client`, or Next.js patterns anywhere.
 
@@ -56,9 +56,9 @@ layouts/              # Hugo HTML templates
     lunar-hero.html   # Dynamic 30-day lunar backdrop
     language-toggle.html
 
-assets/css/main.css   # Tailwind CSS entry point (compiled → static/css/)
+assets/css/custom.css # GrowZen custom CSS layered on Blowfish
+assets/css/schemes/   # Blowfish color scheme overrides
 static/
-  css/main.css        # Generated (do not edit manually)
   js/lunar.js         # Lunar calendar + lotus lifecycle (vanilla JS)
   js/language-toggle.js
   _headers            # Cloudflare Pages HTTP headers
@@ -69,8 +69,8 @@ i18n/                 # UI translation strings
 
 hugo.toml             # Hugo configuration (languages, params, base URL)
 wrangler.toml         # Cloudflare Pages deployment config
-package.json          # Tailwind CLI + build scripts
-tailwind.config.js    # Custom color palette (saffron, lotus, zen)
+package.json          # Optional lint/format/content helper scripts
+tailwind.config.js    # Legacy helper config; Blowfish handles CSS internally
 
 CLAUDE.md             # Claude-specific AI instructions
 AGENTS.md             # This file — all-agent reference
@@ -145,16 +145,15 @@ Then create matching `content/en/<section>/my-slug.md` and `content/ja/<section>
 
 ```bash
 # Local development
-npm install
-npm run dev            # Starts Tailwind watcher + Hugo server at localhost:1313
+hugo server            # Starts Hugo server at localhost:1313
 
 # Production build (Cloudflare Pages runs this automatically)
-npm run build          # = npm run build:css && hugo --minify → public/
+hugo --minify          # Writes the static site to public/
 
-# Cloudflare Pages settings (set in wrangler.toml)
-# Build command: npm ci && npm run build:css && hugo --minify
+# Cloudflare Pages settings
+# Build command: hugo --minify
 # Output dir: public/
-# HUGO_VERSION: 0.128.0
+# Environment variable: HUGO_VERSION=0.161.1
 ```
 
 ---

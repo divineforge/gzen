@@ -1,12 +1,11 @@
 {
   "name": "gzen",
   "private": true,
-  "description": "Tailwind CSS tooling for GrowZen Hugo site",
+  "description": "Optional helper scripts for the GrowZen Hugo site",
   "scripts": {
-    "build": "bash build.sh",
-    "build:css": "echo 'CSS is handled by Blowfish theme pipeline'",
-    "watch:css": "echo 'CSS is handled by Blowfish theme pipeline'",
     "dev": "hugo server",
+    "serve": "hugo server",
+    "build": "hugo --minify",
     "lint": "npm run lint:md && npm run lint:config",
     "lint:md": "markdownlint-cli2 \"content/**/*.md\" --config .markdownlint.json",
     "lint:md:fix": "markdownlint-cli2 \"content/**/*.md\" --config .markdownlint.json --fix",

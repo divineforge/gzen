@@ -93,8 +93,8 @@ Use the Agent tool to invoke these specialized review agents for content quality
 - Content goes in `content/<lang>/<section>/<slug>.md`
 - Templates go in `layouts/` — never add JavaScript frameworks
 - i18n strings in `i18n/<lang>.toml` — add new strings for all 3 languages simultaneously
-- CSS is compiled: edit `assets/css/main.css`, run `npm run build:css`, commit `static/css/main.css`
-- The `static/css/` dir is gitignored — Cloudflare Pages builds it during CI
+- CSS is handled by Blowfish's Hugo pipeline. Edit `assets/css/schemes/gzen.css` and `assets/css/custom.css`.
+- Do not add a separate CSS build step unless the theme architecture changes.
 
 ### Hugo template notes
 - Use `{{ i18n "key" }}` for all UI strings
@@ -108,9 +108,9 @@ Use the Agent tool to invoke these specialized review agents for content quality
 
 The site deploys from the `main` branch automatically via Cloudflare Pages.
 
-- Build command: `npm ci && npm run build:css && hugo --minify`
+- Build command: `hugo --minify`
 - Output directory: `public/`
-- Hugo version: set via `HUGO_VERSION=0.128.0` in `wrangler.toml`
+- Hugo version: set `HUGO_VERSION=0.161.1` in Cloudflare Pages build environment variables
 - `static/_headers` → sets HTTP security headers
 - `static/_redirects` → handles URL redirects
 

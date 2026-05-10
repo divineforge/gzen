@@ -26,7 +26,7 @@ summaryLength = 70
 
 [languages]
   [languages.zh]
-    languageName = "中文"
+    label        = "中文"
     weight       = 1
     title        = "GrowZen · 善聚慧生"
     contentDir   = "content/zh"
@@ -35,7 +35,7 @@ summaryLength = 70
       description = "GrowZen 禅生定，定生慧 — 聚集世间善念，以佛陀智慧广泽众生。跟随农历月相，如莲花般在日常生活中觉醒。"
 
   [languages.en]
-    languageName = "English"
+    label        = "English"
     weight       = 2
     title        = "GrowZen · 善聚慧生"
     contentDir   = "content/en"
@@ -44,7 +44,7 @@ summaryLength = 70
       description = "GrowZen — collecting goodness from around the world and multiplying it through Buddha's teachings."
 
   [languages.ja]
-    languageName = "日本語"
+    label        = "日本語"
     weight       = 3
     title        = "GrowZen · 善集慧生"
     contentDir   = "content/ja"

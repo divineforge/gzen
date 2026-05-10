@@ -7,7 +7,15 @@ defaultAppearance    = "light"        # Always warm cream — no dark mode
 autoSwitchAppearance = false
 
 # ── Header / Footer ────────────────────────────────────
-showScrollToTop = true
+[header]
+  layout = "basic"
+
+[footer]
+  showMenu = true
+  showCopyright = true
+  showThemeAttribution = false
+  showAppearanceSwitcher = false
+  showScrollToTop = true
 
 # ── Homepage ───────────────────────────────────────────
 [homepage]
@@ -15,16 +23,33 @@ showScrollToTop = true
   showRecent = false
 
 # ── Article defaults ───────────────────────────────────
-showDate            = true
-showDateUpdated     = false
-showAuthor          = false      # Wisdom is from the tradition, not a person
-showReadingTime     = false
-showWordCount       = false
-showTableOfContents = false
-showBreadcrumbs     = false
-showPagination      = true
-showSummary         = true
-showTaxonomies      = true
+[article]
+  showDate            = true
+  showDateUpdated     = false
+  showAuthor          = false      # Wisdom is from the tradition, not a person
+  showAuthorBottom    = false
+  showReadingTime     = false
+  showWordCount       = false
+  showTableOfContents = false
+  showBreadcrumbs     = false
+  showPagination      = true
+  showSummary         = true
+  showTaxonomies      = true
+  showViews           = false
+  showLikes           = false
+  showZenMode         = false
+
+[list]
+  showSummary = true
+  showCards = false
+  groupByYear = false
+
+[taxonomy]
+  showTermCount = true
+
+[term]
+  showTableOfContents = false
+  groupByYear = false
 
 # ── Features ───────────────────────────────────────────
 enableSearch   = false

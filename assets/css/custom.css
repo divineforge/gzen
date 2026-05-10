@@ -18,10 +18,18 @@ body, .prose {
 /* ── Lunar hero canvas ───────────────────────────────── */
 #lunar-hero {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
   min-height: 320px;
   overflow: hidden;
   background: rgb(var(--color-neutral-50));
+}
+
+@media (min-width: 768px) {
+  #lunar-hero {
+    min-height: 420px;
+  }
 }
 
 #lunar-hero canvas {

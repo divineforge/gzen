@@ -16,7 +16,7 @@ GrowZen is a Buddhist-inspired philosophy platform built with **Hugo** as a pure
 | Styling | Tailwind CSS 3 with Buddhist warm palette |
 | i18n | Hugo built-in multilingual (zh primary, en, ja) |
 | Lunar calendar | Vanilla JS (embedded algorithm) |
-| Hosting | Vercel (static hosting) |
+| Hosting | Cloudflare Pages |
 
 ---
 
@@ -25,22 +25,16 @@ GrowZen is a Buddhist-inspired philosophy platform built with **Hugo** as a pure
 ### Prerequisites
 
 - [Hugo](https://gohugo.io/installation/) (latest)
-- Node.js 20+ (for Tailwind CSS)
+- Node.js 20+ only if you want the optional lint/format/content helper scripts
 
 ### Setup
 
 ```bash
-# Install Tailwind CSS dependencies
-npm install
-
-# Build CSS (one-time or after changes)
-npm run build:css
-
 # Start Hugo dev server (watches for content/template changes)
 hugo server
 
-# Or watch CSS changes simultaneously in another terminal:
-npm run watch:css
+# Optional wrapper, if you prefer npm scripts:
+npm run dev
 ```
 
 Visit [http://localhost:1313](http://localhost:1313)
@@ -48,11 +42,18 @@ Visit [http://localhost:1313](http://localhost:1313)
 ### Production Build
 
 ```bash
-npm run build:css
 hugo --minify
 ```
 
 Output goes to `public/`.
+
+Cloudflare Pages should use:
+
+```text
+Build command: hugo --minify
+Output directory: public
+Environment variable: HUGO_VERSION=0.161.1
+```
 
 ---
 

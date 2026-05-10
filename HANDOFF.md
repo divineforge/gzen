@@ -70,7 +70,7 @@ The platform is built to be simple, fast, and durable. There is a reason for eve
 |---|---|---|
 | Site generator | **Hugo** | Extremely fast. No JavaScript runtime. Pages are just files. Works for 100 years. |
 | Theme base | **Blowfish** (Hugo theme) | Rich, multilingual-ready foundation. Shortcodes, taxonomy, search. We override it with our Buddhist aesthetic. |
-| Styling | **Tailwind CSS 3** | Write styles close to the markup. No unused CSS in production. |
+| Styling | **Blowfish Tailwind pipeline** | Blowfish compiles its CSS through Hugo. GrowZen customizes it with `assets/css/schemes/gzen.css` and `assets/css/custom.css`. |
 | Deployment | **Cloudflare Pages** | Fast globally. Free at GrowZen's scale. Zero infrastructure to manage. |
 | Content | **Markdown files** | Human-readable. No database. Version-controlled. Editable by anyone. |
 | Languages | **Hugo i18n** | Three languages, one codebase. Chinese is the default. |
@@ -80,17 +80,8 @@ The platform is built to be simple, fast, and durable. There is a reason for eve
 When changes are pushed to `main`, Cloudflare Pages automatically runs:
 
 ```
-npm ci
-→ installs Tailwind and other Node tools
-
-hugo mod download
-→ fetches the Blowfish theme (stored as a Hugo module, not a file)
-
-npm run build:css
-→ compiles assets/css/main.css → static/css/main.css (Tailwind)
-
 hugo --minify
-→ builds all HTML, copies static files, writes public/
+→ builds all HTML, compiles Blowfish CSS, copies static files, writes public/
 ```
 
 The result is a folder of plain HTML files in `public/` that Cloudflare serves globally.
@@ -277,9 +268,8 @@ Some things must be permanent:
 ### The site won't build
 
 1. Run `hugo config` — check for config errors
-2. Run `hugo mod download` — check for missing theme modules
-3. Run `npm run build:css` separately — check for Tailwind errors
-4. Check the Cloudflare Pages build log for specific error messages
+2. Run `hugo --minify` — check the full production build locally
+3. Check the Cloudflare Pages build log for specific error messages
 
 ### Content looks wrong
 
