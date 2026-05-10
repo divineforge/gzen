@@ -31,8 +31,14 @@ summaryLength = 70
     title        = "GrowZen · 善聚慧生"
     contentDir   = "content/zh"
     [languages.zh.params]
+      displayName = "中文"
       subtitle    = "善聚慧生"
       description = "GrowZen 禅生定，定生慧 — 聚集世间善念，以佛陀智慧广泽众生。跟随农历月相，如莲花般在日常生活中觉醒。"
+      heroKicker  = "聚善而行"
+      heroTitle   = "善聚慧生"
+      heroLead    = "把日常的善意、清明与慈悲聚在一起，让佛陀的智慧成为人人都能实践的生活力量。"
+      heroAction  = "开始阅读"
+      languageNote = "中文为主，English 与 日本語同步同行。"
 
   [languages.en]
     label        = "English"
@@ -40,8 +46,14 @@ summaryLength = 70
     title        = "GrowZen · 善聚慧生"
     contentDir   = "content/en"
     [languages.en.params]
+      displayName = "English"
       subtitle    = "Where Goodness Gathers, Wisdom Grows"
       description = "GrowZen — collecting goodness from around the world and multiplying it through Buddha's teachings."
+      heroKicker  = "Goodness in Practice"
+      heroTitle   = "Where Goodness Gathers, Wisdom Grows"
+      heroLead    = "GrowZen turns Buddhist wisdom into simple, usable reflections for everyday life: clarity, compassion, discipline, and mindful action."
+      heroAction  = "Start reading"
+      languageNote = "Chinese first, then English and Japanese in step."
 
   [languages.ja]
     label        = "日本語"
@@ -49,8 +61,14 @@ summaryLength = 70
     title        = "GrowZen · 善集慧生"
     contentDir   = "content/ja"
     [languages.ja.params]
+      displayName = "日本語"
       subtitle    = "善集慧生"
       description = "GrowZen — 世界中の善を集め、仏陀の教えで広げる。太陰暦に従って仏教の教えを更新。"
+      heroKicker  = "善を日々の実践へ"
+      heroTitle   = "善集慧生"
+      heroLead    = "GrowZen は、仏陀の智慧を日々の暮らしに戻すための静かな場です。明晰さ、慈悲、規律、気づきをやさしく育てます。"
+      heroAction  = "読み始める"
+      languageNote = "中文を中心に、English と 日本語で共に歩みます。"
 
 [params]
   # These are read by our custom partials, not by Blowfish directly

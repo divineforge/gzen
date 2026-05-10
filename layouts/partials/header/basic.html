@@ -1,0 +1,34 @@
+{{ $sections := slice
+  (dict "key" "principles" "path" "principles")
+  (dict "key" "koans" "path" "koans")
+  (dict "key" "practice" "path" "practice")
+  (dict "key" "library" "path" "library")
+}}
+
+<header class="gzen-header">
+  <a class="gzen-brand" href="{{ "" | relLangURL }}" aria-label="{{ .Site.Title }}">
+    <span class="gzen-brand-mark" aria-hidden="true">善</span>
+    <span>
+      <strong>GrowZen</strong>
+      <small>{{ .Site.Language.Params.subtitle | default "善聚慧生" }}</small>
+    </span>
+  </a>
+
+  <nav class="gzen-nav" aria-label="Primary">
+    {{ range $sections }}
+      <a href="{{ .path | relLangURL }}">{{ i18n .key | default .key }}</a>
+    {{ end }}
+  </nav>
+
+  {{ if .IsTranslated }}
+    <nav class="gzen-languages" aria-label="{{ i18n "read_in" | default "Languages" }}">
+      {{ range sort .AllTranslations "Language.Weight" }}
+        <a
+          href="{{ .RelPermalink }}"
+          {{ if eq .Language.Lang $.Site.Language.Lang }}aria-current="page"{{ end }}>
+          {{ .Language.Params.displayName | default .Language.Label | default .Language.Lang }}
+        </a>
+      {{ end }}
+    </nav>
+  {{ end }}
+</header>

@@ -1,12 +1,64 @@
 /*
-  GrowZen custom CSS — layered on top of Blowfish's base styles.
-  Keep this minimal: prefer color scheme variables and Tailwind classes.
+  GrowZen custom CSS — simple, warm, advocacy-first.
+  Blowfish still provides the base; this file gives GrowZen its identity.
 */
 
+:root {
+  --gzen-bg: #fffaf4;
+  --gzen-surface: #fff4e8;
+  --gzen-ink: #2f2118;
+  --gzen-muted: #7c624d;
+  --gzen-saffron: #d97845;
+  --gzen-leaf: #6f8f63;
+  --gzen-border: #ead9c3;
+}
+
 /* ── CJK Typography ─────────────────────────────────── */
+html {
+  background: var(--gzen-bg);
+}
+
+html::before {
+  content: "";
+  position: fixed;
+  inset: -12vh -12vw;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(217, 120, 69, 0.13) 0 12rem, transparent 28rem),
+    radial-gradient(circle at 86% 8%, rgba(111, 143, 99, 0.11) 0 10rem, transparent 26rem),
+    radial-gradient(circle at 52% 94%, rgba(247, 223, 189, 0.58) 0 18rem, transparent 34rem),
+    linear-gradient(180deg, #fff4e8 0%, #fffaf4 38%, #fffaf4 100%);
+  background-size: 115% 115%;
+  animation: gzen-breathing-bg 22s ease-in-out infinite alternate;
+}
+
 body, .prose {
   font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
   line-height: 1.8;
+}
+
+body {
+  background: transparent !important;
+  color: var(--gzen-ink);
+}
+
+@keyframes gzen-breathing-bg {
+  0% {
+    background-position: 0% 0%;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  100% {
+    background-position: 100% 42%;
+    transform: translate3d(1.2vw, -1vh, 0) scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html::before {
+    animation: none;
+  }
 }
 
 /* Long-form article content uses serif for readability */
@@ -47,6 +99,317 @@ body, .prose {
 }
 
 /* ── Blowfish component overrides ───────────────────── */
+
+.gzen-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 1.15rem 0 0.9rem;
+  border-bottom: 1px solid rgba(234, 217, 195, 0.72);
+}
+
+.gzen-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+  color: var(--gzen-ink);
+  text-decoration: none;
+}
+
+.gzen-brand:hover {
+  color: var(--gzen-ink);
+}
+
+.gzen-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+  background: #f7dfbd;
+  color: #7a3b1f;
+  font-family: "Noto Serif SC", serif;
+  font-weight: 500;
+}
+
+.gzen-brand strong,
+.gzen-brand small {
+  display: block;
+}
+
+.gzen-brand strong {
+  font-size: 1rem;
+  line-height: 1.1;
+}
+
+.gzen-brand small {
+  margin-top: 0.12rem;
+  color: var(--gzen-muted);
+  font-size: 0.76rem;
+  line-height: 1.2;
+}
+
+.gzen-nav,
+.gzen-languages {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.gzen-nav {
+  margin-left: auto;
+}
+
+.gzen-nav a,
+.gzen-languages a {
+  border-radius: 999px;
+  color: var(--gzen-muted);
+  font-size: 0.9rem;
+  line-height: 1.2;
+  padding: 0.45rem 0.65rem;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.gzen-nav a:hover,
+.gzen-languages a:hover,
+.gzen-languages a[aria-current="page"] {
+  background: rgba(217, 120, 69, 0.1);
+  color: #8f4526;
+}
+
+.gzen-languages {
+  padding-left: 0.75rem;
+  border-left: 1px solid rgba(234, 217, 195, 0.9);
+}
+
+.gzen-home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 2rem;
+  max-width: 58rem;
+  margin: 4.5rem auto 0;
+  padding: 0 0.25rem 4rem;
+}
+
+.gzen-kicker {
+  margin: 0 0 0.8rem;
+  color: var(--gzen-leaf);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gzen-home-hero h1 {
+  max-width: 12em;
+  margin: 0;
+  color: var(--gzen-ink);
+  font-family: "Noto Serif SC", "Noto Sans SC", serif;
+  font-size: clamp(2.35rem, 7vw, 5.4rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.08;
+}
+
+.gzen-lead {
+  max-width: 42rem;
+  margin: 1.15rem 0 0;
+  color: var(--gzen-muted);
+  font-size: clamp(1.04rem, 2vw, 1.28rem);
+  line-height: 1.8;
+}
+
+.gzen-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.8rem;
+}
+
+.gzen-primary-link {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--gzen-ink);
+  color: #fffaf4;
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1;
+  padding: 0.82rem 1.1rem;
+  text-decoration: none;
+}
+
+.gzen-primary-link:hover {
+  color: #fffaf4;
+  background: #5a3320;
+}
+
+.gzen-hero-actions span {
+  max-width: 22rem;
+  color: var(--gzen-muted);
+  font-size: 0.88rem;
+}
+
+.gzen-hero-aside {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 12rem;
+}
+
+.gzen-hero-aside span {
+  border-left: 3px solid var(--gzen-saffron);
+  background: rgba(255, 244, 232, 0.78);
+  color: #65442d;
+  padding: 0.68rem 0.85rem;
+}
+
+.gzen-home-content {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0 0.25rem 5rem;
+}
+
+.gzen-section {
+  padding: 2.4rem 0;
+  border-top: 1px solid var(--gzen-border);
+}
+
+.gzen-section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.05rem;
+}
+
+.gzen-section-heading h2 {
+  margin: 0;
+  color: var(--gzen-ink);
+  font-size: 0.92rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gzen-section-heading a {
+  color: var(--gzen-muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.gzen-link-list {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.gzen-link-list a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gzen-link-list article {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 0.82rem 0;
+  border: 0 !important;
+}
+
+.gzen-link-list h3 {
+  margin: 0;
+  color: var(--gzen-ink);
+  font-size: 1.02rem;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.gzen-link-list p {
+  margin: 0.25rem 0 0;
+  color: var(--gzen-muted);
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
+
+.gzen-link-list span,
+.gzen-link-list time {
+  color: var(--gzen-muted);
+  font-size: 0.78rem;
+}
+
+.gzen-topic-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.gzen-topic-list a {
+  border: 1px solid var(--gzen-border);
+  border-radius: 999px;
+  background: rgba(255, 244, 232, 0.68);
+  color: #684934;
+  font-size: 0.86rem;
+  padding: 0.38rem 0.68rem;
+  text-decoration: none;
+}
+
+.gzen-topic-list span {
+  color: var(--gzen-muted);
+}
+
+@media (max-width: 860px) {
+  .gzen-header,
+  .gzen-home-hero,
+  .gzen-link-list article {
+    align-items: flex-start;
+  }
+
+  .gzen-header,
+  .gzen-home-hero {
+    flex-direction: column;
+  }
+
+  .gzen-header {
+    display: flex;
+  }
+
+  .gzen-nav {
+    margin-left: 0;
+  }
+
+  .gzen-languages {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .gzen-home-hero {
+    display: flex;
+    margin-top: 3rem;
+  }
+
+  .gzen-hero-aside {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .gzen-header,
+  .gzen-home-content,
+  .gzen-home-hero {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .gzen-link-list article {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
 
 /* Soften article borders */
 article {

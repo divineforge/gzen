@@ -1,63 +1,68 @@
-{{/* GrowZen custom homepage — renders inside Blowfish baseof > main block */}}
+{{/* GrowZen custom homepage — calm advocacy front door */}}
 
-{{/* ── Lunar hero ─────────────────────────────────────── */}}
-{{ partial "lunar-hero.html" . }}
+<section class="gzen-home-hero" aria-labelledby="gzen-home-title">
+  <div class="gzen-hero-copy">
+    <p class="gzen-kicker">{{ .Site.Language.Params.heroKicker | default "聚善而行" }}</p>
+    <h1 id="gzen-home-title">{{ .Site.Language.Params.heroTitle | default .Site.Title }}</h1>
+    <p class="gzen-lead">{{ .Site.Language.Params.heroLead | default .Site.Params.description }}</p>
+    <div class="gzen-hero-actions">
+      <a href="{{ "principles" | relLangURL }}" class="gzen-primary-link">
+        {{ .Site.Language.Params.heroAction | default (i18n "principles" | default "开始阅读") }}
+      </a>
+      <span>{{ .Site.Language.Params.languageNote }}</span>
+    </div>
+  </div>
+  <div class="gzen-hero-aside" aria-label="{{ i18n "topics" | default "Topics" }}">
+    <span>慈悲 Compassion</span>
+    <span>正念 Mindfulness</span>
+    <span>清明 Clarity</span>
+  </div>
+</section>
 
-{{/* ── Content sections ──────────────────────────────── */}}
-<div class="mt-12 max-w-3xl mx-auto px-4 space-y-16">
+<div class="gzen-home-content">
 
   {{/* Principles */}}
   {{ $principles := where site.RegularPages "Section" "principles" }}
   {{ if $principles }}
-  <section>
-    <h2 class="text-sm font-medium uppercase tracking-widest mb-6 text-neutral-500 dark:text-neutral-400">
-      {{ i18n "principles" | default "原则" }}
-    </h2>
-    <div class="space-y-4">
+  <section class="gzen-section">
+    <div class="gzen-section-heading">
+      <h2>{{ i18n "principles" | default "原则" }}</h2>
+      <a href="{{ "principles" | relLangURL }}">{{ i18n "more" | default "更多" }}</a>
+    </div>
+    <div class="gzen-link-list">
       {{ range first 5 $principles }}
-      <a href="{{ .RelPermalink }}" class="block group">
-        <article class="flex items-start gap-3">
-          <span class="text-xs text-neutral-400 mt-1 shrink-0 w-20">
-            {{ .Date.Format "2006-01-02" }}
-          </span>
+      <a href="{{ .RelPermalink }}">
+        <article>
           <div>
-            <h3 class="text-base font-medium group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-              {{ .Title }}
-            </h3>
+            <h3>{{ .Title }}</h3>
             {{ with .Summary }}
-            <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-0.5 line-clamp-2">{{ . }}</p>
+            <p>{{ . }}</p>
             {{ end }}
           </div>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
         </article>
       </a>
       {{ end }}
     </div>
-    <a href="{{ "principles" | relLangURL }}" class="inline-flex items-center gap-1 mt-4 text-sm text-primary-600 dark:text-primary-400 hover:underline">
-      {{ i18n "more" | default "更多" }} →
-    </a>
   </section>
   {{ end }}
 
   {{/* Recent writing — koans, practice, engineering, library */}}
   {{ $recent := where site.RegularPages "Section" "!=" "principles" | first 6 }}
   {{ if $recent }}
-  <section>
-    <h2 class="text-sm font-medium uppercase tracking-widest mb-6 text-neutral-500 dark:text-neutral-400">
-      {{ i18n "recent" | default "近期" }}
-    </h2>
-    <div class="space-y-4">
+  <section class="gzen-section">
+    <div class="gzen-section-heading">
+      <h2>{{ i18n "recent_posts" | default "近期" }}</h2>
+    </div>
+    <div class="gzen-link-list">
       {{ range $recent }}
-      <a href="{{ .RelPermalink }}" class="block group">
-        <article class="flex items-start gap-3">
-          <span class="text-xs text-neutral-400 mt-1 shrink-0 w-20">
-            {{ .Date.Format "2006-01-02" }}
-          </span>
+      <a href="{{ .RelPermalink }}">
+        <article>
           <div>
-            <span class="text-xs text-primary-500 mr-1">{{ .Section }}</span>
-            <h3 class="inline text-base font-medium group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-              {{ .Title }}
-            </h3>
+            <span>{{ .Section }}</span>
+            <h3>{{ .Title }}</h3>
           </div>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
         </article>
       </a>
       {{ end }}
@@ -68,16 +73,15 @@
   {{/* Tags */}}
   {{ $tags := site.Taxonomies.tags }}
   {{ if $tags }}
-  <section>
-    <h2 class="text-sm font-medium uppercase tracking-widest mb-4 text-neutral-500 dark:text-neutral-400">
-      {{ i18n "tags" | default "标签" }}
-    </h2>
-    <div class="flex flex-wrap gap-2">
+  <section class="gzen-section">
+    <div class="gzen-section-heading">
+      <h2>{{ i18n "topics" | default "标签" }}</h2>
+    </div>
+    <div class="gzen-topic-list">
       {{ range $tags.Alphabetical }}
-      <a href="{{ .Page.RelPermalink }}"
-         class="text-xs px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors">
+      <a href="{{ .Page.RelPermalink }}">
         {{ .Page.Title }}
-        <span class="text-neutral-400">({{ .Count }})</span>
+        <span>({{ .Count }})</span>
       </a>
       {{ end }}
     </div>

@@ -9,31 +9,31 @@
 /* ── Light mode (only mode — no dark theme for GrowZen) ── */
 :root,
 html.light {
-  /* Primary accent: saffron #e8956d → rgb(232,149,109) */
+  /* Primary accent: warm saffron #d97845 */
   --color-primary-50:  255 248 245;
-  --color-primary-100: 253 237 226;
-  --color-primary-200: 249 210 185;
-  --color-primary-300: 244 182 144;
-  --color-primary-400: 240 163 122;
-  --color-primary-500: 232 149 109;
-  --color-primary-600: 210 118  76;
-  --color-primary-700: 175  88  50;
-  --color-primary-800: 140  64  30;
-  --color-primary-900:  98  40  15;
-  --color-primary-950:  74  26  10;
+  --color-primary-100: 255 237 220;
+  --color-primary-200: 250 210 174;
+  --color-primary-300: 240 176 124;
+  --color-primary-400: 226 139  78;
+  --color-primary-500: 217 120  69;
+  --color-primary-600: 188  91  47;
+  --color-primary-700: 148  68  36;
+  --color-primary-800: 111  49  29;
+  --color-primary-900:  82  36  24;
+  --color-primary-950:  52  23  15;
 
   /* Neutral scale: warm brown → cream */
-  --color-neutral-50:  255 248 245;
-  --color-neutral-100: 250 238 228;
-  --color-neutral-200: 240 217 200;
-  --color-neutral-300: 220 185 158;
-  --color-neutral-400: 190 148 112;
-  --color-neutral-500: 156  96  64;
-  --color-neutral-600: 130  78  48;
-  --color-neutral-700: 100  56  32;
-  --color-neutral-800:  74  44  26;
-  --color-neutral-900:  48  26  12;
-  --color-neutral-950:  28  12   4;
+  --color-neutral-50:  255 250 244;
+  --color-neutral-100: 250 241 229;
+  --color-neutral-200: 235 218 198;
+  --color-neutral-300: 210 184 154;
+  --color-neutral-400: 168 132  96;
+  --color-neutral-500: 126  92  62;
+  --color-neutral-600:  98  69  45;
+  --color-neutral-700:  72  49  32;
+  --color-neutral-800:  50  34  24;
+  --color-neutral-900:  36  25  18;
+  --color-neutral-950:  24  16  11;
 }
 
 /* Dark mode: keep warm tones even in dark (graceful fallback) */
